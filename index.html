@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DinoSad Web 🦖</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fondos.css">
+    <link rel="stylesheet" href="botones.css">
+    <link rel="stylesheet" href="stickers.css">
+    <link rel="stylesheet" href="detras.css">
+
+</head>
+
+<body>
+
+<!--==============================
+FONDO
+===============================-->
+
+<div id="fondo"></div>
+
+<!--==============================
+BOTONES SUPERIORES
+===============================-->
+
+<button id="btnTikTok">
+    TikTok 🔥
+</button>
+
+<button id="btnMusica">
+    🎵 Música OFF
+</button>
+
+<button id="btnSiguiente">
+    ⏭
+</button>
+
+<!--==============================
+TÍTULO
+===============================-->
+
+<h1>DinoSad Web 🦖</h1>
+
+<p>Explora mi mundo</p>
+
+<!--==============================
+INICIO
+===============================-->
+
+<div id="inicio">
+
+    <div class="grid">
+
+        <!-- Redes -->
+        <div class="card">
+
+            <h2>🌐 Redes</h2>
+
+            <p>Mis redes sociales</p>
+
+            <button class="rojo" id="tiktok">
+                TikTok
+            </button>
+
+            <button class="azul" id="instagram">
+                Instagram
+            </button>
+
+        </div>
+
+        <!-- Contenido -->
+        <div class="card">
+
+            <h2>🎬 Contenido</h2>
+
+            <p>Videos y clips</p>
+
+            <button class="verde">
+                Ver videos
+            </button>
+
+            <button class="azul">
+                Destacados
+            </button>
+
+        </div>
+
+        <!-- Detrás -->
+        <div class="card">
+
+            <h2>🦖 Detrás de DinoSad</h2>
+
+            <p>Cómo hago mis videos</p>
+
+            <button class="morado" id="btnProceso">
+                Ver proceso
+            </button>
+
+            <button class="azul">
+                Historias
+            </button>
+
+        </div>
+
+        <!-- Publicaciones -->
+        <div class="card">
+
+            <h2>📝 Publicaciones</h2>
+
+            <p>Mis posts y novedades</p>
+
+            <button class="verde">
+                Ver posts
+            </button>
+
+            <button class="rojo">
+                Nuevos
+            </button>
+
+        </div>
+
+        <!-- Stickers -->
+        <div class="card">
+
+            <h2>🎯 Stickers</h2>
+
+            <p>Mis stickers</p>
+
+            <button class="verde" id="btnStikers">
+                Ver stickers
+            </button>
+
+            <button class="rojo">
+                Nuevos
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--==============================
+SECCIÓN STICKERS
+===============================-->
+
+<div id="seccionStickers" style="display:none;">
+
+    <h1>🎯 Mis Stickers</h1>
+
+    <p>Mi colección de stickers.</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="stikers/stiker1.png"
+                 class="sticker"
+                 onclick="verSticker(this.src)">
+        </div>
+
+        <div class="card">
+            <img src="stikers/stiker2.png"
+                 class="sticker"
+                 onclick="verSticker(this.src)">
+        </div>
+
+        <div class="card">
+            <img src="stikers/stiker3.png"
+                 class="sticker"
+                 onclick="verSticker(this.src)">
+        </div>
+
+        <div class="card">
+            <img src="stikers/stiker4.png"
+                 class="sticker"
+                 onclick="verSticker(this.src)">
+        </div>
+
+        <div class="card">
+            <img src="stikers/stiker5.png"
+                 class="sticker"
+                 onclick="verSticker(this.src)">
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolver" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+
+<!--==============================
+CONTACTO
+===============================-->
+
+<div id="seccionContacto">
+
+    <div class="card">
+
+        <h2>📩 Contacto</h2>
+
+        <p>Déjame tus datos o un comentario.</p>
+
+        <input type="text" placeholder="Escribe tu nombre">
+
+        <br><br>
+
+        <input type="date">
+
+        <br><br>
+
+        <input type="number" placeholder="Tu edad">
+
+        <br><br>
+
+        <input type="email" placeholder="Correo electrónico">
+
+        <br><br>
+
+        <select>
+
+            <option>Selecciona una opción</option>
+
+            <option>Quiero colaborar</option>
+
+            <option>Quiero saludar</option>
+
+            <option>Tengo una sugerencia</option>
+
+        </select>
+
+        <br><br>
+
+        <textarea rows="4"
+                  placeholder="Escribe tu comentario..."></textarea>
+
+        <br><br>
+
+        <button class="verde">
+            Enviar
+        </button>
+
+    </div>
+
+</div>
+
+<!--==============================
+DETRÁS DE DINOSAD
+===============================-->
+
+<div id="seccionDetras" style="display:none;">
+
+    <h1>🦖 Detrás de DinoSad</h1>
+
+    <p>Conocé un poco más sobre mí y este proyecto.</p>
+
+    <div class="card">
+
+        <h2>👋 ¡Hola!</h2>
+
+        <p>
+
+            Bienvenido a mi espacio personal.
+
+            Aquí compartiré mi historia,
+
+            cómo nació DinoSad
+
+            y cómo creo mi contenido.
+
+        </p>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverDetras" class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+
+<!--==============================
+VISOR DE STICKERS
+===============================-->
+
+<div id="visor" onclick="cerrarSticker()">
+
+    <img id="imagenGrande">
+
+</div>
+
+<!--==============================
+MÚSICA
+===============================-->
+
+<audio id="musica" loop>
+
+    <source src="musica/prueba.mp3" type="audio/mpeg">
+
+</audio>
+
+<!--==============================
+JAVASCRIPT
+===============================-->
+
+<script src="redes.js"></script>
+<script src="musica.js"></script>
+<script src="fondos.js"></script>
+<script src="stickers.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
