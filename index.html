@@ -47,7 +47,6 @@ TÍTULO
 <h1>DinoSad Web 🦖</h1>
 
 <p>Explora mi mundo</p>
-
 <!--==============================
 INICIO
 ===============================-->
@@ -141,10 +140,22 @@ INICIO
 
         </div>
 
+        <!-- Contacto -->
+        <div class="card">
+
+            <h2>📩 Contacto</h2>
+
+            <p>¿Quieres enviarme un mensaje?</p>
+
+            <button class="verde" id="btnContacto">
+                Toca aquí
+            </button>
+
+        </div>
+
     </div>
 
 </div>
-
 <!--==============================
 SECCIÓN STICKERS
 ===============================-->
@@ -158,31 +169,31 @@ SECCIÓN STICKERS
     <div class="grid">
 
         <div class="card">
-            <img src="stiker1.png"
+            <img src="stikers/stiker1.png"
                  class="sticker"
                  onclick="verSticker(this.src)">
         </div>
 
         <div class="card">
-            <img src="stiker2.png"
+            <img src="stikers/stiker2.png"
                  class="sticker"
                  onclick="verSticker(this.src)">
         </div>
 
         <div class="card">
-            <img src="stiker3.png"
+            <img src="stikers/stiker3.png"
                  class="sticker"
                  onclick="verSticker(this.src)">
         </div>
 
         <div class="card">
-            <img src="stiker4.png"
+            <img src="stikers/stiker4.png"
                  class="sticker"
                  onclick="verSticker(this.src)">
         </div>
 
         <div class="card">
-            <img src="stiker5.png"
+            <img src="stikers/stiker5.png"
                  class="sticker"
                  onclick="verSticker(this.src)">
         </div>
@@ -197,60 +208,7 @@ SECCIÓN STICKERS
 
 </div>
 
-<!--==============================
-CONTACTO
-===============================-->
 
-<div id="seccionContacto">
-
-    <div class="card">
-
-        <h2>📩 Contacto</h2>
-
-        <p>Déjame tus datos o un comentario.</p>
-
-        <input type="text" placeholder="Escribe tu nombre">
-
-        <br><br>
-
-        <input type="date">
-
-        <br><br>
-
-        <input type="number" placeholder="Tu edad">
-
-        <br><br>
-
-        <input type="email" placeholder="Correo electrónico">
-
-        <br><br>
-
-        <select>
-
-            <option>Selecciona una opción</option>
-
-            <option>Quiero colaborar</option>
-
-            <option>Quiero saludar</option>
-
-            <option>Tengo una sugerencia</option>
-
-        </select>
-
-        <br><br>
-
-        <textarea rows="4"
-                  placeholder="Escribe tu comentario..."></textarea>
-
-        <br><br>
-
-        <button class="verde">
-            Enviar
-        </button>
-
-    </div>
-
-</div>
 
 <!--==============================
 DETRÁS DE DINOSAD
@@ -299,6 +257,74 @@ VISOR DE STICKERS
     <img id="imagenGrande">
 
 </div>
+<!--==============================
+CONTACTO
+===============================-->
+
+<div id="seccionContacto" style="display:none;">
+
+    <h1>📩 Contacto</h1>
+
+    <p>¿Quieres enviarme un mensaje?</p>
+
+    <div class="card">
+
+        <h2>📩 Formulario</h2>
+
+        <p>Déjame tus datos o un comentario.</p>
+
+        <input type="text" placeholder="Escribe tu nombre">
+
+        <br><br>
+
+        <input type="date">
+
+        <br><br>
+
+        <input type="number" placeholder="Tu edad">
+
+        <br><br>
+
+        <input type="email" placeholder="Correo electrónico">
+
+        <br><br>
+
+        <select>
+
+            <option>Selecciona una opción</option>
+            <option>Quiero colaborar</option>
+            <option>Quiero saludar</option>
+            <option>Tengo una sugerencia</option>
+
+        </select>
+
+        <br><br>
+
+        <textarea
+            rows="4"
+            placeholder="Escribe tu comentario..."></textarea>
+
+        <br><br>
+
+        <button class="verde">
+
+            Enviar
+
+        </button>
+
+    </div>
+
+    <br>
+
+    <button
+        id="btnVolverContacto"
+        class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
 
 <!--==============================
 MÚSICA
@@ -306,7 +332,7 @@ MÚSICA
 
 <audio id="musica" loop>
 
-    <source src="prueba.mp3" type="audio/mpeg">
+    <source src="musica/prueba.mp3" type="audio/mpeg">
 
 </audio>
 
@@ -318,6 +344,7 @@ JAVASCRIPT
 <script src="musica.js"></script>
 <script src="fondos.js"></script>
 <script src="stickers.js"></script>
+<script src="contacto.js"></script>
 <script src="script.js"></script>
 
 </body>
