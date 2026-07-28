@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="botones.css">
     <link rel="stylesheet" href="stickers.css">
     <link rel="stylesheet" href="detras.css">
+    <link rel="stylesheet" href="puzzle.css">
 
 </head>
 
@@ -139,7 +140,18 @@ INICIO
             </button>
 
         </div>
+<!-- Rompecabezas -->
+<div class="card">
 
+    <h2>🧩 Rompecabezas</h2>
+
+    <p>Arma una imagen de DinoSad.</p>
+
+    <button class="verde" id="btnPuzzle">
+        Jugar
+    </button>
+
+</div>
         <!-- Contacto -->
         <div class="card">
 
@@ -164,37 +176,37 @@ SECCIÓN STICKERS
 
     <h1>🎯 Mis Stickers</h1>
 
-    <p>Mi colección de stikers.</p>
+    <p>Mi colección de stickers.</p>
 
     <div class="grid">
 
         <div class="card">
-            <img src="stiker1.png"
-                 class="stiker"
+            <img src="stikers/stiker1.png"
+                 class="sticker"
                  onclick="verSticker(this.src)">
         </div>
 
         <div class="card">
-            <img src="stiker2.png"
-                 class="stiker"
+            <img src="stikers/stiker2.png"
+                 class="sticker"
                  onclick="verSticker(this.src)">
         </div>
 
         <div class="card">
-            <img src="stiker3.png"
-                 class="stiker"
+            <img src="stikers/stiker3.png"
+                 class="sticker"
                  onclick="verSticker(this.src)">
         </div>
 
         <div class="card">
-            <img src="stiker4.png"
-                 class="stiker"
+            <img src="stikers/stiker4.png"
+                 class="sticker"
                  onclick="verSticker(this.src)">
         </div>
 
         <div class="card">
-            <img src="stiker5.png"
-                 class="stiker"
+            <img src="stikers/stiker5.png"
+                 class="sticker"
                  onclick="verSticker(this.src)">
         </div>
 
@@ -207,7 +219,28 @@ SECCIÓN STICKERS
     </button>
 
 </div>
+<!--==============================
+ROMPECABEZAS
+===============================-->
 
+<div id="seccionPuzzle" style="display:none;">
+
+    <h1>🧩 Rompecabezas DinoSad</h1>
+
+    <p>Ordena las piezas para completar la imagen.</p>
+    <h2 id="cronometro">
+    ⏱️ Tiempo: 00:00
+</h2>
+
+    <div id="puzzle"></div>
+
+    <br>
+
+    <button id="btnVolverPuzzle" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
 
 
 <!--==============================
@@ -346,6 +379,6 @@ JAVASCRIPT
 <script src="stickers.js"></script>
 <script src="contacto.js"></script>
 <script src="script.js"></script>
-
+<script src="puzzle.js"></script>
 </body>
 </html>
