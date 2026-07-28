@@ -16,8 +16,8 @@ let btnSiguiente = document.getElementById("btnSiguiente");
 // ===============================
 
 let canciones = [
-    "musica/prueba.mp3",
-    "musica/prueba1.mp3"
+    "prueba.mp3",
+    "prueba1.mp3"
 ];
 
 // ===============================
