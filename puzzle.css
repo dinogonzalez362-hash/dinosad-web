@@ -21,9 +21,6 @@
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
-    grid-template-rows:repeat(3,1fr);
-
     gap:2px;
 
     background:#111;
@@ -43,16 +40,16 @@
 
     background-image:url("puzzle.png");
 
-    background-size:450px 450px;
+    background-repeat:no-repeat;
 
     cursor:pointer;
 
     border:1px solid rgba(255,255,255,.15);
 
-transition:
-background-position .30s ease,
-transform .20s ease,
-box-shadow .20s ease;
+    transition:
+        background-position .30s ease,
+        transform .20s ease,
+        box-shadow .20s ease;
 
 }
 
@@ -61,16 +58,15 @@ box-shadow .20s ease;
     transform:scale(.98);
 
     filter:brightness(1.2);
-    .pieza:active{
-
-    transform:scale(.95);
-
-}
-.pieza:hover{
 
     box-shadow:0 0 12px cyan;
 
 }
+
+.pieza:active{
+
+    transform:scale(.95);
+
 }
 
 #btnVolverPuzzle{
@@ -85,12 +81,6 @@ box-shadow .20s ease;
 
         width:300px;
         height:300px;
-
-    }
-
-    .pieza{
-
-        background-size:300px 300px;
 
     }
 
