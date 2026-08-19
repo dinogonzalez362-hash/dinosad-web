@@ -7,13 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>DinoSad Web 🦖</title>
-
+<script type="importmap">
+  {
+    "imports": {
+      "@google/genai": "https://esm.run/@google/genai"
+    }
+  }
+</script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fondos.css">
     <link rel="stylesheet" href="botones.css">
     <link rel="stylesheet" href="stickers.css">
     <link rel="stylesheet" href="detras.css">
     <link rel="stylesheet" href="puzzle.css">
+    <link rel="stylesheet" href="dinos_asistente.css">
+    <link rel="stylesheet" href="dinos_chat.css">
 
 </head>
 
@@ -28,7 +36,9 @@ FONDO
 <!--==============================
 BOTONES SUPERIORES
 ===============================-->
-
+<button id="btnAsistencia">
+    🦖 Asistencia OFF
+</button>
 <button id="btnTikTok">
     TikTok 🔥
 </button>
@@ -80,13 +90,12 @@ INICIO
 
             <p>Videos y clips</p>
 
-            <button class="verde">
-                Ver videos
-            </button>
-
-            <button class="azul">
-                Destacados
-            </button>
+<button class="verde" id="btnContenido">
+    Ver videos
+</button>
+<button class="azul" id="btnDestacados">
+    Destacados
+</button>
 
         </div>
 
@@ -100,10 +109,9 @@ INICIO
             <button class="morado" id="btnProceso">
                 Ver proceso
             </button>
-
-            <button class="azul">
-                Historias
-            </button>
+<button class="azul" id="btnHistorias">
+    Historias
+</button>
 
         </div>
 
@@ -113,14 +121,12 @@ INICIO
             <h2>📝 Publicaciones</h2>
 
             <p>Mis posts y novedades</p>
-
-            <button class="verde">
-                Ver posts
-            </button>
-
-            <button class="rojo">
-                Nuevos
-            </button>
+<button class="verde" id="btnPublicaciones">
+    Ver posts
+</button>
+<button class="rojo" id="btnNuevos">
+    Nuevos
+</button>
 
         </div>
 
@@ -134,10 +140,9 @@ INICIO
             <button class="verde" id="btnStikers">
                 Ver stickers
             </button>
-
-            <button class="rojo">
-                Nuevos
-            </button>
+<button class="rojo" id="btnNuevosStikers">
+    Nuevos
+</button>
 
         </div>
 <!-- Rompecabezas -->
@@ -169,56 +174,651 @@ INICIO
 
 </div>
 <!--==============================
-SECCIÓN STICKERS
+STICKERS
 ===============================-->
+
 <div id="seccionStickers" style="display:none;">
 
-    <h1>🎯 Mis Stickers</h1>
+    <h1>🎯 Stickers</h1>
 
-    <p>Mi colección de stickers.</p>
+    <p>Elegí una colección.</p>
 
     <div class="grid">
 
-        <div class="card">
-            <img src="stiker1.png"
-                 class="sticker"
-                 onclick="verSticker(this.src)">
-        </div>
+        <!-- ALE -->
 
         <div class="card">
-            <img src="stiker2.png"
-                 class="sticker"
-                 onclick="verSticker(this.src)">
+
+            <h2>🦖 Ale</h2>
+
+            <p>Stickers de Ale.</p>
+
+            <button
+                class="verde"
+                id="btnColeccionAle">
+
+                Ver stickers
+
+            </button>
+
         </div>
 
-        <div class="card">
-            <img src="stiker3.png"
-                 class="sticker"
-                 onclick="verSticker(this.src)">
-        </div>
+
+        <!-- LEO -->
 
         <div class="card">
-            <img src="stiker4.png"
-                 class="sticker"
-                 onclick="verSticker(this.src)">
+
+            <h2>🐯 Leo</h2>
+
+            <p>Stickers de Leo.</p>
+
+            <button
+                class="verde"
+                id="btnColeccionLeo">
+
+                Ver stickers
+
+            </button>
+
         </div>
 
+
+        <!-- NICO -->
+
         <div class="card">
-            <img src="stiker5.png"
-                 class="sticker"
-                 onclick="verSticker(this.src)">
+
+            <h2>🦄 Nico</h2>
+
+            <p>Stickers de Nico.</p>
+
+            <button
+                class="verde"
+                id="btnColeccionNico">
+
+                Ver stickers
+
+            </button>
+
+        </div>
+
+
+        <!-- THEYS DINOS -->
+
+        <div class="card">
+
+            <h2>🦖 Theys Dinos</h2>
+
+            <p>Stickers de todos los dinos.</p>
+
+            <button
+                class="verde"
+                id="btnColeccionTheys">
+
+                Ver stickers
+
+            </button>
+
         </div>
 
     </div>
 
     <br>
 
-    <button id="btnVolver" class="azul">
+    <button
+        id="btnVolver"
+        class="azul">
+
         ⬅ Volver
+
     </button>
 
 </div>
 
+
+<!--==============================
+NUEVOS STICKERS
+===============================-->
+
+<div id="seccionNuevosStikers" style="display:none;">
+
+    <h1>🆕 Nuevos Stickers</h1>
+
+    <p>
+        Aquí aparecerán los stickers y packs
+        agregados recientemente.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>🆕 Próximamente</h2>
+
+            <p>
+                Aquí aparecerán las novedades
+                de las últimas semanas.
+            </p>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button
+        id="btnVolverNuevosStikers"
+        class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+<!--==============================
+COLECCIÓN ALE
+===============================-->
+
+<div id="coleccionAle" style="display:none;">
+
+    <h1>🦖 Stickers de Ale</h1>
+
+    <p>Elegí qué querés ver.</p>
+
+    <div class="grid">
+
+        <!-- ==========================
+        STICKERS INDIVIDUALES
+        =========================== -->
+
+        <div class="card">
+
+            <h2>🖼️ Stickers individuales</h2>
+
+            <p>
+                Mirá los stickers individuales de Ale.
+            </p>
+
+            <button
+                class="verde"
+                id="btnStickersIndividualesAle">
+
+                Ver stickers
+
+            </button>
+
+        </div>
+
+
+        <!-- ==========================
+        PACKS
+        =========================== -->
+
+        <div class="card">
+
+            <h2>📦 Packs</h2>
+
+            <p>
+                Mirá los packs de stickers de Ale.
+            </p>
+
+            <button
+                class="rojo"
+                id="btnPacksAle">
+
+                Ver packs
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button
+        id="btnVolverAle"
+        class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+<!--==============================
+STICKERS INDIVIDUALES DE ALE
+===============================-->
+
+<div id="stickersIndividualesAle" style="display:none;">
+
+    <h1>🖼️ Stickers individuales de Ale</h1>
+
+    <p>Stickers individuales.</p>
+
+    <div class="grid">
+
+        <!-- ==========================
+        TARJETA DEL STICKER
+        =========================== -->
+
+        <div
+            class="card stickerCard"
+            id="tarjetaStickerAle">
+
+            <div class="stickerImagen">
+
+                <img
+                    src="stiker6.png"
+                    alt="Sticker individual de prueba de Ale"
+                    class="sticker">
+
+            </div>
+
+            <h3>Sticker de prueba</h3>
+
+            <button
+                class="verde"
+                id="btnDescargarStickerAle">
+
+                ⬇️ Descargar
+
+            </button>
+
+            <button
+                class="azul"
+                id="btnCompartirStickerAle">
+
+                📤 Compartir
+
+            </button>
+
+            <button
+                class="morado"
+                id="btnWhatsAppStickerAle">
+
+                💬 Ver estilo WhatsApp
+
+            </button>
+
+        </div>
+
+
+        <!-- ==========================
+        OPCIONES DE DESCARGA
+        =========================== -->
+
+        <div
+            id="opcionesDescargaStickerAle"
+            class="card"
+            style="display:none;">
+
+            <h2>⬇️ Descargar sticker</h2>
+
+            <p>
+                Elegí cómo querés descargarlo.
+            </p>
+
+            <button
+                class="verde"
+                id="btnDescargarStickerAppAle">
+
+                📱 Descargar sticker
+
+            </button>
+
+            <button
+                class="azul"
+                id="btnDescargarImagenAle">
+
+                🖼️ Descargar como imagen
+
+            </button>
+
+            <br><br>
+
+            <button
+                class="rojo"
+                id="btnCerrarDescargaAle">
+
+                ✕ Volver
+
+            </button>
+
+        </div>
+
+
+        <!-- ==========================
+        OPCIONES DE COMPARTIR
+        =========================== -->
+
+        <div
+            id="opcionesCompartirStickerAle"
+            class="card"
+            style="display:none;">
+
+            <h2>📤 Compartir sticker</h2>
+
+            <p>
+                Compartí el enlace de este sticker.
+            </p>
+
+            <button
+                class="verde"
+                id="btnCompartirWhatsAppAle">
+
+                💬 WhatsApp
+
+            </button>
+<button
+    class="morado"
+    id="btnCompartirEnAle">
+
+    📱 Compartir en...
+
+</button>
+<button
+            class="azul"
+                id="btnCopiarEnlaceAle">
+
+                🔗 Copiar enlace
+
+            </button>
+
+            <br><br>
+
+            <button
+                class="azul"
+                id="btnCerrarCompartirAle">
+
+                ✕ Volver
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button
+        id="btnVolverStickersIndividualesAle"
+        class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+<!--==============================
+PACKS DE ALE
+===============================-->
+
+<div id="packsAle" style="display:none;">
+
+    <h1>📦 Packs de Ale</h1>
+
+    <p>Colecciones de stickers de Ale.</p>
+
+    <div class="grid">
+
+        <!-- ==========================
+        TARJETA DEL PACK
+        =========================== -->
+
+        <div
+            class="card packCard"
+            id="tarjetaPackAle">
+
+            <div class="packImagen">
+
+                <img
+                    src="stiker1.png"
+                    alt="Pack de prueba de Ale">
+
+            </div>
+
+            <h3>Pack de prueba</h3>
+
+            <button
+                class="rojo"
+                id="btnDescargarPackAle">
+
+                ⬇️ Descargar pack
+
+            </button>
+
+            <button
+                class="azul"
+                id="btnCompartirPackAle">
+
+                📤 Compartir pack
+
+            </button>
+
+        </div>
+
+
+        <!-- ==========================
+        TARJETA DE COMPARTIR PACK
+        =========================== -->
+
+        <div
+            id="opcionesCompartirPackAle"
+            class="card"
+            style="display:none;">
+
+            <h2>📤 Compartir pack</h2>
+
+            <p>
+                Compartí el enlace de este pack.
+            </p>
+
+            <!-- WHATSAPP -->
+
+            <button
+                class="verde"
+                id="btnCompartirWhatsAppPackAle">
+
+                💬 WhatsApp
+
+            </button>
+
+
+            <!-- COPIAR ENLACE -->
+
+            <button
+                class="azul"
+                id="btnCopiarEnlacePackAle">
+
+                🔗 Copiar enlace
+
+            </button>
+
+
+            <!-- COMPARTIR NATIVO -->
+
+            <button
+                class="morado"
+                id="btnCompartirNativoPackAle">
+
+                📤 Compartir en...
+
+            </button>
+
+
+            <br><br>
+
+            <!-- VOLVER -->
+
+            <button
+                class="azul"
+                id="btnCerrarCompartirPackAle">
+
+                ✕ Volver
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button
+        id="btnVolverPacksAle"
+        class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+
+<!--==============================
+COLECCIÓN LEO
+===============================-->
+
+<div id="coleccionLeo" style="display:none;">
+
+    <h1>🐯 Stickers de Leo</h1>
+
+    <p>Stickers y packs de Leo.</p>
+
+<div id="gridStickersLeo" class="grid">
+
+    <div class="card">
+
+        <h2>🖼️ Stickers</h2>
+
+        <p>Stickers individuales de Leo.</p>
+
+        <div id="stickersLeo">
+            <!-- Aquí irán los stickers -->
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>📦 Packs</h2>
+
+        <p>Colecciones de stickers de Leo.</p>
+
+        <div id="packsLeo">
+            <!-- Aquí irán los packs -->
+        </div>
+
+    </div>
+
+</div>
+    <button
+        id="btnVolverLeo"
+        class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+
+
+<!--==============================
+COLECCIÓN NICO
+===============================-->
+
+<div id="coleccionNico" style="display:none;">
+
+    <h1>🦄 Stickers de Nico</h1>
+
+    <p>Stickers y packs de Nico.</p>
+<div id="gridStickersNico" class="grid">
+
+    <div class="card">
+
+        <h2>🖼️ Stickers</h2>
+
+        <p>Stickers individuales de Nico.</p>
+
+        <div id="stickersNico">
+            <!-- Aquí irán los stickers -->
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>📦 Packs</h2>
+
+        <p>Colecciones de stickers de Nico.</p>
+
+        <div id="packsNico">
+            <!-- Aquí irán los packs -->
+        </div>
+
+    </div>
+
+</div>
+
+    <button
+        id="btnVolverNico"
+        class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+
+
+<!--==============================
+COLECCIÓN THEYS DINOS
+===============================-->
+
+<div id="coleccionTheys" style="display:none;">
+
+    <h1>🦖 Theys Dinos</h1>
+
+    <p>Stickers y packs de todos los dinos.</p>
+<div id="gridStickersTheys" class="grid">
+
+    <div class="card">
+
+        <h2>🖼️ Stickers</h2>
+
+        <p>Stickers individuales de Theys Dinos.</p>
+
+        <div id="stickersTheys">
+            <!-- Aquí irán los stickers -->
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>📦 Packs</h2>
+
+        <p>Colecciones de stickers de todos los dinos.</p>
+
+        <div id="packsTheys">
+            <!-- Aquí irán los packs -->
+        </div>
+
+    </div>
+
+</div>
+
+
+    <button
+        id="btnVolverTheys"
+        class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
 <!--==============================
 ROMPECABEZAS
 ===============================-->
@@ -348,14 +948,186 @@ DETRÁS DE DINOSAD
     </button>
 
 </div>
-
 <!--==============================
-VISOR DE STICKERS
+HISTORIAS
 ===============================-->
 
-<div id="visor" onclick="cerrarSticker()">
+<div id="seccionHistorias" style="display:none;">
 
-    <img id="imagenGrande">
+    <h1>📖 Historias de DinoSad</h1>
+
+    <p>Historias, experiencias y momentos detrás de DinoSad.</p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>🦖 Historia #1</h2>
+
+            <p>
+                Próximamente podrás conocer
+                la historia detrás de DinoSad.
+            </p>
+
+            <button class="verde">
+                Leer historia
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🎬 Historia #2</h2>
+
+            <p>
+                Momentos y experiencias
+                detrás de mis contenidos.
+            </p>
+
+            <button class="azul">
+                Leer historia
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🚀 Historia #3</h2>
+
+            <p>
+                Nuevas historias próximamente.
+            </p>
+
+            <button class="morado">
+                Próximamente
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverHistorias" class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+<!--========================================
+ VISOR ESTILO WHATSAPP - STICKER ALE
+=========================================-->
+
+<div
+    id="visorWhatsAppAle"
+    style="display:none;">
+
+    <div id="chatWhatsAppAle">
+
+        <!-- ==========================
+        ENCABEZADO
+        =========================== -->
+
+        <div id="encabezadoWhatsAppAle">
+
+            <button
+                id="btnVolverWhatsAppAle">
+
+                ←
+
+            </button>
+
+            <div id="perfilWhatsAppAle">
+
+                <div id="fotoPerfilWhatsAppAle">
+
+                    🦖
+
+                </div>
+
+                <div id="datosPerfilWhatsAppAle">
+
+                    <strong>
+                        Ale
+                    </strong>
+
+                    <span>
+                        En línea
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==========================
+        CONVERSACIÓN
+        =========================== -->
+
+        <div id="mensajesWhatsAppAle">
+
+            <div
+                class="mensajeStickerWhatsAppAle">
+
+                <img
+                    id="stickerWhatsAppAle"
+                    src="stiker6.png"
+                    alt="Sticker de Ale">
+
+                <span
+                    class="horaStickerWhatsAppAle">
+
+                    20:30
+
+                </span>
+
+            </div>
+
+            <!-- ASISTENCIA -->
+
+            <div
+                class="asistenciaWhatsAppAle">
+
+                🦖 Asistencia OFF
+
+            </div>
+
+        </div>
+
+
+        <!-- ==========================
+        BARRA INFERIOR
+        =========================== -->
+
+        <div id="entradaWhatsAppAle">
+
+            <button
+                class="botonMicrofonoWhatsAppAle">
+
+                🎙️
+
+            </button>
+
+            <div
+                id="campoWhatsAppAle">
+
+                Escribile a tu Dino...
+
+            </div>
+
+            <button
+                class="botonEnviarWhatsAppAle">
+
+                ➤
+
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 <!--==============================
@@ -375,10 +1147,6 @@ CONTACTO
         <p>Déjame tus datos o un comentario.</p>
 
         <input type="text" placeholder="Escribe tu nombre">
-
-        <br><br>
-
-        <input type="date">
 
         <br><br>
 
@@ -426,14 +1194,289 @@ CONTACTO
     </button>
 
 </div>
+<!--==============================
+CONTENIDO
+===============================-->
 
+<div id="seccionContenido" style="display:none;">
+
+<h1>🎬 Contenido</h1>
+
+<p>Explora todo mi contenido.</p>
+
+<div class="grid">
+
+    <div class="card">
+
+        <h2>🎥 Shorts</h2>
+
+        <p>Mis videos cortos.</p>
+
+        <button class="verde">
+            Ver Shorts
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <h2>📺 Videos</h2>
+
+        <p>Videos completos.</p>
+
+        <button class="azul">
+            Ver Videos
+        </button>
+
+    </div>
+    
+    <div class="card">
+
+        <h2>🔥 Próximamente</h2>
+
+        <p>Nuevo contenido.</p>
+
+        <button class="rojo">
+            Muy pronto
+        </button>
+
+    </div>
+
+</div>
+
+<br>
+
+<button id="btnVolverContenido" class="azul">
+    ⬅ Volver
+</button>
+</div>
+<!--==============================
+DESTACADOS
+===============================-->
+
+<div id="seccionDestacados" style="display:none;">
+
+    <h1>⭐ Videos Destacados</h1>
+
+    <p>Aquí estarán mis mejores videos.</p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>⭐ Destacado #1</h2>
+
+            <p>Próximamente.</p>
+
+            <button class="verde">
+                Ver
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>⭐ Destacado #2</h2>
+
+            <p>Próximamente.</p>
+
+            <button class="azul">
+                Ver
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverDestacados" class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+<!--==============================
+PUBLICACIONES
+===============================-->
+
+<div id="seccionPublicaciones" style="display:none;">
+
+    <h1>📝 Publicaciones</h1>
+
+    <p>Mis publicaciones y novedades.</p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>📢 Novedades</h2>
+
+            <p>Próximamente publicaré novedades de DinoSad.</p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🦖 DinoSad</h2>
+
+            <p>Noticias y actualizaciones del proyecto.</p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🎉 Anuncios</h2>
+
+            <p>Nuevos proyectos y contenido próximamente.</p>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverPublicaciones" class="azul">
+
+        ⬅ Volver
+
+    </button>
+
+</div>
+<!--==============================
+NUEVOS
+===============================-->
+
+<div id="seccionNuevos" style="display:none;">
+
+    <h1>🆕 Nuevas publicaciones</h1>
+
+    <p>Las últimas novedades de DinoSad.</p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>🆕 Nueva publicación</h2>
+
+            <p>
+                Próximamente encontrarás
+                aquí mi contenido más reciente.
+            </p>
+
+            <button class="verde">
+                Ver publicación
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🔥 Últimas novedades</h2>
+
+            <p>
+                Nuevos contenidos y novedades
+                próximamente.
+            </p>
+
+            <button class="rojo">
+                Próximamente
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverNuevos" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+<!--==============================
+CHAT DE LOS DINOS
+===============================-->
+
+<div id="seccionChatDino" style="display:none;">
+
+    <div id="chatDino">
+
+        <!-- ENCABEZADO -->
+
+        <div id="encabezadoChatDino">
+
+            <button id="btnVolverChat">
+                ⬅
+            </button>
+
+            <div id="dinoChatInfo">
+
+                <div id="caraDinoChat"></div>
+
+                <div>
+
+                    <h2 id="nombreDinoChat">
+                        Dino
+                    </h2>
+
+                    <span id="estadoDinoChat">
+                        En línea
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONVERSACIÓN -->
+
+        <div id="mensajesChatDino">
+
+            <div class="mensajeDino">
+
+                <span>
+                    Hola 👋
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ESCRIBIR -->
+<div id="entradaChatDino">
+
+    <button id="btnMicrofonoDino">
+        🎙️
+    </button>
+
+    <input
+        type="text"
+        id="inputChatDino"
+        placeholder="Escribile a tu Dino..."
+        autocomplete="off"
+    >
+
+    <button id="btnEnviarChatDino">
+        ➤
+    </button>
+
+</div>
+
+    </div>
+
+</div>
 <!--==============================
 MÚSICA
 ===============================-->
 
 <audio id="musica" loop>
 
-    <source src="musica/prueba.mp3" type="audio/mpeg">
+    <source src="prueba.mp3" type="audio/mpeg">
 
 </audio>
 
@@ -445,8 +1488,24 @@ JAVASCRIPT
 <script src="fondos.js"></script>
 <script src="stickers.js"></script>
 <script src="contacto.js"></script>
-<script src="script.js"></script>
+<script src="contenido.js"></script>
+<script src="destacados.js"></script>
+<script src="publicaciones.js"></script>
+<script src="historias.js"></script>
+<script src="nuevos.js"></script>
+<script src="nuevos_stikers.js"></script>
+<script src="dinos_datos.js"></script>
+<script src="dinos_asistente.js"></script>
 
+<script src="dinos_chat_guardado.js"></script>
+<script src="dinos_chat_voz.js"></script>
+
+<script src="dinos_chat.js"></script>
+<script src="dinos_chat_ia.js"></script>
+
+<script src="prueba_gemini.js"></script>
+
+<script src="script.js"></script>
 <!-- ROMPECABEZAS -->
 <script src="puzzle.js"></script>
 <script src="puzzle_niveles.js"></script>
