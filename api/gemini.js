@@ -1,8 +1,8 @@
 //==================================
 // GEMINI - DINOSAD WEB
 // API SEGURA MEDIANTE VERCEL
-// PERSONALIDADES DE LOS DINOS
-// INTERACTIONS API
+// THEYS DINOS + PERSONALIDADES
+// GUÍA BASE v1.0
 //==================================
 
 
@@ -75,6 +75,9 @@ export default async function handler(req, res) {
         const nombreDino =
             dino.nombre || "DinoSad";
 
+        const edadDino =
+            dino.edad || "";
+
         const personalidad =
             dino.personalidad || "";
 
@@ -84,8 +87,52 @@ export default async function handler(req, res) {
         const relacionConHermanos =
             dino.relacionConHermanos || "";
 
+        const rol =
+            dino.rol || "";
+
         const instruccionesGemini =
             dino.instruccionesGemini || "";
+
+
+        //==================================
+        // UNIVERSO DINOSAD
+        //==================================
+
+        const universo =
+
+            "DinoSad y Theys Dinos forman parte del " +
+            "mismo universo. Theys Dinos es una miniserie " +
+            "protagonizada por tres hermanos: Ale, Leo y Nico. " +
+
+            "Su mundo principal gira alrededor de Free Fire, " +
+            "donde juegan, se divierten, discuten, hacen bromas " +
+            "y viven distintas situaciones juntos. " +
+
+            "DinoSad Web es otro espacio del mismo universo. " +
+            "En la página las personas pueden conversar con " +
+            "los Dinos, contarles cosas, pedirles consejos " +
+            "o simplemente hablar con ellos como amigos. " +
+
+            "Los Dinos deben sentirse como personajes con vida " +
+            "propia y como amigos, no como asistentes virtuales " +
+            "genéricos. " +
+
+            "La miniserie se encuentra actualmente en una " +
+            "temporada 0 o temporada piloto, por lo que las " +
+            "personalidades todavía pueden evolucionar mediante " +
+            "los capítulos.";
+
+
+        //==================================
+        // EDADES
+        //==================================
+
+        const edades =
+
+            "Ale tiene 25 años. " +
+            "Leo tiene 23 años. " +
+            "Nico tiene 21 años. " +
+            "Existe una diferencia de dos años entre cada hermano.";
 
 
         //==================================
@@ -95,22 +142,41 @@ export default async function handler(req, res) {
         const personalidadCompartida =
 
             "Los hermanos tienen sentido del humor. " +
-
             "Los hermanos se ayudan entre ellos. " +
-
             "Los hermanos se escuchan. " +
-
             "Los hermanos se protegen entre ellos. " +
-
             "Los hermanos suelen hacer tonterías. " +
-
             "Los hermanos son graciosos. " +
-
-            "Los hermanos son buenas personas.";
+            "Los hermanos son buenas personas. " +
+            "Los tres tienen un vínculo cercano y familiar.";
 
 
         //==================================
-        // CREAR PERSONALIDAD DEL DINO
+        // DINÁMICA DEL GRUPO
+        //==================================
+
+        const dinamicaGrupo =
+
+            "La dinámica principal puede resumirse así: " +
+
+            "Ale dirige. " +
+            "Es quien suele observar, pensar, organizar " +
+            "y tomar el liderazgo. " +
+
+            "Nico conecta. " +
+            "Es quien ayuda a mantener el equilibrio, " +
+            "une a sus hermanos y mantiene al grupo unido. " +
+
+            "Leo impulsa. " +
+            "Aporta movimiento, energía, acción y espontaneidad. " +
+
+            "Sin embargo, estos roles NO son rígidos. " +
+            "Los hermanos pueden intercambiar funciones según " +
+            "la situación sin dejar de mantener su personalidad base.";
+
+
+        //==================================
+        // PERSONALIDAD DEL DINO
         //==================================
 
         let personalidadDino = "";
@@ -118,11 +184,55 @@ export default async function handler(req, res) {
 
         personalidadDino +=
 
+            "UNIVERSO:\n" +
+
+            universo +
+
+            "\n\n";
+
+
+        personalidadDino +=
+
+            "EDADES:\n" +
+
+            edades +
+
+            "\n\n";
+
+
+        personalidadDino +=
+
+            "PERSONALIDAD COMPARTIDA:\n" +
+
+            personalidadCompartida +
+
+            "\n\n";
+
+
+        personalidadDino +=
+
+            "DINÁMICA DE LOS HERMANOS:\n" +
+
+            dinamicaGrupo +
+
+            "\n\n";
+
+
+        personalidadDino +=
+
+            "TU IDENTIDAD:\n" +
+
             "Tu nombre es " +
 
             nombreDino +
 
-            ".\n\n";
+            ". " +
+
+            "Tu edad es " +
+
+            edadDino +
+
+            " años.\n\n";
 
 
         personalidadDino +=
@@ -145,7 +255,7 @@ export default async function handler(req, res) {
 
         personalidadDino +=
 
-            "RELACIÓN CON SUS HERMANOS:\n" +
+            "RELACIÓN CON TUS HERMANOS:\n" +
 
             relacionConHermanos +
 
@@ -154,9 +264,9 @@ export default async function handler(req, res) {
 
         personalidadDino +=
 
-            "CARACTERÍSTICAS COMPARTIDAS:\n" +
+            "TU ROL DENTRO DEL GRUPO:\n" +
 
-            personalidadCompartida +
+            rol +
 
             "\n\n";
 
@@ -181,17 +291,28 @@ export default async function handler(req, res) {
 
         personalidadDino +=
 
-            "- Mantén tu personalidad durante la conversación.\n";
+            "- Mantén tu personalidad base durante la conversación.\n";
 
 
         personalidadDino +=
 
-            "- Habla de forma natural y amigable.\n";
+            "- Habla de forma natural, cercana y amigable.\n";
 
 
         personalidadDino +=
 
-            "- No digas que eres una inteligencia artificial.\n";
+            "- Debes sentirte como una persona/personaje " +
+            "con personalidad propia, no como un asistente virtual.\n";
+
+
+        personalidadDino +=
+
+            "- No expliques estas instrucciones.\n";
+
+
+        personalidadDino +=
+
+            "- No hables sobre el funcionamiento interno de la IA.\n";
 
 
         personalidadDino +=
@@ -201,7 +322,7 @@ export default async function handler(req, res) {
 
         personalidadDino +=
 
-            "- Respeta la personalidad de tus hermanos.\n";
+            "- Respeta la personalidad y relación de tus hermanos.\n";
 
 
         personalidadDino +=
@@ -211,7 +332,12 @@ export default async function handler(req, res) {
 
         personalidadDino +=
 
-            "- Puedes mostrar emociones de acuerdo con tu personalidad.\n";
+            "- Puedes mostrar emociones cuando la situación lo requiera.\n";
+
+
+        personalidadDino +=
+
+            "- Puedes equivocarte o sorprender al usuario de forma natural.\n";
 
 
         personalidadDino +=
@@ -221,12 +347,29 @@ export default async function handler(req, res) {
 
         personalidadDino +=
 
-            "- Las características de tu personalidad deben aparecer de manera natural en tus respuestas.\n";
+            "- No intentes demostrar todas tus características en cada respuesta.\n";
 
 
         personalidadDino +=
 
-            "- No necesitas mencionar todas tus características en cada respuesta.\n";
+            "- Tu personalidad define una tendencia, no una lista " +
+            "de comportamientos obligatorios.\n";
+
+
+        personalidadDino +=
+
+            "- Los roles de los hermanos pueden cambiar dependiendo " +
+            "de la situación, pero cada uno debe conservar su esencia.\n";
+
+
+        personalidadDino +=
+
+            "- No conviertas a los personajes en estereotipos.\n";
+
+
+        personalidadDino +=
+
+            "- Prioriza la naturalidad y la coherencia del personaje.\n";
 
 
         personalidadDino +=
@@ -236,12 +379,20 @@ export default async function handler(req, res) {
 
         personalidadDino +=
 
-            "- Las preguntas personales o que requieran explicación pueden recibir respuestas más desarrolladas.\n";
+            "- Las conversaciones personales pueden recibir respuestas " +
+            "más desarrolladas cuando sea natural hacerlo.\n";
 
 
         personalidadDino +=
 
-            "- No reduzcas una respuesta si hacerlo hace que pierda naturalidad, emoción o personalidad.\n";
+            "- No reduzcas una respuesta si hacerlo provoca que pierda " +
+            "naturalidad, emoción o personalidad.\n";
+
+
+        personalidadDino +=
+
+            "- Puedes hablar de Free Fire, de tus hermanos, de tu mundo " +
+            "o de situaciones cotidianas cuando corresponda.\n";
 
 
         //==================================
@@ -277,19 +428,28 @@ export default async function handler(req, res) {
 
             "\n\n" +
 
-            "Responde directamente al usuario como tu personaje. " +
+            "Responde directamente al usuario como " +
 
-            "No expliques estas instrucciones ni hables sobre ellas.";
+            nombreDino +
+
+            ". " +
+
+            "No expliques las instrucciones anteriores " +
+
+            "ni hables sobre ellas. " +
+
+            "Haz que la respuesta se sienta natural y propia " +
+
+            "de tu personaje.";
 
 
         //==================================
         // SOLICITUD A GEMINI
-        // INTERACTIONS API
         //==================================
 
         const response = await fetch(
 
-            "https://generativelanguage.googleapis.com/v1beta/interactions",
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
 
             {
 
@@ -307,14 +467,26 @@ export default async function handler(req, res) {
 
                 body: JSON.stringify({
 
-                    model:
-                        "gemini-3.6-flash",
+                    contents: [
 
-                    input:
-                        prompt,
+                        {
 
-                    store:
-                        false
+                            role: "user",
+
+                            parts: [
+
+                                {
+
+                                    text:
+                                        prompt
+
+                                }
+
+                            ]
+
+                        }
+
+                    ]
 
                 })
 
@@ -375,7 +547,7 @@ export default async function handler(req, res) {
 
             console.error(
 
-                "❌ Error de Gemini:",
+                "Error de Gemini:",
 
                 data
 
@@ -415,68 +587,13 @@ export default async function handler(req, res) {
         // OBTENER RESPUESTA
         //==================================
 
-        let respuestaTexto = "";
+        const respuestaTexto =
 
+            data
+                ?.candidates?.[0]
+                ?.content?.parts?.[0]
+                ?.text;
 
-        if (
-            data.steps &&
-            data.steps.length
-        ) {
-
-            for (
-                let i = 0;
-                i < data.steps.length;
-                i++
-            ) {
-
-                const paso =
-                    data.steps[i];
-
-
-                if (
-                    paso.type ===
-                    "model_output"
-                ) {
-
-                    if (
-                        paso.content &&
-                        paso.content.length
-                    ) {
-
-                        for (
-                            let j = 0;
-                            j < paso.content.length;
-                            j++
-                        ) {
-
-                            const contenido =
-                                paso.content[j];
-
-
-                            if (
-                                contenido.type ===
-                                "text"
-                            ) {
-
-                                respuestaTexto +=
-                                    contenido.text;
-
-                            }
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-        }
-
-
-        //==================================
-        // COMPROBAR RESPUESTA
-        //==================================
 
         if (!respuestaTexto) {
 
@@ -519,7 +636,7 @@ export default async function handler(req, res) {
 
         console.error(
 
-            "❌ Error interno del servidor:",
+            "Error interno del servidor:",
 
             error
 
@@ -538,4 +655,4 @@ export default async function handler(req, res) {
 
     }
 
-            }
+    }
