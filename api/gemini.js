@@ -2,6 +2,7 @@
 // GEMINI - DINOSAD WEB
 // API SEGURA MEDIANTE VERCEL
 // PERSONALIDADES DE LOS DINOS
+// INTERACTIONS API
 //==================================
 
 
@@ -283,11 +284,12 @@ export default async function handler(req, res) {
 
         //==================================
         // SOLICITUD A GEMINI
+        // INTERACTIONS API
         //==================================
 
         const response = await fetch(
 
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+            "https://generativelanguage.googleapis.com/v1beta/interactions",
 
             {
 
@@ -305,26 +307,14 @@ export default async function handler(req, res) {
 
                 body: JSON.stringify({
 
-                    contents: [
+                    model:
+                        "gemini-3.6-flash",
 
-                        {
+                    input:
+                        prompt,
 
-                            role: "user",
-
-                            parts: [
-
-                                {
-
-                                    text:
-                                        prompt
-
-                                }
-
-                            ]
-
-                        }
-
-                    ]
+                    store:
+                        false
 
                 })
 
@@ -385,7 +375,7 @@ export default async function handler(req, res) {
 
             console.error(
 
-                "Error de Gemini:",
+                "❌ Error de Gemini:",
 
                 data
 
@@ -425,13 +415,68 @@ export default async function handler(req, res) {
         // OBTENER RESPUESTA
         //==================================
 
-        const respuestaTexto =
+        let respuestaTexto = "";
 
-            data
-                ?.candidates?.[0]
-                ?.content?.parts?.[0]
-                ?.text;
 
+        if (
+            data.steps &&
+            data.steps.length
+        ) {
+
+            for (
+                let i = 0;
+                i < data.steps.length;
+                i++
+            ) {
+
+                const paso =
+                    data.steps[i];
+
+
+                if (
+                    paso.type ===
+                    "model_output"
+                ) {
+
+                    if (
+                        paso.content &&
+                        paso.content.length
+                    ) {
+
+                        for (
+                            let j = 0;
+                            j < paso.content.length;
+                            j++
+                        ) {
+
+                            const contenido =
+                                paso.content[j];
+
+
+                            if (
+                                contenido.type ===
+                                "text"
+                            ) {
+
+                                respuestaTexto +=
+                                    contenido.text;
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        //==================================
+        // COMPROBAR RESPUESTA
+        //==================================
 
         if (!respuestaTexto) {
 
@@ -474,7 +519,7 @@ export default async function handler(req, res) {
 
         console.error(
 
-            "Error interno del servidor:",
+            "❌ Error interno del servidor:",
 
             error
 
@@ -493,4 +538,4 @@ export default async function handler(req, res) {
 
     }
 
-    }
+            }
