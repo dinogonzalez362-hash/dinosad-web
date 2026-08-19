@@ -47,11 +47,14 @@ export default async function handler(req, res) {
 
         const data = await response.json();
 
+        // Mostrar el error REAL que devuelve Gemini
         if (!response.ok) {
             console.error("Error de Gemini:", data);
 
             return res.status(response.status).json({
-                error: "Gemini rechazó la solicitud"
+                error: data?.error?.message || "Gemini rechazó la solicitud",
+                codigo: data?.error?.code || response.status,
+                estado: data?.error?.status || "DESCONOCIDO"
             });
         }
 
@@ -59,8 +62,11 @@ export default async function handler(req, res) {
             data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
         if (!texto) {
+            console.error("Gemini no devolvió texto:", data);
+
             return res.status(500).json({
-                error: "Gemini no devolvió una respuesta"
+                error: "Gemini no devolvió una respuesta",
+                detalles: data
             });
         }
 
@@ -72,7 +78,8 @@ export default async function handler(req, res) {
         console.error("Error del servidor:", error);
 
         return res.status(500).json({
-            error: "Error interno del servidor"
+            error: "Error interno del servidor",
+            detalles: error.message
         });
     }
-}
+            }
