@@ -63,3 +63,528 @@
     border-radius:15px;
 
 }
+/* ==========================
+   IMAGEN DEL PACK
+   ========================== */
+
+.packImagen {
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+
+}
+
+.packImagen img {
+
+    width:100%;
+
+    max-width:320px;
+
+    height:auto;
+
+    max-height:450px;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+}
+/* ==========================
+   PACK EN CELULARES
+   ========================== */
+
+@media (max-width:600px){
+
+    .packImagen img{
+
+        max-width:280px;
+
+        max-height:400px;
+
+    }
+
+}
+/* ==========================
+   VISOR WHATSAPP - ALE
+   ========================== */
+
+#visorWhatsAppAle{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:#111;
+
+    display:none;
+
+    z-index:9999;
+
+    overflow:hidden;
+
+}
+
+
+/* ==========================
+   CHAT
+   ========================== */
+
+#chatWhatsAppAle{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#111;
+
+}
+
+
+/* ==========================
+   ENCABEZADO
+   ========================== */
+
+#encabezadoWhatsAppAle{
+
+    width:100%;
+
+    min-height:115px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px;
+
+    box-sizing:border-box;
+
+    background:
+        linear-gradient(
+            110deg,
+            #20d9ff,
+            #ffe5b5,
+            #ff8b00,
+            #ff4f91
+        );
+
+}
+
+
+/* ==========================
+   BOTÓN VOLVER
+   ========================== */
+
+#btnVolverWhatsAppAle{
+
+    width:58px;
+    height:58px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#173c43;
+
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+/* ==========================
+   PERFIL
+   ========================== */
+
+#perfilWhatsAppAle{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+
+#fotoPerfilWhatsAppAle{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    background:#14c5e8;
+
+    border:3px solid white;
+
+    box-sizing:border-box;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:35px;
+
+    overflow:hidden;
+
+}
+
+
+#datosPerfilWhatsAppAle{
+
+    display:flex;
+
+    flex-direction:column;
+
+    color:#111;
+
+}
+
+
+#datosPerfilWhatsAppAle strong{
+
+    font-size:28px;
+
+}
+
+
+#datosPerfilWhatsAppAle span{
+
+    font-size:18px;
+
+}
+
+
+/* ==========================
+   MENSAJES
+   ========================== */
+
+#mensajesWhatsAppAle{
+
+    flex:1;
+
+    width:100%;
+
+    overflow-y:auto;
+
+    padding:25px 18px;
+
+    box-sizing:border-box;
+
+    background:#111;
+
+}
+
+
+/* ==========================
+   STICKER
+   ========================== */
+
+.mensajeStickerWhatsAppAle{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+
+#stickerWhatsAppAle{
+
+    max-width:90%;
+
+    width:auto;
+
+    max-height:65vh;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+}
+
+
+/* ==========================
+   HORA
+   ========================== */
+
+.horaStickerWhatsAppAle{
+
+    margin-top:5px;
+
+    margin-left:5px;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+
+/* ==========================
+   ASISTENCIA
+   ========================== */
+
+.asistenciaWhatsAppAle{
+
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:12px 22px;
+
+    border-radius:30px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#111;
+
+    background:
+        linear-gradient(
+            110deg,
+            #20d9ff,
+            #fff4d5,
+            #ff8b00,
+            #ff4f91,
+            #20d9ff
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(255,255,255,.45);
+
+}
+
+
+/* ==========================
+   BARRA INFERIOR
+   ========================== */
+
+#entradaWhatsAppAle{
+
+    width:100%;
+
+    min-height:90px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px 20px;
+
+    box-sizing:border-box;
+
+    background:#1d1d1d;
+
+}
+
+
+/* ==========================
+   MICRÓFONO
+   ========================== */
+
+.botonMicrofonoWhatsAppAle{
+
+    width:65px;
+    height:65px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#f2f2f2;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+}
+
+
+/* ==========================
+   CAMPO
+   ========================== */
+
+#campoWhatsAppAle{
+
+    flex:1;
+
+    min-height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 25px;
+
+    box-sizing:border-box;
+
+    border-radius:35px;
+
+    background:#303030;
+
+    color:#999;
+
+    font-size:19px;
+
+}
+
+
+/* ==========================
+   BOTÓN ENVIAR
+   ========================== */
+
+.botonEnviarWhatsAppAle{
+
+    width:70px;
+    height:70px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #20d9ff,
+            #ff8b00,
+            #ff4f91
+        );
+
+    color:#111;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+/* ==========================
+   CELULARES
+   ========================== */
+
+@media (max-width:600px){
+
+    #encabezadoWhatsAppAle{
+
+        min-height:115px;
+
+        padding:12px;
+
+    }
+
+
+    #btnVolverWhatsAppAle{
+
+        width:55px;
+        height:55px;
+
+        font-size:28px;
+
+    }
+
+
+    #fotoPerfilWhatsAppAle{
+
+        width:65px;
+        height:65px;
+
+    }
+
+
+    #datosPerfilWhatsAppAle strong{
+
+        font-size:25px;
+
+    }
+
+
+    #datosPerfilWhatsAppAle span{
+
+        font-size:17px;
+
+    }
+
+
+    #stickerWhatsAppAle{
+
+        max-width:95%;
+
+        max-height:60vh;
+
+    }
+
+
+    #entradaWhatsAppAle{
+
+        min-height:85px;
+
+        padding:10px;
+
+    }
+
+
+    .botonMicrofonoWhatsAppAle{
+
+        width:60px;
+        height:60px;
+
+    }
+
+
+    #campoWhatsAppAle{
+
+        min-height:58px;
+
+        padding:0 18px;
+
+        font-size:17px;
+
+    }
+
+
+    .botonEnviarWhatsAppAle{
+
+        width:62px;
+        height:62px;
+
+        font-size:28px;
+
+    }
+
+}
