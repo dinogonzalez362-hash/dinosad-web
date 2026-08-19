@@ -22,18 +22,26 @@ export default async function handler(req, res) {
             });
         }
 
-        const prompt = `Eres ${dino.nombre}, un dinosaurio muy simpático en la app DinoSad. Responde en máximo 2 oraciones cortas: ${mensaje}`;
+        const nombreDino = dino.nombre || "DinoSad";
+
+        const prompt = `Eres ${nombreDino}, un dinosaurio muy simpático en la app DinoSad. Responde en máximo 2 oraciones cortas.
+
+Usuario: ${mensaje}`;
 
         const response = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" + apiKey,
-            }
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+            {
                 method: "POST",
+
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "x-goog-api-key": apiKey
                 },
+
                 body: JSON.stringify({
                     contents: [
                         {
+                            role: "user",
                             parts: [
                                 {
                                     text: prompt
@@ -45,41 +53,73 @@ export default async function handler(req, res) {
             }
         );
 
-        const data = await response.json();
+        // Primero obtenemos la respuesta como TEXTO.
+        // Así evitamos que falle response.json()
+        // si Google devuelve algo que no sea JSON.
+        const textoRespuesta = await response.text();
 
-        // Mostrar el error REAL que devuelve Gemini
+        let data;
+
+        try {
+            data = JSON.parse(textoRespuesta);
+        } catch (error) {
+            console.error(
+                "Gemini devolvió una respuesta que no es JSON:",
+                textoRespuesta
+            );
+
+            return res.status(502).json({
+                error: "Gemini devolvió una respuesta inesperada.",
+                detalles: textoRespuesta.substring(0, 500)
+            });
+        }
+
+        // Gemini rechazó la solicitud
         if (!response.ok) {
             console.error("Error de Gemini:", data);
 
             return res.status(response.status).json({
-                error: data?.error?.message || "Gemini rechazó la solicitud",
-                codigo: data?.error?.code || response.status,
-                estado: data?.error?.status || "DESCONOCIDO"
+                error:
+                    data?.error?.message ||
+                    "Gemini rechazó la solicitud",
+
+                codigo:
+                    data?.error?.code ||
+                    response.status,
+
+                estado:
+                    data?.error?.status ||
+                    "DESCONOCIDO"
             });
         }
 
-        const texto =
+        const respuestaTexto =
             data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
-        if (!texto) {
-            console.error("Gemini no devolvió texto:", data);
+        if (!respuestaTexto) {
+            console.error(
+                "Gemini no devolvió texto:",
+                data
+            );
 
             return res.status(500).json({
-                error: "Gemini no devolvió una respuesta",
-                detalles: data
+                error: "Gemini no devolvió una respuesta"
             });
         }
 
         return res.status(200).json({
-            respuesta: texto
+            respuesta: respuestaTexto
         });
 
     } catch (error) {
-        console.error("Error del servidor:", error);
+        console.error(
+            "Error interno del servidor:",
+            error
+        );
 
         return res.status(500).json({
             error: "Error interno del servidor",
             detalles: error.message
         });
     }
-            }
+}
