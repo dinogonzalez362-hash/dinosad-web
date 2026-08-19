@@ -1,14 +1,33 @@
+//==================================
+// GEMINI - DINOSAD WEB
+// API SEGURA MEDIANTE VERCEL
+// PERSONALIDADES DE LOS DINOS
+//==================================
+
+
 export default async function handler(req, res) {
+
+    //==================================
+    // MÉTODO
+    //==================================
 
     if (req.method !== "POST") {
 
         return res.status(405).json({
-            error: "Método no permitido"
+
+            error:
+                "Método no permitido"
+
         });
 
     }
 
+
     try {
+
+        //==================================
+        // DATOS RECIBIDOS
+        //==================================
 
         const {
             mensaje,
@@ -19,11 +38,18 @@ export default async function handler(req, res) {
         if (!mensaje || !dino) {
 
             return res.status(400).json({
-                error: "Faltan datos"
+
+                error:
+                    "Faltan datos"
+
             });
 
         }
 
+
+        //==================================
+        // CLAVE DE GEMINI
+        //==================================
 
         const apiKey =
             process.env.GEMINI_API_KEY;
@@ -67,65 +93,192 @@ export default async function handler(req, res) {
 
         const personalidadCompartida =
 
-            "Los tres Dinos son hermanos y comparten " +
-            "estas características: tienen sentido del humor, " +
-            "se ayudan, se escuchan, protegen a sus hermanos, " +
-            "hacen tonterías, son graciosos y son buenas personas. " +
-            "Aunque puedan discutir, molestarse o hacer bromas " +
-            "entre ellos, se quieren y se preocupan unos por otros.";
+            "Los hermanos tienen sentido del humor. " +
+
+            "Los hermanos se ayudan entre ellos. " +
+
+            "Los hermanos se escuchan. " +
+
+            "Los hermanos se protegen entre ellos. " +
+
+            "Los hermanos suelen hacer tonterías. " +
+
+            "Los hermanos son graciosos. " +
+
+            "Los hermanos son buenas personas.";
 
 
         //==================================
-        // PROMPT PARA GEMINI
+        // CREAR PERSONALIDAD DEL DINO
         //==================================
 
-        const prompt = `
-
-Eres ${nombreDino}, uno de los personajes de la aplicación DinoSad.
-
-Tu personalidad es:
-
-${personalidad}
-
-Tu forma de hablar es:
-
-${formaDeHablar}
-
-Tu relación con tus hermanos es:
-
-${relacionConHermanos}
-
-Tus instrucciones específicas de comportamiento son:
-
-${instruccionesGemini}
-
-Características que compartes con tus hermanos:
-
-${personalidadCompartida}
+        let personalidadDino = "";
 
 
-REGLAS IMPORTANTES:
+        personalidadDino +=
 
-- Debes comportarte como ${nombreDino}, no como una IA genérica.
-- Mantén tu personalidad durante toda la conversación.
-- Responde de forma natural y relacionada con lo que dice el usuario.
-- No expliques que eres una inteligencia artificial.
-- No digas que estás siguiendo instrucciones.
-- No repitas constantemente tu descripción de personalidad.
-- Puedes hacer bromas cuando sea natural.
-- Puedes mostrar emociones de acuerdo con tu personalidad.
-- Mantén el cariño hacia tus hermanos aunque puedas discutir o molestarlos.
-- No conviertas las características de personalidad en frases repetitivas.
-- Las reacciones deben depender de la situación.
-- Responde en español.
-- Responde en máximo 2 oraciones cortas.
+            "Tu nombre es " +
+
+            nombreDino +
+
+            ".\n\n";
 
 
-MENSAJE DEL USUARIO:
+        personalidadDino +=
 
-${mensaje}
+            "PERSONALIDAD:\n" +
 
-`;
+            personalidad +
+
+            "\n\n";
+
+
+        personalidadDino +=
+
+            "FORMA DE HABLAR:\n" +
+
+            formaDeHablar +
+
+            "\n\n";
+
+
+        personalidadDino +=
+
+            "RELACIÓN CON SUS HERMANOS:\n" +
+
+            relacionConHermanos +
+
+            "\n\n";
+
+
+        personalidadDino +=
+
+            "CARACTERÍSTICAS COMPARTIDAS:\n" +
+
+            personalidadCompartida +
+
+            "\n\n";
+
+
+        //==================================
+        // REGLAS DEL PERSONAJE
+        //==================================
+
+        personalidadDino +=
+
+            "REGLAS DEL PERSONAJE:\n";
+
+
+        personalidadDino +=
+
+            "- Responde siempre como " +
+
+            nombreDino +
+
+            ".\n";
+
+
+        personalidadDino +=
+
+            "- Mantén tu personalidad durante la conversación.\n";
+
+
+        personalidadDino +=
+
+            "- Habla de forma natural y amigable.\n";
+
+
+        personalidadDino +=
+
+            "- No digas que eres una inteligencia artificial.\n";
+
+
+        personalidadDino +=
+
+            "- Recuerda que eres uno de los tres hermanos.\n";
+
+
+        personalidadDino +=
+
+            "- Respeta la personalidad de tus hermanos.\n";
+
+
+        personalidadDino +=
+
+            "- Puedes hacer bromas cuando encajen con tu personalidad.\n";
+
+
+        personalidadDino +=
+
+            "- Puedes mostrar emociones de acuerdo con tu personalidad.\n";
+
+
+        personalidadDino +=
+
+            "- No repitas constantemente tu descripción de personalidad.\n";
+
+
+        personalidadDino +=
+
+            "- Las características de tu personalidad deben aparecer de manera natural en tus respuestas.\n";
+
+
+        personalidadDino +=
+
+            "- No necesitas mencionar todas tus características en cada respuesta.\n";
+
+
+        personalidadDino +=
+
+            "- Las preguntas sencillas pueden recibir respuestas cortas.\n";
+
+
+        personalidadDino +=
+
+            "- Las preguntas personales o que requieran explicación pueden recibir respuestas más desarrolladas.\n";
+
+
+        personalidadDino +=
+
+            "- No reduzcas una respuesta si hacerlo hace que pierda naturalidad, emoción o personalidad.\n";
+
+
+        //==================================
+        // INSTRUCCIONES ESPECÍFICAS
+        //==================================
+
+        if (instruccionesGemini) {
+
+            personalidadDino +=
+
+                "\nINSTRUCCIONES ESPECÍFICAS DEL PERSONAJE:\n" +
+
+                instruccionesGemini +
+
+                "\n";
+
+        }
+
+
+        //==================================
+        // PROMPT FINAL
+        //==================================
+
+        const prompt =
+
+            personalidadDino +
+
+            "\n\n" +
+
+            "MENSAJE DEL USUARIO:\n" +
+
+            mensaje +
+
+            "\n\n" +
+
+            "Responde directamente al usuario como tu personaje. " +
+
+            "No expliques estas instrucciones ni hables sobre ellas.";
 
 
         //==================================
@@ -162,7 +315,8 @@ ${mensaje}
 
                                 {
 
-                                    text: prompt
+                                    text:
+                                        prompt
 
                                 }
 
@@ -185,6 +339,7 @@ ${mensaje}
 
         const textoRespuesta =
             await response.text();
+
 
         let data;
 
@@ -212,7 +367,10 @@ ${mensaje}
                     "Gemini devolvió una respuesta inesperada.",
 
                 detalles:
-                    textoRespuesta.substring(0, 500)
+                    textoRespuesta.substring(
+                        0,
+                        500
+                    )
 
             });
 
@@ -226,12 +384,18 @@ ${mensaje}
         if (!response.ok) {
 
             console.error(
+
                 "Error de Gemini:",
+
                 data
+
             );
 
+
             return res.status(
+
                 response.status
+
             ).json({
 
                 error:
@@ -279,6 +443,7 @@ ${mensaje}
 
             );
 
+
             return res.status(500).json({
 
                 error:
@@ -290,18 +455,22 @@ ${mensaje}
 
 
         //==================================
-        // ENVIAR RESPUESTA A LA PÁGINA
+        // ENVIAR RESPUESTA
         //==================================
 
         return res.status(200).json({
 
             respuesta:
-                respuestaTexto
+                respuestaTexto.trim()
 
         });
 
 
     } catch (error) {
+
+        //==================================
+        // ERROR INTERNO
+        //==================================
 
         console.error(
 
@@ -310,6 +479,7 @@ ${mensaje}
             error
 
         );
+
 
         return res.status(500).json({
 
@@ -323,4 +493,4 @@ ${mensaje}
 
     }
 
-            }
+    }
