@@ -444,55 +444,211 @@ export default async function handler(req, res) {
 
 
         //==================================
-        // SOLICITUD A GEMINI
+        // FUNCIÓN PARA CONSULTAR GEMINI
         //==================================
 
-        const response = await fetch(
+        async function consultarGemini() {
 
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+            return await fetch(
 
-            {
+                "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
 
-                method: "POST",
+                {
 
-                headers: {
+                    method: "POST",
 
-                    "Content-Type":
-                        "application/json",
+                    headers: {
 
-                    "x-goog-api-key":
-                        apiKey
+                        "Content-Type":
+                            "application/json",
 
-                },
+                        "x-goog-api-key":
+                            apiKey
 
-                body: JSON.stringify({
+                    },
 
-                    contents: [
+                    body: JSON.stringify({
 
-                        {
+                        contents: [
 
-                            role: "user",
+                            {
 
-                            parts: [
+                                role: "user",
 
-                                {
+                                parts: [
 
-                                    text:
-                                        prompt
+                                    {
 
-                                }
+                                        text:
+                                            prompt
 
-                            ]
+                                    }
 
-                        }
+                                ]
 
-                    ]
+                            }
 
-                })
+                        ]
+
+                    })
+
+                }
+
+            );
+
+        }
+
+
+        //==================================
+        // REINTENTOS CONTROLADOS
+        //==================================
+
+        let response = null;
+
+        const MAX_INTENTOS = 3;
+
+        const ESPERAS = [
+
+            2000,
+
+            4000
+
+        ];
+
+
+        for (
+            let intento = 1;
+            intento <= MAX_INTENTOS;
+            intento++
+        ) {
+
+            response =
+                await consultarGemini();
+
+
+            // Si funcionó, continuar normalmente
+
+            if (response.ok) {
+
+                break;
 
             }
 
-        );
+
+            // Leer temporalmente el error
+
+            const errorTexto =
+                await response.text();
+
+
+            let errorData = null;
+
+
+            try {
+
+                errorData =
+                    JSON.parse(
+                        errorTexto
+                    );
+
+            } catch (error) {
+
+                errorData = null;
+
+            }
+
+
+            //==================================
+            // ERRORES QUE PUEDEN REINTENTARSE
+            //==================================
+
+            const puedeReintentar =
+
+                response.status === 429 ||
+
+                response.status === 500 ||
+
+                response.status === 502 ||
+
+                response.status === 503 ||
+
+                response.status === 504;
+
+
+            // Si no es un error temporal,
+            // devolvemos el error inmediatamente
+
+            if (
+                !puedeReintentar ||
+                intento === MAX_INTENTOS
+            ) {
+
+                console.error(
+
+                    "Error de Gemini:",
+
+                    errorData || errorTexto
+
+                );
+
+
+                return res.status(
+
+                    response.status
+
+                ).json({
+
+                    error:
+
+                        errorData?.error?.message ||
+
+                        "Gemini no pudo procesar la solicitud.",
+
+                    codigo:
+
+                        errorData?.error?.code ||
+
+                        response.status,
+
+                    estado:
+
+                        errorData?.error?.status ||
+
+                        "DESCONOCIDO"
+
+                });
+
+            }
+
+
+            console.warn(
+
+                "Gemini respondió con " +
+
+                response.status +
+
+                ". Reintentando..."
+
+            );
+
+
+            // Esperar antes del siguiente intento
+
+            await new Promise(
+
+                resolve =>
+
+                    setTimeout(
+
+                        resolve,
+
+                        ESPERAS[intento - 1]
+
+                    )
+
+            );
+
+        }
 
 
         //==================================
