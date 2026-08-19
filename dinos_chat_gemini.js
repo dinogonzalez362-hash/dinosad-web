@@ -19,7 +19,7 @@ async function obtenerRespuestaGemini(mensaje, dino) {
     }
 
     try {
-        const response = await fetch("/api/gemini", {
+        const response = await fetch("/apigemini", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
