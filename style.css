@@ -102,6 +102,34 @@ h2{
 
 }
 
+#seccionContacto > .card{
+
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+#seccionElegirFondo > .card{
+
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+#seccionConfigSonido > .card{
+
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+#seccionDinoMonedas > .card{
+
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
 /*=========================
     BOTONES
 ==========================*/
