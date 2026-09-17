@@ -1,66 +1,56 @@
-export default async function handler(req, res) {
+const formularioContacto = document.getElementById("formularioContacto");
+const mensajeContacto = document.getElementById("mensajeContacto");
+const btnEnviarContacto = document.getElementById("btnEnviarContacto");
 
-    if (req.method !== "POST") {
-        return res.status(405).json({
-            error: "Método no permitido"
-        });
-    }
+formularioContacto.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    btnEnviarContacto.disabled = true;
+    btnEnviarContacto.textContent = "Enviando...";
+    mensajeContacto.textContent = "";
+
+    const datos = {
+        nombre: document.getElementById("nombreContacto").value,
+        edad: document.getElementById("edadContacto").value,
+        correo: document.getElementById("correoContacto").value,
+        motivo: document.getElementById("motivoContacto").value,
+        comentario: document.getElementById("comentarioContacto").value
+    };
 
     try {
-
-        const {
-            nombre,
-            edad,
-            correo,
-            motivo,
-            comentario
-        } = req.body;
-
-        const respuesta = await fetch("https://api.resend.com/emails", {
+        const respuesta = await fetch("/api/contacto", {
             method: "POST",
-
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${process.env.RESEND_API_KEY}`
+                "Content-Type": "application/json"
             },
-
-            body: JSON.stringify({
-                from: "DinoSad <onboarding@resend.dev>",
-                to: [process.env.CONTACT_EMAIL],
-                reply_to: correo,
-                subject: `Nuevo mensaje de DinoSad - ${motivo}`,
-
-                html: `
-                    <h2>📩 Nuevo mensaje de DinoSad</h2>
-
-                    <p><strong>Nombre:</strong> ${nombre}</p>
-                    <p><strong>Edad:</strong> ${edad}</p>
-                    <p><strong>Correo:</strong> ${correo}</p>
-                    <p><strong>Motivo:</strong> ${motivo}</p>
-
-                    <p><strong>Comentario:</strong></p>
-                    <p>${comentario}</p>
-                `
-            })
+            body: JSON.stringify(datos)
         });
 
-        const datos = await respuesta.json();
+        const resultado = await respuesta.json();
 
         if (!respuesta.ok) {
-            return res.status(500).json({
-                error: datos
-            });
+            console.error("Error de Resend:", resultado);
+
+            throw new Error(
+                JSON.stringify(resultado.error)
+            );
         }
 
-        return res.status(200).json({
-            success: true
-        });
+        mensajeContacto.textContent =
+            "✅ ¡Mensaje enviado correctamente!";
+
+        formularioContacto.reset();
 
     } catch (error) {
 
-        return res.status(500).json({
-            error: "Error al enviar el mensaje"
-        });
+        console.error(error);
 
+        mensajeContacto.textContent =
+            "❌ Error: " + error.message;
+
+    } finally {
+
+        btnEnviarContacto.disabled = false;
+        btnEnviarContacto.textContent = "Enviar";
     }
-                      }
+});
