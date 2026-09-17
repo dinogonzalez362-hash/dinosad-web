@@ -7,3 +7,10 @@
     display:none;
 
 }
+
+#seccionDetras > .card{
+
+    margin-left:auto;
+    margin-right:auto;
+
+}

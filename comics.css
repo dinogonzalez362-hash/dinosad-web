@@ -1,0 +1,71 @@
+/* Escena y Viñeta de Cómic */
+.vineta-comic {
+    background: #ffffff;
+    color: #2c3e50;
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 450px;
+    margin: 20px auto;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    border: 4px solid #2c3e50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.personajes-escena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.dino-avatar-comic {
+    font-size: 4rem;
+    animation: flotar 2s infinite ease-in-out;
+}
+
+.nombre-dino-comic {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* Globo de texto Cómic */
+.globo-dialogo {
+    position: relative;
+    background: #f1f2f6;
+    border: 3px solid #2c3e50;
+    border-radius: 15px;
+    padding: 15px;
+    width: 90%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.globo-dialogo::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 12px 15px 12px;
+    border-style: solid;
+    border-color: #2c3e50 transparent;
+    display: block;
+    width: 0;
+}
+
+.controles-comic {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
