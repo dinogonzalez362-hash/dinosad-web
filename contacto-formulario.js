@@ -29,10 +29,15 @@ formularioContacto.addEventListener("submit", async (e) => {
         const resultado = await respuesta.json();
 
         if (!respuesta.ok) {
-            throw new Error("No se pudo enviar el mensaje");
+            console.error("Error de Resend:", resultado);
+
+            throw new Error(
+                JSON.stringify(resultado.error)
+            );
         }
 
-        mensajeContacto.textContent = "✅ ¡Mensaje enviado correctamente!";
+        mensajeContacto.textContent =
+            "✅ ¡Mensaje enviado correctamente!";
 
         formularioContacto.reset();
 
@@ -41,7 +46,7 @@ formularioContacto.addEventListener("submit", async (e) => {
         console.error(error);
 
         mensajeContacto.textContent =
-            "❌ No se pudo enviar el mensaje. Inténtalo nuevamente.";
+            "❌ Error: " + error.message;
 
     } finally {
 
