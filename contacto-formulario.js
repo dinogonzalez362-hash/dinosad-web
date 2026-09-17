@@ -26,14 +26,14 @@ formularioContacto.addEventListener("submit", async (e) => {
             body: JSON.stringify(datos)
         });
 
-        const resultado = await respuesta.json();
+        const textoRespuesta = await respuesta.text();
+
+        console.log("Respuesta del servidor:", textoRespuesta);
+
+        const resultado = textoRespuesta;
 
         if (!respuesta.ok) {
-            console.error("Error de Resend:", resultado);
-
-            throw new Error(
-                JSON.stringify(resultado.error)
-            );
+            throw new Error(resultado);
         }
 
         mensajeContacto.textContent =
