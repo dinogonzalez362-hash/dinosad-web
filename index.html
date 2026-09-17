@@ -22,7 +22,10 @@
     <link rel="stylesheet" href="puzzle.css">
     <link rel="stylesheet" href="dinos_asistente.css">
     <link rel="stylesheet" href="dinos_chat.css">
-
+<link rel="stylesheet" href="memory.css">
+<link rel="stylesheet" href="tateti.css">
+<link rel="stylesheet" href="historia.css">
+<link rel="stylesheet" href="comics.css">
 </head>
 
 <body>
@@ -36,6 +39,18 @@ FONDO
 <!--==============================
 BOTONES SUPERIORES
 ===============================-->
+<button id="btnConfiguracion" aria-label="Configuración">
+    ⚙️
+</button>
+
+<button id="btnC" aria-label="C">
+    C
+</button>
+
+<button id="btnMoneda" aria-label="Moneda">
+    🪙
+</button>
+
 <button id="btnAsistencia">
     🦖 Asistencia OFF
 </button>
@@ -79,6 +94,10 @@ INICIO
 
             <button class="azul" id="instagram">
                 Instagram
+            </button>
+
+            <button class="rojo" id="youtube">
+                YouTube
             </button>
 
         </div>
@@ -145,15 +164,15 @@ INICIO
 </button>
 
         </div>
-<!-- Rompecabezas -->
+<!-- Mini juegos DinoSad -->
 <div class="card">
 
-    <h2>🧩 Rompecabezas</h2>
+    <h2>🎮 Mini juegos DinoSad</h2>
 
-    <p>Arma una imagen de DinoSad.</p>
+    <p>Dino juegos</p>
 
-    <button class="verde" id="btnPuzzle">
-        Jugar
+    <button class="verde" id="btnJuegosDinoSad">
+        Entrar
     </button>
 
 </div>
@@ -170,150 +189,333 @@ INICIO
 
         </div>
 
+        <!-- Tienda DinoSad -->
+        <div class="card">
+
+            <h2>🛍️ Tienda DinoSad</h2>
+
+            <p>Mis cosas</p>
+
+            <button class="verde" id="btnTiendaDinoSad">
+                Ver
+            </button>
+
+        </div>
+
     </div>
+
+</div>
+<!--==============================
+DINO MONEDAS
+===============================-->
+
+<div id="seccionDinoMonedas" style="display:none;">
+
+    <h1>🪙 Dino monedas</h1>
+
+    <div class="card">
+
+        <h2>🪙 Dino monedas</h2>
+
+        <p>Tenés:</p>
+
+        <strong>0</strong>
+
+        <p>monedas</p>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverDinoMonedas" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+<!--==============================
+CONFIGURACIÓN
+===============================-->
+
+<div id="seccionTiendaDinoSad" style="display:none;">
+
+    <h1>🛍️ Tienda DinoSad</h1>
+
+    <p>Elegí qué querés ver.</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>🛍️ Tienda</h2>
+            <p>Mis cosas de DinoSad.</p>
+            <button class="verde" id="btnEntrarTiendaDinoSad">
+                Entrar
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>🎡 Ruleta</h2>
+            <p>Probá la ruleta DinoSad.</p>
+            <button class="verde" id="btnEntrarRuletaDinoSad">
+                Entrar
+            </button>
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverTiendaDinoSad" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+<!--==============================
+CONFIGURACIÓN
+===============================-->
+
+<div id="seccionConfiguracion" style="display:none;">
+
+    <h1>⚙️ Configuración</h1>
+
+    <p>Elegí qué configuración querés ver.</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>🔊 Sonido</h2>
+            <p>Configurá el sonido de DinoSad.</p>
+            <button class="azul" id="btnVerSonido">
+                Ver
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>🌄 Fondo</h2>
+            <p>Elegí el fondo de DinoSad.</p>
+            <button class="azul" id="btnVerFondo">
+                Ver
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>🎯 Colección</h2>
+            <p>Consultá tu colección de DinoSad.</p>
+            <button class="azul" id="btnVerColeccion">
+                Ver
+            </button>
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverConfiguracion" class="azul">
+        ⬅ Volver
+    </button>
 
 </div>
 <!--==============================
 STICKERS
 ===============================-->
-
-<div id="seccionStickers" style="display:none;">
-
-    <h1>🎯 Stickers</h1>
-
-    <p>Elegí una colección.</p>
-
-    <div class="grid">
-
-        <!-- ALE -->
-
+    
+    <div id="seccionConfigSonido" style="display:none;">
+    
+        <h1>🔊 Configuración de sonido</h1>
+    
         <div class="card">
-
-            <h2>🦖 Ale</h2>
-
-            <p>Stickers de Ale.</p>
-
-            <button
-                class="verde"
-                id="btnColeccionAle">
-
-                Ver stickers
-
-            </button>
-
-        </div>
-
-
-        <!-- LEO -->
-
-        <div class="card">
-
-            <h2>🐯 Leo</h2>
-
-            <p>Stickers de Leo.</p>
-
-            <button
-                class="verde"
-                id="btnColeccionLeo">
-
-                Ver stickers
-
-            </button>
-
-        </div>
-
-
-        <!-- NICO -->
-
-        <div class="card">
-
-            <h2>🦄 Nico</h2>
-
-            <p>Stickers de Nico.</p>
-
-            <button
-                class="verde"
-                id="btnColeccionNico">
-
-                Ver stickers
-
-            </button>
-
-        </div>
-
-
-        <!-- THEYS DINOS -->
-
-        <div class="card">
-
-            <h2>🦖 Theys Dinos</h2>
-
-            <p>Stickers de todos los dinos.</p>
-
-            <button
-                class="verde"
-                id="btnColeccionTheys">
-
-                Ver stickers
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <br>
-
-    <button
-        id="btnVolver"
-        class="azul">
-
-        ⬅ Volver
-
-    </button>
-
-</div>
-
-
-<!--==============================
-NUEVOS STICKERS
-===============================-->
-
-<div id="seccionNuevosStikers" style="display:none;">
-
-    <h1>🆕 Nuevos Stickers</h1>
-
-    <p>
-        Aquí aparecerán los stickers y packs
-        agregados recientemente.
-    </p>
-
-    <div class="grid">
-
-        <div class="card">
-
-            <h2>🆕 Próximamente</h2>
-
+    
+            <h2>🔊 Volumen de la música</h2>
+    
+            <input
+                type="range"
+                id="controlVolumenMusica"
+                min="0"
+                max="100"
+                value="100">
+    
             <p>
-                Aquí aparecerán las novedades
-                de las últimas semanas.
+                Volumen: <strong id="valorVolumenMusica">100%</strong>
             </p>
-
+    
         </div>
-
+    
+        <br>
+    
+        <button id="btnVolverConfigSonido" class="azul">
+            ⬅ Volver
+        </button>
+    
     </div>
-
-    <br>
-
-    <button
-        id="btnVolverNuevosStikers"
-        class="azul">
-
-        ⬅ Volver
-
-    </button>
-
-</div>
+    <!--==============================
+    STICKERS
+    ===============================-->
+    
+    <div id="seccionElegirFondo" style="display:none;">
+    
+        <h1>🌄 Elegir fondo</h1>
+    
+        <div class="card">
+    
+            <h2>🌄 Elegir fondo</h2>
+    
+            <button class="azul" id="btnFondoPantalla">
+                Pantalla
+            </button>
+    
+            <button class="azul" id="btnFondoChat">
+                Chat
+            </button>
+    
+        </div>
+    
+        <br>
+    
+        <button id="btnVolverElegirFondo" class="azul">
+            ⬅ Volver
+        </button>
+    
+    </div>
+    <!--==============================
+    STICKERS
+    ===============================-->
+    
+    <div id="seccionStickers" style="display:none;">
+    
+        <h1>🎯 Stickers</h1>
+    
+        <p>Elegí una colección.</p>
+    
+        <div class="grid">
+    
+            <!-- ALE -->
+    
+            <div class="card">
+    
+                <h2>🦖 Ale</h2>
+    
+                <p>Stickers de Ale.</p>
+    
+                <button
+                    class="verde"
+                    id="btnColeccionAle">
+    
+                    Ver stickers
+    
+                </button>
+    
+            </div>
+    
+    
+            <!-- LEO -->
+    
+            <div class="card">
+    
+                <h2>🐯 Leo</h2>
+    
+                <p>Stickers de Leo.</p>
+    
+                <button
+                    class="verde"
+                    id="btnColeccionLeo">
+    
+                    Ver stickers
+    
+                </button>
+    
+            </div>
+    
+    
+            <!-- NICO -->
+    
+            <div class="card">
+    
+                <h2>🦄 Nico</h2>
+    
+                <p>Stickers de Nico.</p>
+    
+                <button
+                    class="verde"
+                    id="btnColeccionNico">
+    
+                    Ver stickers
+    
+                </button>
+    
+            </div>
+    
+    
+            <!-- THEYS DINOS -->
+    
+            <div class="card">
+    
+                <h2>🦖 Theys Dinos</h2>
+    
+                <p>Stickers de todos los dinos.</p>
+    
+                <button
+                    class="verde"
+                    id="btnColeccionTheys">
+    
+                    Ver stickers
+    
+                </button>
+    
+            </div>
+    
+        </div>
+    
+        <br>
+    
+        <button
+            id="btnVolver"
+            class="azul">
+    
+            ⬅ Volver
+    
+        </button>
+    
+    </div>
+    
+    
+    <!--==============================
+    NUEVOS STICKERS
+    ===============================-->
+    
+    <div id="seccionNuevosStikers" style="display:none;">
+    
+        <h1>🆕 Nuevos Stickers</h1>
+    
+        <p>
+            Aquí aparecerán los stickers y packs
+            agregados recientemente.
+        </p>
+    
+        <div class="grid">
+    
+            <div class="card">
+    
+                <h2>🆕 Próximamente</h2>
+    
+                <p>
+                    Aquí aparecerán las novedades
+                    de las últimas semanas.
+                </p>
+    
+            </div>
+    
+        </div>
+    
+        <br>
+    
+        <button
+            id="btnVolverNuevosStikers"
+            class="azul">
+    
+            ⬅ Volver
+    
+        </button>
+    
+    </div>
 <!--==============================
 COLECCIÓN ALE
 ===============================-->
@@ -384,158 +586,370 @@ COLECCIÓN ALE
     </button>
 
 </div>
+
+
 <!--==============================
 STICKERS INDIVIDUALES DE ALE
 ===============================-->
 
-<div id="stickersIndividualesAle" style="display:none;">
+<div
+    id="stickersIndividualesAle"
+    style="display:none;">
 
     <h1>🖼️ Stickers individuales de Ale</h1>
 
-    <p>Stickers individuales.</p>
+    <p>
+        Mirá los stickers individuales de Ale.
+    </p>
 
-    <div class="grid">
 
-        <!-- ==========================
-        TARJETA DEL STICKER
-        =========================== -->
+    <!-- ==========================
+    PÁGINA 1
+    =========================== -->
 
-        <div
-            class="card stickerCard"
-            id="tarjetaStickerAle">
+    <div
+        class="paginaStickersAle"
+        id="paginaStickersAle1">
+
+
+        <!-- STICKER ALE 1 -->
+
+        <div class="card stickerCard">
 
             <div class="stickerImagen">
 
                 <img
-                    src="stiker6.png"
-                    alt="Sticker individual de prueba de Ale"
+                    src="stiker1.png"
+                    alt="Sticker Ale 1"
                     class="sticker">
 
             </div>
 
-            <h3>Sticker de prueba</h3>
+            <h3>Sticker Ale 1</h3>
 
             <button
-                class="verde"
-                id="btnDescargarStickerAle">
+                class="verde btnDescargarStickerAle"
+                data-sticker="1">
 
                 ⬇️ Descargar
 
             </button>
 
             <button
-                class="azul"
-                id="btnCompartirStickerAle">
+                class="azul btnCompartirStickerAle"
+                data-sticker="1">
 
                 📤 Compartir
 
             </button>
 
-            <button
-                class="morado"
-                id="btnWhatsAppStickerAle">
+        </div>
 
-                💬 Ver estilo WhatsApp
+
+        <!-- STICKER ALE 2 -->
+
+        <div class="card stickerCard">
+
+            <div class="stickerImagen">
+
+                <img
+                    src="stiker2.png"
+                    alt="Sticker Ale 2"
+                    class="sticker">
+
+            </div>
+
+            <h3>Sticker Ale 2</h3>
+
+            <button
+                class="verde btnDescargarStickerAle"
+                data-sticker="2">
+
+                ⬇️ Descargar
+
+            </button>
+
+            <button
+                class="azul btnCompartirStickerAle"
+                data-sticker="2">
+
+                📤 Compartir
 
             </button>
 
         </div>
 
 
-        <!-- ==========================
-        OPCIONES DE DESCARGA
-        =========================== -->
+        <!-- STICKER ALE 3 -->
 
-        <div
-            id="opcionesDescargaStickerAle"
-            class="card"
-            style="display:none;">
+        <div class="card stickerCard">
 
-            <h2>⬇️ Descargar sticker</h2>
+            <div class="stickerImagen">
 
-            <p>
-                Elegí cómo querés descargarlo.
-            </p>
+                <img
+                    src="stiker3.png"
+                    alt="Sticker Ale 3"
+                    class="sticker">
+
+            </div>
+
+            <h3>Sticker Ale 3</h3>
 
             <button
-                class="verde"
-                id="btnDescargarStickerAppAle">
+                class="verde btnDescargarStickerAle"
+                data-sticker="3">
 
-                📱 Descargar sticker
+                ⬇️ Descargar
 
             </button>
 
             <button
-                class="azul"
-                id="btnDescargarImagenAle">
+                class="azul btnCompartirStickerAle"
+                data-sticker="3">
 
-                🖼️ Descargar como imagen
-
-            </button>
-
-            <br><br>
-
-            <button
-                class="rojo"
-                id="btnCerrarDescargaAle">
-
-                ✕ Volver
-
-            </button>
-
-        </div>
-
-
-        <!-- ==========================
-        OPCIONES DE COMPARTIR
-        =========================== -->
-
-        <div
-            id="opcionesCompartirStickerAle"
-            class="card"
-            style="display:none;">
-
-            <h2>📤 Compartir sticker</h2>
-
-            <p>
-                Compartí el enlace de este sticker.
-            </p>
-
-            <button
-                class="verde"
-                id="btnCompartirWhatsAppAle">
-
-                💬 WhatsApp
-
-            </button>
-<button
-    class="morado"
-    id="btnCompartirEnAle">
-
-    📱 Compartir en...
-
-</button>
-<button
-            class="azul"
-                id="btnCopiarEnlaceAle">
-
-                🔗 Copiar enlace
-
-            </button>
-
-            <br><br>
-
-            <button
-                class="azul"
-                id="btnCerrarCompartirAle">
-
-                ✕ Volver
+                📤 Compartir
 
             </button>
 
         </div>
 
     </div>
+
+
+    <!-- ==========================
+    PÁGINA 2
+    =========================== -->
+
+    <div
+        class="paginaStickersAle"
+        id="paginaStickersAle2"
+        style="display:none;">
+
+
+        <!-- STICKER ALE 4 -->
+
+        <div class="card stickerCard">
+
+            <div class="stickerImagen">
+
+                <img
+                    src="stiker4.png"
+                    alt="Sticker Ale 4"
+                    class="sticker">
+
+            </div>
+
+            <h3>Sticker Ale 4</h3>
+
+            <button
+                class="verde btnDescargarStickerAle"
+                data-sticker="4">
+
+                ⬇️ Descargar
+
+            </button>
+
+            <button
+                class="azul btnCompartirStickerAle"
+                data-sticker="4">
+
+                📤 Compartir
+
+            </button>
+
+        </div>
+
+
+        <!-- STICKER ALE 5 -->
+
+        <div class="card stickerCard">
+
+            <div class="stickerImagen">
+
+                <img
+                    src="stiker5.png"
+                    alt="Sticker Ale 5"
+                    class="sticker">
+
+            </div>
+
+            <h3>Sticker Ale 5</h3>
+
+            <button
+                class="verde btnDescargarStickerAle"
+                data-sticker="5">
+
+                ⬇️ Descargar
+
+            </button>
+
+            <button
+                class="azul btnCompartirStickerAle"
+                data-sticker="5">
+
+                📤 Compartir
+
+            </button>
+
+        </div>
+
+
+        <!-- STICKER ALE 6 -->
+
+        <div class="card stickerCard">
+
+            <div class="stickerImagen">
+
+                <img
+                    src="stiker6.png"
+                    alt="Sticker Ale 6"
+                    class="sticker">
+
+            </div>
+
+            <h3>Sticker Ale 6</h3>
+
+            <button
+                class="verde btnDescargarStickerAle"
+                data-sticker="6">
+
+                ⬇️ Descargar
+
+            </button>
+
+            <button
+                class="azul btnCompartirStickerAle"
+                data-sticker="6">
+
+                📤 Compartir
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+    NAVEGACIÓN DE PÁGINAS
+    =========================== -->
+
+    <div class="navegacionPaginas">
+
+        <button
+            class="azul"
+            id="btnAnteriorStickersAle">
+
+            ⬅ Anterior
+
+        </button>
+
+        <button
+            class="azul"
+            id="btnSiguienteStickersAle">
+
+            Siguiente ➡
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================
+    OPCIONES DE DESCARGA
+    =========================== -->
+
+    <div
+        id="opcionesDescargaStickerAle"
+        class="card"
+        style="display:none;">
+
+        <h2>⬇️ Descargar sticker</h2>
+
+        <p>
+            Elegí cómo querés descargarlo.
+        </p>
+
+        <button
+            class="verde"
+            id="btnDescargarStickerAppAle">
+
+            📱 Descargar sticker
+
+        </button>
+
+        <button
+            class="azul"
+            id="btnDescargarImagenAle">
+
+            🖼️ Descargar como imagen
+
+        </button>
+
+        <br><br>
+
+        <button
+            class="rojo"
+            id="btnCerrarDescargaAle">
+
+            ✕ Volver
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================
+    OPCIONES DE COMPARTIR
+    =========================== -->
+
+    <div
+        id="opcionesCompartirStickerAle"
+        class="card"
+        style="display:none;">
+
+        <h2>📤 Compartir sticker</h2>
+
+        <p>
+            Compartí el enlace de este sticker.
+        </p>
+
+        <button
+            class="verde"
+            id="btnCompartirWhatsAppAle">
+
+            💬 WhatsApp
+
+        </button>
+
+        <button
+            class="morado"
+            id="btnCompartirEnAle">
+
+            📱 Compartir en...
+
+        </button>
+
+        <button
+            class="azul"
+            id="btnCopiarEnlaceAle">
+
+            🔗 Copiar enlace
+
+        </button>
+
+        <br><br>
+
+        <button
+            class="azul"
+            id="btnCerrarCompartirAle">
+
+            ✕ Volver
+
+        </button>
+
+    </div>
+
 
     <br>
 
@@ -548,47 +962,58 @@ STICKERS INDIVIDUALES DE ALE
     </button>
 
 </div>
+
+
 <!--==============================
 PACKS DE ALE
 ===============================-->
 
-<div id="packsAle" style="display:none;">
+<div
+    id="packsAle"
+    style="display:none;">
 
     <h1>📦 Packs de Ale</h1>
 
-    <p>Colecciones de stickers de Ale.</p>
+    <p>
+        Colecciones de stickers de Ale.
+    </p>
 
-    <div class="grid">
 
-        <!-- ==========================
-        TARJETA DEL PACK
-        =========================== -->
+    <!-- ==========================
+    PÁGINA 1
+    =========================== -->
 
-        <div
-            class="card packCard"
-            id="tarjetaPackAle">
+    <div
+        class="paginaPacksAle"
+        id="paginaPacksAle1">
+
+
+        <!-- PACK ALE 1 -->
+
+        <div class="card packCard">
 
             <div class="packImagen">
 
                 <img
                     src="stiker1.png"
-                    alt="Pack de prueba de Ale">
+                    alt="Pack Ale 1"
+                    class="sticker">
 
             </div>
 
-            <h3>Pack de prueba</h3>
+            <h3>Pack Ale 1</h3>
 
             <button
-                class="rojo"
-                id="btnDescargarPackAle">
+                class="rojo btnDescargarPackAle"
+                data-pack="1">
 
                 ⬇️ Descargar pack
 
             </button>
 
             <button
-                class="azul"
-                id="btnCompartirPackAle">
+                class="azul btnCompartirPackAle"
+                data-pack="1">
 
                 📤 Compartir pack
 
@@ -597,69 +1022,266 @@ PACKS DE ALE
         </div>
 
 
-        <!-- ==========================
-        TARJETA DE COMPARTIR PACK
-        =========================== -->
+        <!-- PACK ALE 2 -->
 
-        <div
-            id="opcionesCompartirPackAle"
-            class="card"
-            style="display:none;">
+        <div class="card packCard">
 
-            <h2>📤 Compartir pack</h2>
+            <div class="packImagen">
 
-            <p>
-                Compartí el enlace de este pack.
-            </p>
+                <img
+                    src="stiker2.png"
+                    alt="Pack Ale 2"
+                    class="sticker">
 
-            <!-- WHATSAPP -->
+            </div>
+
+            <h3>Pack Ale 2</h3>
 
             <button
-                class="verde"
-                id="btnCompartirWhatsAppPackAle">
+                class="rojo btnDescargarPackAle"
+                data-pack="2">
 
-                💬 WhatsApp
+                ⬇️ Descargar pack
 
             </button>
 
-
-            <!-- COPIAR ENLACE -->
-
             <button
-                class="azul"
-                id="btnCopiarEnlacePackAle">
+                class="azul btnCompartirPackAle"
+                data-pack="2">
 
-                🔗 Copiar enlace
+                📤 Compartir pack
 
             </button>
 
+        </div>
 
-            <!-- COMPARTIR NATIVO -->
+
+        <!-- PACK ALE 3 -->
+
+        <div class="card packCard">
+
+            <div class="packImagen">
+
+                <img
+                    src="stiker3.png"
+                    alt="Pack Ale 3"
+                    class="sticker">
+
+            </div>
+
+            <h3>Pack Ale 3</h3>
 
             <button
-                class="morado"
-                id="btnCompartirNativoPackAle">
+                class="rojo btnDescargarPackAle"
+                data-pack="3">
 
-                📤 Compartir en...
+                ⬇️ Descargar pack
 
             </button>
 
-
-            <br><br>
-
-            <!-- VOLVER -->
-
             <button
-                class="azul"
-                id="btnCerrarCompartirPackAle">
+                class="azul btnCompartirPackAle"
+                data-pack="3">
 
-                ✕ Volver
+                📤 Compartir pack
 
             </button>
 
         </div>
 
     </div>
+
+
+    <!-- ==========================
+    PÁGINA 2
+    =========================== -->
+
+    <div
+        class="paginaPacksAle"
+        id="paginaPacksAle2"
+        style="display:none;">
+
+
+        <!-- PACK ALE 4 -->
+
+        <div class="card packCard">
+
+            <div class="packImagen">
+
+                <img
+                    src="stiker4.png"
+                    alt="Pack Ale 4"
+                    class="sticker">
+
+            </div>
+
+            <h3>Pack Ale 4</h3>
+
+            <button
+                class="rojo btnDescargarPackAle"
+                data-pack="4">
+
+                ⬇️ Descargar pack
+
+            </button>
+
+            <button
+                class="azul btnCompartirPackAle"
+                data-pack="4">
+
+                📤 Compartir pack
+
+            </button>
+
+        </div>
+
+
+        <!-- PACK ALE 5 -->
+
+        <div class="card packCard">
+
+            <div class="packImagen">
+
+                <img
+                    src="stiker5.png"
+                    alt="Pack Ale 5"
+                    class="sticker">
+
+            </div>
+
+            <h3>Pack Ale 5</h3>
+
+            <button
+                class="rojo btnDescargarPackAle"
+                data-pack="5">
+
+                ⬇️ Descargar pack
+
+            </button>
+
+            <button
+                class="azul btnCompartirPackAle"
+                data-pack="5">
+
+                📤 Compartir pack
+
+            </button>
+
+        </div>
+
+
+        <!-- PACK ALE 6 -->
+
+        <div class="card packCard">
+
+            <div class="packImagen">
+
+                <img
+                    src="stiker6.png"
+                    alt="Pack Ale 6"
+                    class="sticker">
+
+            </div>
+
+            <h3>Pack Ale 6</h3>
+
+            <button
+                class="rojo btnDescargarPackAle"
+                data-pack="6">
+
+                ⬇️ Descargar pack
+
+            </button>
+
+            <button
+                class="azul btnCompartirPackAle"
+                data-pack="6">
+
+                📤 Compartir pack
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+    NAVEGACIÓN DE PÁGINAS
+    =========================== -->
+
+    <div class="navegacionPaginas">
+
+        <button
+            class="azul"
+            id="btnAnteriorPacksAle">
+
+            ⬅ Anterior
+
+        </button>
+
+        <button
+            class="azul"
+            id="btnSiguientePacksAle">
+
+            Siguiente ➡
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================
+    OPCIONES DE COMPARTIR PACK
+    =========================== -->
+
+    <div
+        id="opcionesCompartirPackAle"
+        class="card"
+        style="display:none;">
+
+        <h2>📤 Compartir pack</h2>
+
+        <p>
+            Compartí el enlace de este pack.
+        </p>
+
+        <button
+            class="verde"
+            id="btnCompartirWhatsAppPackAle">
+
+            💬 WhatsApp
+
+        </button>
+
+        <button
+            class="azul"
+            id="btnCopiarEnlacePackAle">
+
+            🔗 Copiar enlace
+
+        </button>
+
+        <button
+            class="morado"
+            id="btnCompartirNativoPackAle">
+
+            📤 Compartir en...
+
+        </button>
+
+        <br><br>
+
+        <button
+            class="azul"
+            id="btnCerrarCompartirPackAle">
+
+            ✕ Volver
+
+        </button>
+
+    </div>
+
 
     <br>
 
@@ -672,7 +1294,6 @@ PACKS DE ALE
     </button>
 
 </div>
-
 <!--==============================
 COLECCIÓN LEO
 ===============================-->
@@ -681,36 +1302,50 @@ COLECCIÓN LEO
 
     <h1>🐯 Stickers de Leo</h1>
 
-    <p>Stickers y packs de Leo.</p>
+    <p>Elegí qué querés ver.</p>
 
-<div id="gridStickersLeo" class="grid">
+    <div class="grid">
 
-    <div class="card">
+        <div class="card">
 
-        <h2>🖼️ Stickers</h2>
+            <h2>🖼️ Stickers individuales</h2>
 
-        <p>Stickers individuales de Leo.</p>
+            <p>
+                Mirá los stickers individuales de Leo.
+            </p>
 
-        <div id="stickersLeo">
-            <!-- Aquí irán los stickers -->
+            <button
+                class="verde"
+                id="btnStickersIndividualesLeo">
+
+                Ver stickers
+
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>📦 Packs</h2>
+
+            <p>
+                Mirá los packs de stickers de Leo.
+            </p>
+
+            <button
+                class="rojo"
+                id="btnPacksLeo">
+
+                Ver packs
+
+            </button>
+
         </div>
 
     </div>
 
+    <br>
 
-    <div class="card">
-
-        <h2>📦 Packs</h2>
-
-        <p>Colecciones de stickers de Leo.</p>
-
-        <div id="packsLeo">
-            <!-- Aquí irán los packs -->
-        </div>
-
-    </div>
-
-</div>
     <button
         id="btnVolverLeo"
         class="azul">
@@ -721,55 +1356,486 @@ COLECCIÓN LEO
 
 </div>
 
+<!--==============================
+STICKERS INDIVIDUALES DE LEO
+===============================-->
 
+<div
+    id="stickersIndividualesLeo"
+    style="display:none;">
+
+    <h1>🖼️ Stickers individuales de Leo</h1>
+
+    <p>
+        Mirá los stickers individuales de Leo.
+    </p>
+
+    <div
+        class="paginaStickersLeo"
+        id="paginaStickersLeo1">
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker1.png" alt="Sticker Leo 1" class="sticker">
+            </div>
+            <h3>Sticker Leo 1</h3>
+            <button class="verde btnDescargarStickerLeo" data-sticker="1">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerLeo" data-sticker="1">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker2.png" alt="Sticker Leo 2" class="sticker">
+            </div>
+            <h3>Sticker Leo 2</h3>
+            <button class="verde btnDescargarStickerLeo" data-sticker="2">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerLeo" data-sticker="2">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker3.png" alt="Sticker Leo 3" class="sticker">
+            </div>
+            <h3>Sticker Leo 3</h3>
+            <button class="verde btnDescargarStickerLeo" data-sticker="3">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerLeo" data-sticker="3">📤 Compartir</button>
+        </div>
+
+    </div>
+
+    <div
+        class="paginaStickersLeo"
+        id="paginaStickersLeo2"
+        style="display:none;">
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker4.png" alt="Sticker Leo 4" class="sticker">
+            </div>
+            <h3>Sticker Leo 4</h3>
+            <button class="verde btnDescargarStickerLeo" data-sticker="4">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerLeo" data-sticker="4">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker5.png" alt="Sticker Leo 5" class="sticker">
+            </div>
+            <h3>Sticker Leo 5</h3>
+            <button class="verde btnDescargarStickerLeo" data-sticker="5">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerLeo" data-sticker="5">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker6.png" alt="Sticker Leo 6" class="sticker">
+            </div>
+            <h3>Sticker Leo 6</h3>
+            <button class="verde btnDescargarStickerLeo" data-sticker="6">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerLeo" data-sticker="6">📤 Compartir</button>
+        </div>
+
+    </div>
+
+    <div class="navegacionPaginas">
+        <button class="azul" id="btnAnteriorStickersLeo">⬅ Anterior</button>
+        <button class="azul" id="btnSiguienteStickersLeo">Siguiente ➡</button>
+    </div>
+
+    <div id="opcionesDescargaStickerLeo" class="card" style="display:none;">
+        <h2>⬇️ Descargar sticker</h2>
+        <p>Elegí cómo querés descargarlo.</p>
+        <button class="verde" id="btnDescargarStickerAppLeo">📱 Descargar sticker</button>
+        <button class="azul" id="btnDescargarImagenLeo">🖼️ Descargar como imagen</button>
+        <br><br>
+        <button class="rojo" id="btnCerrarDescargaLeo">✕ Volver</button>
+    </div>
+
+    <div id="opcionesCompartirStickerLeo" class="card" style="display:none;">
+        <h2>📤 Compartir sticker</h2>
+        <p>Compartí el enlace de este sticker.</p>
+        <button class="verde" id="btnCompartirWhatsAppLeo">💬 WhatsApp</button>
+        <button class="morado" id="btnCompartirEnLeo">📱 Compartir en...</button>
+        <button class="azul" id="btnCopiarEnlaceLeo">🔗 Copiar enlace</button>
+        <br><br>
+        <button class="azul" id="btnCerrarCompartirLeo">✕ Volver</button>
+    </div>
+
+    <br>
+
+    <button id="btnVolverStickersIndividualesLeo" class="azul">⬅ Volver</button>
+
+</div>
+
+<!--==============================
+PACKS DE LEO
+===============================-->
+
+<div
+    id="packsLeo"
+    style="display:none;">
+
+    <h1>📦 Packs de Leo</h1>
+
+    <p>
+        Colecciones de stickers de Leo.
+    </p>
+
+    <div
+        class="paginaPacksLeo"
+        id="paginaPacksLeo1">
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker1.png" alt="Pack Leo 1" class="sticker">
+            </div>
+            <h3>Pack Leo 1</h3>
+            <button class="rojo btnDescargarPackLeo" data-pack="1">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackLeo" data-pack="1">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker2.png" alt="Pack Leo 2" class="sticker">
+            </div>
+            <h3>Pack Leo 2</h3>
+            <button class="rojo btnDescargarPackLeo" data-pack="2">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackLeo" data-pack="2">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker3.png" alt="Pack Leo 3" class="sticker">
+            </div>
+            <h3>Pack Leo 3</h3>
+            <button class="rojo btnDescargarPackLeo" data-pack="3">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackLeo" data-pack="3">📤 Compartir pack</button>
+        </div>
+
+    </div>
+
+    <div
+        class="paginaPacksLeo"
+        id="paginaPacksLeo2"
+        style="display:none;">
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker4.png" alt="Pack Leo 4" class="sticker">
+            </div>
+            <h3>Pack Leo 4</h3>
+            <button class="rojo btnDescargarPackLeo" data-pack="4">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackLeo" data-pack="4">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker5.png" alt="Pack Leo 5" class="sticker">
+            </div>
+            <h3>Pack Leo 5</h3>
+            <button class="rojo btnDescargarPackLeo" data-pack="5">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackLeo" data-pack="5">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker6.png" alt="Pack Leo 6" class="sticker">
+            </div>
+            <h3>Pack Leo 6</h3>
+            <button class="rojo btnDescargarPackLeo" data-pack="6">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackLeo" data-pack="6">📤 Compartir pack</button>
+        </div>
+
+    </div>
+
+    <div class="navegacionPaginas">
+        <button class="azul" id="btnAnteriorPacksLeo">⬅ Anterior</button>
+        <button class="azul" id="btnSiguientePacksLeo">Siguiente ➡</button>
+    </div>
+
+    <div id="opcionesCompartirPackLeo" class="card" style="display:none;">
+        <h2>📤 Compartir pack</h2>
+        <p>Compartí el enlace de este pack.</p>
+        <button class="verde" id="btnCompartirWhatsAppPackLeo">💬 WhatsApp</button>
+        <button class="azul" id="btnCopiarEnlacePackLeo">🔗 Copiar enlace</button>
+        <button class="morado" id="btnCompartirNativoPackLeo">📤 Compartir en...</button>
+        <br><br>
+        <button class="azul" id="btnCerrarCompartirPackLeo">✕ Volver</button>
+    </div>
+
+    <br>
+
+    <button id="btnVolverPacksLeo" class="azul">⬅ Volver</button>
+
+</div>
 <!--==============================
 COLECCIÓN NICO
 ===============================-->
 
 <div id="coleccionNico" style="display:none;">
 
-    <h1>🦄 Stickers de Nico</h1>
+    <h1>🦕 Stickers de Nico</h1>
 
-    <p>Stickers y packs de Nico.</p>
-<div id="gridStickersNico" class="grid">
+    <p>Elegí qué querés ver.</p>
 
-    <div class="card">
+    <div class="grid">
 
-        <h2>🖼️ Stickers</h2>
+        <div class="card">
 
-        <p>Stickers individuales de Nico.</p>
+            <h2>🖼️ Stickers individuales</h2>
 
-        <div id="stickersNico">
-            <!-- Aquí irán los stickers -->
+            <p>
+                Mirá los stickers individuales de Nico.
+            </p>
+
+            <button
+                class="verde"
+                id="btnStickersIndividualesNico">
+
+                Ver stickers
+
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>📦 Packs</h2>
+
+            <p>
+                Mirá los packs de stickers de Nico.
+            </p>
+
+            <button
+                class="rojo"
+                id="btnPacksNico">
+
+                Ver packs
+
+            </button>
+
         </div>
 
     </div>
 
+    <br>
 
-    <div class="card">
+    <button id="btnVolverNico" class="azul">⬅ Volver</button>
 
-        <h2>📦 Packs</h2>
+</div>
 
-        <p>Colecciones de stickers de Nico.</p>
+<!--==============================
+STICKERS INDIVIDUALES DE NICO
+===============================-->
 
-        <div id="packsNico">
-            <!-- Aquí irán los packs -->
+<div
+    id="stickersIndividualesNico"
+    style="display:none;">
+
+    <h1>🖼️ Stickers individuales de Nico</h1>
+
+    <p>
+        Mirá los stickers individuales de Nico.
+    </p>
+
+    <div
+        class="paginaStickersNico"
+        id="paginaStickersNico1">
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker1.png" alt="Sticker Nico 1" class="sticker">
+            </div>
+            <h3>Sticker Nico 1</h3>
+            <button class="verde btnDescargarStickerNico" data-sticker="1">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerNico" data-sticker="1">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker2.png" alt="Sticker Nico 2" class="sticker">
+            </div>
+            <h3>Sticker Nico 2</h3>
+            <button class="verde btnDescargarStickerNico" data-sticker="2">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerNico" data-sticker="2">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker3.png" alt="Sticker Nico 3" class="sticker">
+            </div>
+            <h3>Sticker Nico 3</h3>
+            <button class="verde btnDescargarStickerNico" data-sticker="3">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerNico" data-sticker="3">📤 Compartir</button>
         </div>
 
     </div>
 
+    <div
+        class="paginaStickersNico"
+        id="paginaStickersNico2"
+        style="display:none;">
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker4.png" alt="Sticker Nico 4" class="sticker">
+            </div>
+            <h3>Sticker Nico 4</h3>
+            <button class="verde btnDescargarStickerNico" data-sticker="4">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerNico" data-sticker="4">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker5.png" alt="Sticker Nico 5" class="sticker">
+            </div>
+            <h3>Sticker Nico 5</h3>
+            <button class="verde btnDescargarStickerNico" data-sticker="5">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerNico" data-sticker="5">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker6.png" alt="Sticker Nico 6" class="sticker">
+            </div>
+            <h3>Sticker Nico 6</h3>
+            <button class="verde btnDescargarStickerNico" data-sticker="6">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerNico" data-sticker="6">📤 Compartir</button>
+        </div>
+
+    </div>
+
+    <div class="navegacionPaginas">
+        <button class="azul" id="btnAnteriorStickersNico">⬅ Anterior</button>
+        <button class="azul" id="btnSiguienteStickersNico">Siguiente ➡</button>
+    </div>
+
+    <div id="opcionesDescargaStickerNico" class="card" style="display:none;">
+        <h2>⬇️ Descargar sticker</h2>
+        <p>Elegí cómo querés descargarlo.</p>
+        <button class="verde" id="btnDescargarStickerAppNico">📱 Descargar sticker</button>
+        <button class="azul" id="btnDescargarImagenNico">🖼️ Descargar como imagen</button>
+        <br><br>
+        <button class="rojo" id="btnCerrarDescargaNico">✕ Volver</button>
+    </div>
+
+    <div id="opcionesCompartirStickerNico" class="card" style="display:none;">
+        <h2>📤 Compartir sticker</h2>
+        <p>Compartí el enlace de este sticker.</p>
+        <button class="verde" id="btnCompartirWhatsAppNico">💬 WhatsApp</button>
+        <button class="morado" id="btnCompartirEnNico">📱 Compartir en...</button>
+        <button class="azul" id="btnCopiarEnlaceNico">🔗 Copiar enlace</button>
+        <br><br>
+        <button class="azul" id="btnCerrarCompartirNico">✕ Volver</button>
+    </div>
+
+    <br>
+
+    <button id="btnVolverStickersIndividualesNico" class="azul">⬅ Volver</button>
+
 </div>
 
-    <button
-        id="btnVolverNico"
-        class="azul">
+<!--==============================
+PACKS DE NICO
+===============================-->
 
-        ⬅ Volver
+<div
+    id="packsNico"
+    style="display:none;">
 
-    </button>
+    <h1>📦 Packs de Nico</h1>
+
+    <p>
+        Colecciones de stickers de Nico.
+    </p>
+
+    <div
+        class="paginaPacksNico"
+        id="paginaPacksNico1">
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker1.png" alt="Pack Nico 1" class="sticker">
+            </div>
+            <h3>Pack Nico 1</h3>
+            <button class="rojo btnDescargarPackNico" data-pack="1">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackNico" data-pack="1">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker2.png" alt="Pack Nico 2" class="sticker">
+            </div>
+            <h3>Pack Nico 2</h3>
+            <button class="rojo btnDescargarPackNico" data-pack="2">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackNico" data-pack="2">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker3.png" alt="Pack Nico 3" class="sticker">
+            </div>
+            <h3>Pack Nico 3</h3>
+            <button class="rojo btnDescargarPackNico" data-pack="3">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackNico" data-pack="3">📤 Compartir pack</button>
+        </div>
+
+    </div>
+
+    <div
+        class="paginaPacksNico"
+        id="paginaPacksNico2"
+        style="display:none;">
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker4.png" alt="Pack Nico 4" class="sticker">
+            </div>
+            <h3>Pack Nico 4</h3>
+            <button class="rojo btnDescargarPackNico" data-pack="4">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackNico" data-pack="4">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker5.png" alt="Pack Nico 5" class="sticker">
+            </div>
+            <h3>Pack Nico 5</h3>
+            <button class="rojo btnDescargarPackNico" data-pack="5">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackNico" data-pack="5">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker6.png" alt="Pack Nico 6" class="sticker">
+            </div>
+            <h3>Pack Nico 6</h3>
+            <button class="rojo btnDescargarPackNico" data-pack="6">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackNico" data-pack="6">📤 Compartir pack</button>
+        </div>
+
+    </div>
+
+    <div class="navegacionPaginas">
+        <button class="azul" id="btnAnteriorPacksNico">⬅ Anterior</button>
+        <button class="azul" id="btnSiguientePacksNico">Siguiente ➡</button>
+    </div>
+
+    <div id="opcionesCompartirPackNico" class="card" style="display:none;">
+        <h2>📤 Compartir pack</h2>
+        <p>Compartí el enlace de este pack.</p>
+        <button class="verde" id="btnCompartirWhatsAppPackNico">💬 WhatsApp</button>
+        <button class="azul" id="btnCopiarEnlacePackNico">🔗 Copiar enlace</button>
+        <button class="morado" id="btnCompartirNativoPackNico">📤 Compartir en...</button>
+        <br><br>
+        <button class="azul" id="btnCerrarCompartirPackNico">✕ Volver</button>
+    </div>
+
+    <br>
+
+    <button id="btnVolverPacksNico" class="azul">⬅ Volver</button>
 
 </div>
-
 
 <!--==============================
 COLECCIÓN THEYS DINOS
@@ -777,38 +1843,60 @@ COLECCIÓN THEYS DINOS
 
 <div id="coleccionTheys" style="display:none;">
 
-    <h1>🦖 Theys Dinos</h1>
+    <h1>🦖 Stickers de Theys Dinos</h1>
 
-    <p>Stickers y packs de todos los dinos.</p>
-<div id="gridStickersTheys" class="grid">
+    <p>Elegí qué querés ver.</p>
 
-    <div class="card">
+    <div class="grid">
 
-        <h2>🖼️ Stickers</h2>
+        <!-- ==========================
+        STICKERS INDIVIDUALES
+        =========================== -->
 
-        <p>Stickers individuales de Theys Dinos.</p>
+        <div class="card">
 
-        <div id="stickersTheys">
-            <!-- Aquí irán los stickers -->
+            <h2>🖼️ Stickers individuales</h2>
+
+            <p>
+                Mirá los stickers individuales de Theys Dinos.
+            </p>
+
+            <button
+                class="verde"
+                id="btnStickersIndividualesTheys">
+
+                Ver stickers
+
+            </button>
+
+        </div>
+
+
+        <!-- ==========================
+        PACKS
+        =========================== -->
+
+        <div class="card">
+
+            <h2>📦 Packs</h2>
+
+            <p>
+                Mirá los packs de stickers de Theys Dinos.
+            </p>
+
+            <button
+                class="rojo"
+                id="btnPacksTheys">
+
+                Ver packs
+
+            </button>
+
         </div>
 
     </div>
 
-
-    <div class="card">
-
-        <h2>📦 Packs</h2>
-
-        <p>Colecciones de stickers de todos los dinos.</p>
-
-        <div id="packsTheys">
-            <!-- Aquí irán los packs -->
-        </div>
-
-    </div>
-
-</div>
-
+    <br>
 
     <button
         id="btnVolverTheys"
@@ -819,9 +1907,435 @@ COLECCIÓN THEYS DINOS
     </button>
 
 </div>
+
+
+<!--==============================
+STICKERS INDIVIDUALES DE THEYS DINOS
+===============================-->
+
+<div
+    id="stickersIndividualesTheys"
+    style="display:none;">
+
+    <h1>🖼️ Stickers individuales de Theys Dinos</h1>
+
+    <p>
+        Mirá los stickers individuales de Theys Dinos.
+    </p>
+
+
+    <!-- ==========================
+    PÁGINA 1
+    =========================== -->
+
+    <div
+        class="paginaStickersTheys"
+        id="paginaStickersTheys1">
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker1.png" alt="Sticker Theys 1" class="sticker">
+            </div>
+            <h3>Sticker Theys 1</h3>
+            <button class="verde btnDescargarStickerTheys" data-sticker="1">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerTheys" data-sticker="1">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker2.png" alt="Sticker Theys 2" class="sticker">
+            </div>
+            <h3>Sticker Theys 2</h3>
+            <button class="verde btnDescargarStickerTheys" data-sticker="2">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerTheys" data-sticker="2">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker3.png" alt="Sticker Theys 3" class="sticker">
+            </div>
+            <h3>Sticker Theys 3</h3>
+            <button class="verde btnDescargarStickerTheys" data-sticker="3">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerTheys" data-sticker="3">📤 Compartir</button>
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+    PÁGINA 2
+    =========================== -->
+
+    <div
+        class="paginaStickersTheys"
+        id="paginaStickersTheys2"
+        style="display:none;">
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker4.png" alt="Sticker Theys 4" class="sticker">
+            </div>
+            <h3>Sticker Theys 4</h3>
+            <button class="verde btnDescargarStickerTheys" data-sticker="4">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerTheys" data-sticker="4">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker5.png" alt="Sticker Theys 5" class="sticker">
+            </div>
+            <h3>Sticker Theys 5</h3>
+            <button class="verde btnDescargarStickerTheys" data-sticker="5">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerTheys" data-sticker="5">📤 Compartir</button>
+        </div>
+
+        <div class="card stickerCard">
+            <div class="stickerImagen">
+                <img src="stiker6.png" alt="Sticker Theys 6" class="sticker">
+            </div>
+            <h3>Sticker Theys 6</h3>
+            <button class="verde btnDescargarStickerTheys" data-sticker="6">⬇️ Descargar</button>
+            <button class="azul btnCompartirStickerTheys" data-sticker="6">📤 Compartir</button>
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+    NAVEGACIÓN DE PÁGINAS
+    =========================== -->
+
+    <div class="navegacionPaginas">
+
+        <button class="azul" id="btnAnteriorStickersTheys">⬅ Anterior</button>
+        <button class="azul" id="btnSiguienteStickersTheys">Siguiente ➡</button>
+
+    </div>
+
+
+    <!-- ==========================
+    OPCIONES DE DESCARGA
+    =========================== -->
+
+    <div
+        id="opcionesDescargaStickerTheys"
+        class="card"
+        style="display:none;">
+
+        <h2>⬇️ Descargar sticker</h2>
+
+        <p>
+            Elegí cómo querés descargarlo.
+        </p>
+
+        <button class="verde" id="btnDescargarStickerAppTheys">📱 Descargar sticker</button>
+        <button class="azul" id="btnDescargarImagenTheys">🖼️ Descargar como imagen</button>
+
+        <br><br>
+
+        <button class="rojo" id="btnCerrarDescargaTheys">✕ Volver</button>
+
+    </div>
+
+
+    <!-- ==========================
+    OPCIONES DE COMPARTIR
+    =========================== -->
+
+    <div
+        id="opcionesCompartirStickerTheys"
+        class="card"
+        style="display:none;">
+
+        <h2>📤 Compartir sticker</h2>
+
+        <p>
+            Compartí el enlace de este sticker.
+        </p>
+
+        <button class="verde" id="btnCompartirWhatsAppTheys">💬 WhatsApp</button>
+        <button class="morado" id="btnCompartirEnTheys">📱 Compartir en...</button>
+        <button class="azul" id="btnCopiarEnlaceTheys">🔗 Copiar enlace</button>
+
+        <br><br>
+
+        <button class="azul" id="btnCerrarCompartirTheys">✕ Volver</button>
+
+    </div>
+
+
+    <br>
+
+    <button id="btnVolverStickersIndividualesTheys" class="azul">⬅ Volver</button>
+
+</div>
+
+
+<!--==============================
+PACKS DE THEYS DINOS
+===============================-->
+
+<div
+    id="packsTheys"
+    style="display:none;">
+
+    <h1>📦 Packs de Theys Dinos</h1>
+
+    <p>
+        Colecciones de stickers de Theys Dinos.
+    </p>
+
+
+    <!-- ==========================
+    PÁGINA 1
+    =========================== -->
+
+    <div
+        class="paginaPacksTheys"
+        id="paginaPacksTheys1">
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker1.png" alt="Pack Theys 1" class="sticker">
+            </div>
+            <h3>Pack Theys 1</h3>
+            <button class="rojo btnDescargarPackTheys" data-pack="1">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackTheys" data-pack="1">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker2.png" alt="Pack Theys 2" class="sticker">
+            </div>
+            <h3>Pack Theys 2</h3>
+            <button class="rojo btnDescargarPackTheys" data-pack="2">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackTheys" data-pack="2">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker3.png" alt="Pack Theys 3" class="sticker">
+            </div>
+            <h3>Pack Theys 3</h3>
+            <button class="rojo btnDescargarPackTheys" data-pack="3">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackTheys" data-pack="3">📤 Compartir pack</button>
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+    PÁGINA 2
+    =========================== -->
+
+    <div
+        class="paginaPacksTheys"
+        id="paginaPacksTheys2"
+        style="display:none;">
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker4.png" alt="Pack Theys 4" class="sticker">
+            </div>
+            <h3>Pack Theys 4</h3>
+            <button class="rojo btnDescargarPackTheys" data-pack="4">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackTheys" data-pack="4">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker5.png" alt="Pack Theys 5" class="sticker">
+            </div>
+            <h3>Pack Theys 5</h3>
+            <button class="rojo btnDescargarPackTheys" data-pack="5">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackTheys" data-pack="5">📤 Compartir pack</button>
+        </div>
+
+        <div class="card packCard">
+            <div class="packImagen">
+                <img src="stiker6.png" alt="Pack Theys 6" class="sticker">
+            </div>
+            <h3>Pack Theys 6</h3>
+            <button class="rojo btnDescargarPackTheys" data-pack="6">⬇️ Descargar pack</button>
+            <button class="azul btnCompartirPackTheys" data-pack="6">📤 Compartir pack</button>
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+    NAVEGACIÓN DE PÁGINAS
+    =========================== -->
+
+    <div class="navegacionPaginas">
+
+        <button class="azul" id="btnAnteriorPacksTheys">⬅ Anterior</button>
+        <button class="azul" id="btnSiguientePacksTheys">Siguiente ➡</button>
+
+    </div>
+
+
+    <div id="opcionesCompartirPackTheys" class="card" style="display:none;">
+        <h2>📤 Compartir pack</h2>
+        <p>Compartí el enlace de este pack.</p>
+        <button class="verde" id="btnCompartirWhatsAppPackTheys">💬 WhatsApp</button>
+        <button class="azul" id="btnCopiarEnlacePackTheys">🔗 Copiar enlace</button>
+        <button class="morado" id="btnCompartirNativoPackTheys">📤 Compartir en...</button>
+        <br><br>
+        <button class="azul" id="btnCerrarCompartirPackTheys">✕ Volver</button>
+    </div>
+
+    <br>
+
+    <button id="btnVolverPacksTheys" class="azul">⬅ Volver</button>
+
+</div>
+
 <!--==============================
 ROMPECABEZAS
 ===============================-->
+<!--==============================
+SELECCIÓN DE NIVEL
+===============================-->
+
+<div id="seccionJuegosDinoSad" style="display:none;">
+
+    <h1>🎮 Juegos DinoSad</h1>
+
+    <p>Elegí un juego para comenzar.</p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>🧩 Rompecabezas</h2>
+
+            <p>Arma una imagen de DinoSad.</p>
+
+            <button class="verde" id="btnPuzzle">
+                Jugar
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🧠 Memory</h2>
+
+            <p>Encontrá las parejas de DinoSad.</p>
+
+            <button class="verde" id="btnMemory">
+                Jugar
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>⭕ Tateti Dino</h2>
+
+            <p>Jugá al tateti con los dinos.</p>
+
+            <button class="verde" id="btnTatetiDino">
+                Jugar
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverJuegosDinoSad" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+
+<!--==============================
+NIVELES DE MEMORY
+===============================-->
+
+<div id="seccionMemoryNiveles" style="display:none;">
+
+    <h1>🧠 Memory DinoSad</h1>
+
+    <p>Elegí la dificultad del juego.</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>🟢 Fácil</h2>
+            <p>Un desafío para comenzar.</p>
+            <button class="verde" id="nivelMemoryFacil">
+                Jugar
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>🔵 Normal</h2>
+            <p>Un desafío intermedio.</p>
+            <button class="azul" id="nivelMemoryNormal">
+                Jugar
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>🔴 Difícil</h2>
+            <p>Un desafío para expertos.</p>
+            <button class="rojo" id="nivelMemoryDificil">
+                Jugar
+            </button>
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverMemory" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+
+<!--==============================
+NIVELES DE TATETI DINO
+===============================-->
+
+<div id="seccionTatetiNiveles" style="display:none;">
+
+    <h1>⭕ Tateti Dino</h1>
+
+    <p>Elegí la dificultad del juego.</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>🟢 Fácil</h2>
+            <p>Un desafío para comenzar.</p>
+            <button class="verde" id="nivelTatetiFacil">
+                Jugar
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>🔴 Difícil</h2>
+            <p>Un desafío para expertos.</p>
+            <button class="rojo" id="nivelTatetiDificil">
+                Jugar
+            </button>
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverTatetiNiveles" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+
 <!--==============================
 SELECCIÓN DE NIVEL
 ===============================-->
@@ -889,8 +2403,30 @@ SELECCIÓN DE NIVEL
     <button id="btnVolverNiveles" class="azul">
         ⬅ Volver
     </button>
+</div>
+
+    <!--==============================
+JUEGO DE MEMORIA DINOSAD
+===============================-->
+<div id="seccionJuegoMemoria" style="display:none;">
+
+    <h1>🧠 Dino Memory</h1>
+    <p>¡Encuentra las parejas de dinosaurios!</p>
+
+    <div class="card panel-puntos">
+        <h2 id="cronometroMemoria">⏱️ Tiempo: 00:00</h2>
+        <p>Intentos: <strong id="contadorIntentos">0</strong> | Parejas: <strong id="contadorParejas">0/4</strong></p>
+        <button id="btnReiniciarMemoria" class="verde">🔄 Reiniciar</button>
+    </div>
+
+    <!-- Tablero de cartas -->
+    <div id="tableroMemoria" class="grid-memoria"></div>
+
+    <br>
+    <button id="btnVolverJuegoMemoria" class="azul">⬅ Volver a Niveles</button>
 
 </div>
+
 <div id="seccionPuzzle" style="display:none;">
 
     <h1>🧩 Rompecabezas DinoSad</h1>
@@ -909,7 +2445,64 @@ SELECCIÓN DE NIVEL
     </button>
 
 </div>
+<!--==============================
+JUEGO DE TA-TE-TI DINOSAD
+===============================-->
+<div id="seccionTaTeTi" style="display:none;">
 
+    <h1>❌ Ta-Te-Ti DinoSad ⭕</h1>
+    <p id="tatetiSubtitulo">Elegí la dificultad para empezar</p>
+
+    <!-- PANTALLA 1: ELECCIÓN DE DIFICULTAD -->
+    <div id="tatetiPasoDificultad" class="card">
+        <h2>Elegí la dificultad</h2>
+        <button id="btnTatetiFacil" class="verde">🟢 Modo Fácil</button>
+        <button id="btnTatetiDificil" class="rojo">🔴 Modo Difícil</button>
+    </div>
+
+    <!-- PANTALLA 2: ELECCIÓN DE MODO (Solo Modo Fácil) -->
+    <div id="tatetiPasoModo" class="card" style="display:none;">
+        <h2>Elegí el modo de juego</h2>
+        <button id="btnModo1vs1" class="azul">⚔️ 1 vs 1 (Mejor de 1)</button>
+        <button id="btnModoTorneo" class="morado">🏆 Torneo (Primero a 2)</button>
+    </div>
+
+    <!-- PANTALLA 3: ELECCIÓN DE DINO (Solo Modo Fácil) -->
+    <div id="tatetiPasoDino" class="card" style="display:none;">
+        <h2>Elegí tu Dino</h2>
+        <button id="btnDinoAle" class="verde">🦖 Ale</button>
+        <button id="btnDinoLeo" class="rojo">🐯 Leo</button>
+        <button id="btnDinoNico" class="azul">🦄 Nico</button>
+    </div>
+
+    <!-- PANTALLA 4: TABLERO DE JUEGO -->
+    <div id="tatetiJuego" style="display:none;">
+
+        <div class="card panel-puntos">
+            <p>Jugador (<span id="txtDinoElegido">Dino</span>): <strong id="puntosJugador">0</strong> | <span id="txtDinoIA">Dino</span>: <strong id="puntosIA">0</strong></p>
+            <p id="txtInfoModo" style="font-size: 0.9rem; color: #aaa;"></p>
+        </div>
+
+        <div id="tableroTateti" class="grid-tateti">
+            <div class="celda-tateti" data-i="0"></div>
+            <div class="celda-tateti" data-i="1"></div>
+            <div class="celda-tateti" data-i="2"></div>
+            <div class="celda-tateti" data-i="3"></div>
+            <div class="celda-tateti" data-i="4"></div>
+            <div class="celda-tateti" data-i="5"></div>
+            <div class="celda-tateti" data-i="6"></div>
+            <div class="celda-tateti" data-i="7"></div>
+            <div class="celda-tateti" data-i="8"></div>
+        </div>
+
+        <p id="mensajeTateti" style="font-weight: bold; margin-top: 10px;"></p>
+
+    </div>
+
+    <br>
+    <button id="btnVolverTaTeTiJuego" class="azul">⬅ Volver</button>
+
+</div>
 
 <!--==============================
 DETRÁS DE DINOSAD
@@ -919,23 +2512,21 @@ DETRÁS DE DINOSAD
 
     <h1>🦖 Detrás de DinoSad</h1>
 
-    <p>Conocé un poco más sobre mí y este proyecto.</p>
+    <p>Conocé el progreso y los descubrimientos de DinoSad.</p>
 
     <div class="card">
 
-        <h2>👋 ¡Hola!</h2>
+        <h2>📖 Modo historia de DinoSad</h2>
 
-        <p>
+        <p>Explorá el proceso y los descubrimientos de DinoSad.</p>
 
-            Bienvenido a mi espacio personal.
+        <button class="verde" id="btnVerMapa">
+            Ver mapa
+        </button>
 
-            Aquí compartiré mi historia,
-
-            cómo nació DinoSad
-
-            y cómo creo mi contenido.
-
-        </p>
+        <button class="morado" id="btnComenzarProgreso">
+            Comenzar
+        </button>
 
     </div>
 
@@ -949,59 +2540,193 @@ DETRÁS DE DINOSAD
 
 </div>
 <!--==============================
+MODO HISTORIA DINOSAD
+===============================-->
+<div id="seccionModoHistoria" style="display:none;">
+
+    <!-- PANTALLA 1: CREAR PERSONAJE -->
+    <div id="pasoCrearPersonaje" class="card">
+        <h2>👤 Crea tu Personaje</h2>
+        
+        <label>Nombre:</label>
+        <input type="text" id="nombreAvatar" placeholder="Tu nombre..." value="Aventurero">
+
+        <br><br>
+        <label>Género:</label>
+        <div>
+            <button type="button" class="azul btn-genero seleccionado" data-genero="chico">👦 Chico</button>
+            <button type="button" class="morado btn-genero" data-genero="chica">👧 Chica</button>
+        </div>
+
+        <br>
+        <label>Ropa / Style:</label>
+        <div>
+            <button type="button" class="btn-ropa" data-ropa="roja">🔴 Ropa Roja</button>
+            <button type="button" class="btn-ropa" data-ropa="azul">🔵 Ropa Azul</button>
+            <button type="button" class="btn-ropa" data-ropa="verde">🟢 Ropa Verde</button>
+        </div>
+
+        <br>
+        <!-- Vista previa del avatar -->
+        <div id="vistaPreviaAvatar" class="avatar-box chico ropa-roja">
+            <span id="demoEmojiAvatar">👦</span>
+        </div>
+
+        <br>
+        <button id="btnComenzarHistoria" class="verde">🚀 Comenzar Capítulo 1</button>
+    </div>
+
+    <!-- PANTALLA 2: CAMINO DEL CAPÍTULO -->
+    <div id="pasoCaminoCapitulo" style="display:none;">
+
+        <div class="card panel-puntos">
+            <h3>📖 <span id="tituloCapitulo">Capítulo 1: El Origen de DinoSad</span></h3>
+            <p>Jugador: <strong id="lblNombreJugador">Aventurero</strong> | Progreso: <strong id="lblProgreso">0%</strong></p>
+        </div>
+
+        <!-- EL CAMINO LINEAL CON MISIONES -->
+        <div class="camino-misiones">
+
+            <!-- Estación 1: Lectura -->
+            <div class="estacion-nodo disponible" id="nodo1">
+                <div class="icono-nodo">📜</div>
+                <div class="info-nodo">
+                    <h4>Misión 1: Historia</h4>
+                    <p>Lee el comienzo del lore.</p>
+                </div>
+                <button class="verde btn-mision" onclick="abrirMisionLectura()">Leer</button>
+            </div>
+
+            <div class="linea-conector"></div>
+
+            <!-- Estación 2: Mini juego -->
+            <div class="estacion-nodo bloqueado" id="nodo2">
+                <div class="icono-nodo">🎮</div>
+                <div class="info-nodo">
+                    <h4>Misión 2: Desafío</h4>
+                    <p>Supera la prueba en los minijuegos.</p>
+                </div>
+                <button class="verde btn-mision" id="btnMisionJuego" disabled onclick="abrirMisionJuego()">Jugar</button>
+            </div>
+
+            <div class="linea-conector"></div>
+
+            <!-- Estación 3: Pregunta del Dino NPC -->
+            <div class="estacion-nodo bloqueado" id="nodo3">
+                <div class="icono-nodo">🦖</div>
+                <div class="info-nodo">
+                    <h4>Misión Final: El Guardián</h4>
+                    <p>Responde la pregunta para avanzar.</p>
+                </div>
+                <button class="morado btn-mision" id="btnMisionNPC" disabled onclick="abrirMisionNPC()">Hablar</button>
+            </div>
+
+        </div>
+
+        <!-- MODAL / POPUP DE LECTURA DE LORE -->
+        <div id="modalLectura" class="modal-historia" style="display:none;">
+            <div class="card modal-contenido">
+                <h3>📜 Capítulo 1 - Historia</h3>
+                <p id="textoLoreCapitulo">
+                    ¡Bienvenido al mundo de DinoSad! Aquí comenzó todo el viaje de creación de contenido...
+                </p>
+                <button class="verde" onclick="completarMisionLectura()">Completado ✔</button>
+            </div>
+        </div>
+
+        <!-- MODAL / POPUP DE PREGUNTA NPC -->
+        <div id="modalNPC" class="modal-historia" style="display:none;">
+            <div class="card modal-contenido">
+                <div id="guardianesNPC" class="box-dinos-npc">
+                    <!-- Aquí se muestran los emojis/imágenes de Ale, Leo o Nico -->
+                    <span id="avatarNPC1">🦖</span>
+                    <span id="avatarNPC2" style="display:none;">🐯</span>
+                    <span id="avatarNPC3" style="display:none;">🦄</span>
+                </div>
+                <h3 id="nombreGuardián">Ale te pregunta:</h3>
+                <p id="preguntaNPCText">¿Cuál es la primera regla para ser un DinoCreador?</p>
+
+                <div id="opcionesPregunta" class="grid-opciones">
+                    <!-- Opciones generadas por JS -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+    <button id="btnVolverHistoria" class="azul">⬅ Volver al Menú Principal</button>
+
+</div>
+<!--==============================
 HISTORIAS
 ===============================-->
-
 <div id="seccionHistorias" style="display:none;">
 
     <h1>📖 Historias de DinoSad</h1>
-
     <p>Historias, experiencias y momentos detrás de DinoSad.</p>
 
-    <div class="grid">
+    <!-- LISTA DE TARJETAS DE HISTORIAS -->
+    <div id="menuHistoriasGrid" class="grid">
 
         <div class="card">
-
             <h2>🦖 Historia #1</h2>
-
             <p>
-                Próximamente podrás conocer
-                la historia detrás de DinoSad.
+                🎉 ¡El día que llegamos a los 1.000 suscriptores!
             </p>
-
-            <button class="verde">
+            <button class="verde" onclick="abrirComic(1)">
                 Leer historia
             </button>
-
         </div>
 
         <div class="card">
-
             <h2>🎬 Historia #2</h2>
-
             <p>
-                Momentos y experiencias
-                detrás de mis contenidos.
+                🎬 La anécdota del primer video viral del canal.
             </p>
-
-            <button class="azul">
+            <button class="azul" onclick="abrirComic(2)">
                 Leer historia
             </button>
-
         </div>
 
         <div class="card">
-
             <h2>🚀 Historia #3</h2>
-
             <p>
                 Nuevas historias próximamente.
             </p>
-
-            <button class="morado">
+            <button class="morado" disabled>
                 Próximamente
             </button>
+        </div>
 
+    </div>
+
+    <!-- VISOR INTERACTIVO DE CÓMIC (Oculto hasta presionar Leer) -->
+    <div id="visorComic" style="display:none;">
+
+        <div class="card panel-puntos">
+            <h3 id="tituloComicActual">Título de la Historia</h3>
+            <p>Página <strong id="lblPaginaComic">1/3</strong></p>
+        </div>
+
+        <!-- Escena / Viñeta del Cómic -->
+        <div class="vineta-comic">
+            <div class="personajes-escena">
+                <div id="boxDinoComic" class="dino-avatar-comic">🦖</div>
+                <strong id="nombreDinoComic" class="nombre-dino-comic">Ale</strong>
+            </div>
+
+            <!-- Diálogo estilo Cómic -->
+            <div class="globo-dialogo">
+                <p id="textoDialogoComic">"..."</p>
+            </div>
+        </div>
+
+        <!-- Botones de Navegación del Cómic -->
+        <div class="controles-comic">
+            <button id="btnAnteriorPaginaComic" class="azul">⬅ Anterior</button>
+            <button id="btnSiguientePaginaComic" class="verde">Siguiente ➡</button>
+            <button id="btnCerrarComic" class="rojo">✖ Cerrar Cómic</button>
         </div>
 
     </div>
@@ -1009,125 +2734,8 @@ HISTORIAS
     <br>
 
     <button id="btnVolverHistorias" class="azul">
-
         ⬅ Volver
-
     </button>
-
-</div>
-<!--========================================
- VISOR ESTILO WHATSAPP - STICKER ALE
-=========================================-->
-
-<div
-    id="visorWhatsAppAle"
-    style="display:none;">
-
-    <div id="chatWhatsAppAle">
-
-        <!-- ==========================
-        ENCABEZADO
-        =========================== -->
-
-        <div id="encabezadoWhatsAppAle">
-
-            <button
-                id="btnVolverWhatsAppAle">
-
-                ←
-
-            </button>
-
-            <div id="perfilWhatsAppAle">
-
-                <div id="fotoPerfilWhatsAppAle">
-
-                    🦖
-
-                </div>
-
-                <div id="datosPerfilWhatsAppAle">
-
-                    <strong>
-                        Ale
-                    </strong>
-
-                    <span>
-                        En línea
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ==========================
-        CONVERSACIÓN
-        =========================== -->
-
-        <div id="mensajesWhatsAppAle">
-
-            <div
-                class="mensajeStickerWhatsAppAle">
-
-                <img
-                    id="stickerWhatsAppAle"
-                    src="stiker6.png"
-                    alt="Sticker de Ale">
-
-                <span
-                    class="horaStickerWhatsAppAle">
-
-                    20:30
-
-                </span>
-
-            </div>
-
-            <!-- ASISTENCIA -->
-
-            <div
-                class="asistenciaWhatsAppAle">
-
-                🦖 Asistencia OFF
-
-            </div>
-
-        </div>
-
-
-        <!-- ==========================
-        BARRA INFERIOR
-        =========================== -->
-
-        <div id="entradaWhatsAppAle">
-
-            <button
-                class="botonMicrofonoWhatsAppAle">
-
-                🎙️
-
-            </button>
-
-            <div
-                id="campoWhatsAppAle">
-
-                Escribile a tu Dino...
-
-            </div>
-
-            <button
-                class="botonEnviarWhatsAppAle">
-
-                ➤
-
-            </button>
-
-        </div>
-
-    </div>
 
 </div>
 <!--==============================
@@ -1136,62 +2744,95 @@ CONTACTO
 
 <div id="seccionContacto" style="display:none;">
 
-    <h1>📩 Contacto</h1>
+```
+<h1>📩 Contacto</h1>
 
-    <p>¿Quieres enviarme un mensaje?</p>
+<p>¿Quieres enviarme un mensaje?</p>
 
-    <div class="card">
+<div class="card">
 
-        <h2>📩 Formulario</h2>
+    <h2>📩 Formulario</h2>
 
-        <p>Déjame tus datos o un comentario.</p>
+    <p>Déjame tus datos o un comentario.</p>
 
-        <input type="text" placeholder="Escribe tu nombre">
+    <form id="formularioContacto">
+
+        <input
+            type="text"
+            id="nombreContacto"
+            name="nombre"
+            placeholder="Escribe tu nombre"
+            required>
 
         <br><br>
 
-        <input type="number" placeholder="Tu edad">
+        <input
+            type="number"
+            id="edadContacto"
+            name="edad"
+            placeholder="Tu edad"
+            min="1"
+            required>
 
         <br><br>
 
-        <input type="email" placeholder="Correo electrónico">
+        <input
+            type="email"
+            id="correoContacto"
+            name="correo"
+            placeholder="Correo electrónico"
+            required>
 
         <br><br>
 
-        <select>
+        <select
+            id="motivoContacto"
+            name="motivo"
+            required>
 
-            <option>Selecciona una opción</option>
-            <option>Quiero colaborar</option>
-            <option>Quiero saludar</option>
-            <option>Tengo una sugerencia</option>
+            <option value="">Selecciona una opción</option>
+            <option value="Quiero colaborar">Quiero colaborar</option>
+            <option value="Quiero saludar">Quiero saludar</option>
+            <option value="Tengo una sugerencia">Tengo una sugerencia</option>
 
         </select>
 
         <br><br>
 
         <textarea
+            id="comentarioContacto"
+            name="comentario"
             rows="4"
-            placeholder="Escribe tu comentario..."></textarea>
+            placeholder="Escribe tu comentario..."
+            required></textarea>
 
         <br><br>
 
-        <button class="verde">
+        <button
+            type="submit"
+            id="btnEnviarContacto"
+            class="verde">
 
             Enviar
 
         </button>
 
-    </div>
+        <p id="mensajeContacto"></p>
 
-    <br>
+    </form>
 
-    <button
-        id="btnVolverContacto"
-        class="azul">
+</div>
 
-        ⬅ Volver
+<br>
 
-    </button>
+<button
+    id="btnVolverContacto"
+    class="azul">
+
+    ⬅ Volver
+
+</button>
+```
 
 </div>
 <!--==============================
@@ -1315,6 +2956,10 @@ PUBLICACIONES
 
             <p>Próximamente publicaré novedades de DinoSad.</p>
 
+            <button class="verde" id="btnMirarNovedades">
+                Mirar
+            </button>
+
         </div>
 
         <div class="card">
@@ -1323,6 +2968,10 @@ PUBLICACIONES
 
             <p>Noticias y actualizaciones del proyecto.</p>
 
+            <button class="azul" id="btnConocerDinoSad">
+                Conocer
+            </button>
+
         </div>
 
         <div class="card">
@@ -1330,6 +2979,10 @@ PUBLICACIONES
             <h2>🎉 Anuncios</h2>
 
             <p>Nuevos proyectos y contenido próximamente.</p>
+
+            <button class="rojo" id="btnVerAnuncios">
+                Ver
+            </button>
 
         </div>
 
@@ -1479,7 +3132,42 @@ MÚSICA
     <source src="prueba.mp3" type="audio/mpeg">
 
 </audio>
+<!--==============================
+VISOR GENERAL DE STICKERS
+===============================-->
 
+<div id="visor">
+
+    <div id="contenidoVisor">
+
+        <img
+            id="imagenGrande"
+            src=""
+            alt="Sticker ampliado">
+
+        <div id="accionesVisor">
+
+            <button
+                class="verde"
+                id="btnVisorDescargar">
+
+                ⬇️ Descargar
+
+            </button>
+
+            <button
+                class="azul"
+                id="btnVisorCompartir">
+
+                📤 Compartir
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 <!--==============================
 JAVASCRIPT
 ===============================-->
@@ -1487,6 +3175,10 @@ JAVASCRIPT
 <script src="musica.js"></script>
 <script src="fondos.js"></script>
 <script src="stickers.js"></script>
+<script src="stickers-ale.js"></script>
+<script src="stickers-leo.js"></script>
+<script src="stickers_nico.js"></script>
+<script src="stickers_theys_dinos.js"></script>
 <script src="contacto.js"></script>
 <script src="contenido.js"></script>
 <script src="destacados.js"></script>
@@ -1514,5 +3206,9 @@ JAVASCRIPT
 <script src="puzzle_cronometro.js"></script>
 <script src="puzzle_tablero.js"></script>
 <script src="puzzle_victoria.js"></script>
+<script src="memory.js"></script>
+<script src="tateti.js"></script>
+<script src="historia.js"></script>
+<script src="comics.js"></script>
 </body>
 </html>

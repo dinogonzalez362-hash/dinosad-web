@@ -1,0 +1,96 @@
+/* Configuración de Avatar */
+.avatar-box {
+    width: 80px;
+    height: 80px;
+    margin: 10px auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.avatar-box.ropa-roja { background-color: #e74c3c; }
+.avatar-box.ropa-azul { background-color: #3498db; }
+.avatar-box.ropa-verde { background-color: #2ecc71; }
+
+.btn-genero.seleccionado,
+.btn-ropa.seleccionado {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Camino de Misiones */
+.camino-misiones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.estacion-nodo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 400px;
+    background: #2c3e50;
+    padding: 12px;
+    border-radius: 12px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.estacion-nodo.bloqueado {
+    opacity: 0.5;
+}
+
+.icono-nodo {
+    font-size: 2rem;
+}
+
+.info-nodo {
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.linea-conector {
+    width: 6px;
+    height: 30px;
+    background-color: #7f8c8d;
+    margin: 2px 0;
+}
+
+/* Modales / Ventanas Emergentes */
+.modal-historia {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-contenido {
+    max-width: 400px;
+    width: 90%;
+}
+
+.box-dinos-npc {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.grid-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
