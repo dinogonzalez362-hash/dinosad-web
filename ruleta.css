@@ -1,0 +1,125 @@
+#seccionRuletaDinoSad {
+
+    text-align:center;
+
+}
+
+.ruleta-panel {
+
+    width:min(92vw,520px);
+    margin:24px auto;
+    padding:28px 16px;
+    box-sizing:border-box;
+    background:rgba(255,255,255,.88);
+    border:3px solid #173c43;
+    border-radius:12px;
+
+}
+
+.ruletaDinoSad {
+
+    position:relative;
+    width:min(78vw,360px);
+    aspect-ratio:1;
+    margin:0 auto;
+    border:10px solid #173c43;
+    border-radius:50%;
+    background:conic-gradient(
+        #ff5d5d 0deg 45deg,
+        #ffc857 45deg 90deg,
+        #45d483 90deg 135deg,
+        #46b8e8 135deg 180deg,
+        #9b72cf 180deg 225deg,
+        #f48fb1 225deg 270deg,
+        #f28c28 270deg 315deg,
+        #7ac943 315deg 360deg
+    );
+    box-shadow:0 8px 0 #102c31;
+    transition:transform 3.9s cubic-bezier(.12,.75,.18,1);
+
+}
+
+.indicadorRuleta {
+
+    position:relative;
+    z-index:2;
+    width:0;
+    height:0;
+    margin:0 auto -12px;
+    border-left:18px solid transparent;
+    border-right:18px solid transparent;
+    border-top:0;
+    border-bottom:32px solid #e53935;
+    filter:drop-shadow(0 2px 1px rgba(0,0,0,.3));
+
+}
+
+.numeroRuleta {
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    margin:-22px;
+    color:#173c43;
+    font-size:24px;
+    font-weight:bold;
+    transform:rotate(var(--angulo)) translateY(-118px) rotate(var(--anguloInverso));
+
+}
+
+.numeroRuleta1 { --angulo:22.5deg; --anguloInverso:-22.5deg; }
+.numeroRuleta2 { --angulo:67.5deg; --anguloInverso:-67.5deg; }
+.numeroRuleta3 { --angulo:112.5deg; --anguloInverso:-112.5deg; }
+.numeroRuleta4 { --angulo:157.5deg; --anguloInverso:-157.5deg; }
+.numeroRuleta5 { --angulo:202.5deg; --anguloInverso:-202.5deg; }
+.numeroRuleta6 { --angulo:247.5deg; --anguloInverso:-247.5deg; }
+.numeroRuleta7 { --angulo:292.5deg; --anguloInverso:-292.5deg; }
+.numeroRuleta8 { --angulo:337.5deg; --anguloInverso:-337.5deg; }
+
+.centroRuleta {
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:70px;
+    height:70px;
+    margin:-35px;
+    background:#fff;
+    border:6px solid #173c43;
+    border-radius:50%;
+    font-size:30px;
+
+}
+
+.resultadoRuleta {
+
+    min-height:28px;
+    margin:30px 0 16px;
+    font-size:20px;
+    font-weight:bold;
+
+}
+
+.controlesRuleta {
+
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+
+}
+
+.controlesRuleta button:disabled {
+
+    cursor:not-allowed;
+    opacity:.55;
+
+}
