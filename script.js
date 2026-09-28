@@ -53,6 +53,10 @@ const seccionTaTeTi = document.getElementById("seccionTaTeTi");
 const btnConfiguracion = document.getElementById("btnConfiguracion");
 const seccionConfiguracion = document.getElementById("seccionConfiguracion");
 const btnVolverConfiguracion = document.getElementById("btnVolverConfiguracion");
+const btnC = document.getElementById("btnC");
+const btnFondo = document.getElementById("btnFondo");
+const seccionContadorEnergia = document.getElementById("seccionContadorEnergia");
+const btnVolverContadorEnergia = document.getElementById("btnVolverContadorEnergia");
 const btnTiendaDinoSad = document.getElementById("btnTiendaDinoSad");
 const seccionTiendaDinoSad = document.getElementById("seccionTiendaDinoSad");
 const btnVolverTiendaDinoSad = document.getElementById("btnVolverTiendaDinoSad");
@@ -62,9 +66,25 @@ const btnVolverDinoMonedas = document.getElementById("btnVolverDinoMonedas");
 const btnVerFondo = document.getElementById("btnVerFondo");
 const seccionElegirFondo = document.getElementById("seccionElegirFondo");
 const btnVolverElegirFondo = document.getElementById("btnVolverElegirFondo");
+const btnFondoPantalla = document.getElementById("btnFondoPantalla");
+const btnFondoChat = document.getElementById("btnFondoChat");
+const seccionModosFondo = document.getElementById("seccionModosFondo");
+const btnVolverModosFondo = document.getElementById("btnVolverModosFondo");
+const btnElegirFondoEstatico = document.getElementById("btnElegirFondoEstatico");
+const btnElegirFondoCambiante = document.getElementById("btnElegirFondoCambiante");
 const btnVerSonido = document.getElementById("btnVerSonido");
 const seccionConfigSonido = document.getElementById("seccionConfigSonido");
 const btnVolverConfigSonido = document.getElementById("btnVolverConfigSonido");
+const btnVerColeccion = document.getElementById("btnVerColeccion");
+const seccionColeccion = document.getElementById("seccionColeccion");
+const btnVolverColeccion = document.getElementById("btnVolverColeccion");
+const btnColeccionImagenes = document.getElementById("btnColeccionImagenes");
+const btnColeccionSkins = document.getElementById("btnColeccionSkins");
+const seccionColeccionImagenes = document.getElementById("seccionColeccionImagenes");
+const btnVolverColeccionImagenes = document.getElementById("btnVolverColeccionImagenes");
+const galeriaFondosColeccion = document.getElementById("galeriaFondosColeccion");
+const seccionColeccionSkins = document.getElementById("seccionColeccionSkins");
+const btnVolverColeccionSkins = document.getElementById("btnVolverColeccionSkins");
 const controlVolumenMusica = document.getElementById("controlVolumenMusica");
 const valorVolumenMusica = document.getElementById("valorVolumenMusica");
 const reproductorMusica = document.getElementById("musica");
@@ -259,9 +279,252 @@ if (btnVolverDinoMonedas && seccionTiendaDinoSad && seccionDinoMonedas) {
 	};
 }
 
+if (btnC && inicioDetras && seccionContadorEnergia) {
+	btnC.onclick = function () {
+		ocultarSeccionesNavegacion();
+		inicioDetras.style.display = "none";
+		seccionContadorEnergia.style.display = "block";
+
+		if (btnMoneda) {
+			btnMoneda.style.display = "none";
+		}
+	};
+}
+
+if (btnVolverContadorEnergia && inicioDetras && seccionContadorEnergia) {
+	btnVolverContadorEnergia.onclick = function () {
+		ocultarSeccionesNavegacion();
+		seccionContadorEnergia.style.display = "none";
+		inicioDetras.style.display = "block";
+	};
+}
+
+const energiaActual = 28.7;
+const energiaMeta = 30;
+const energiaFill = document.getElementById("energiaFill");
+const valorEnergia = document.getElementById("valorEnergia");
+
+if (energiaFill && valorEnergia) {
+	const porcentaje = Math.min((energiaActual / energiaMeta) * 100, 100);
+	energiaFill.style.width = porcentaje + "%";
+	valorEnergia.textContent = energiaActual.toFixed(1);
+}
+
+if (btnVerColeccion && seccionConfiguracion && seccionColeccion) {
+	btnVerColeccion.onclick = function () {
+		seccionConfiguracion.style.display = "none";
+		seccionColeccion.style.display = "block";
+	};
+}
+
+if (btnVolverColeccion && seccionConfiguracion && seccionColeccion) {
+	btnVolverColeccion.onclick = function () {
+		seccionColeccion.style.display = "none";
+		seccionConfiguracion.style.display = "block";
+	};
+}
+
+function abrirVisorConFondo(fondoUrl, textoAlternativo) {
+	const visor = document.getElementById("visor");
+	const imagenGrande = document.getElementById("imagenGrande");
+	const accionesFondo = document.getElementById("accionesFondoVisor");
+
+	if (!visor || !imagenGrande || !fondoUrl) {
+		return;
+	}
+
+	if (typeof contenidoAbierto !== "undefined") {
+		contenidoAbierto = null;
+	}
+
+	imagenGrande.src = fondoUrl;
+	imagenGrande.alt = textoAlternativo || "Fondo de colección";
+	if (accionesFondo) {
+		accionesFondo.style.display = typeof window.esFondoProtegido === "function" && window.esFondoProtegido(fondoUrl)
+			? "none"
+			: "block";
+	}
+	visor.style.display = "flex";
+}
+
+function ocultarAccionesFondoVisor() {
+	const accionesFondo = document.getElementById("accionesFondoVisor");
+	if (accionesFondo) accionesFondo.style.display = "none";
+}
+
+const btnElegirFondoVisor = document.getElementById("btnElegirFondoVisor");
+const btnSacarFondoVisor = document.getElementById("btnSacarFondoVisor");
+
+if (btnElegirFondoVisor) {
+	btnElegirFondoVisor.onclick = function (event) {
+		event.stopPropagation();
+		if (typeof window.elegirFondoPersonalizado === "function") {
+			window.elegirFondoPersonalizado(document.getElementById("imagenGrande").src);
+		}
+	};
+}
+
+if (btnSacarFondoVisor) {
+	btnSacarFondoVisor.onclick = function (event) {
+		event.stopPropagation();
+		if (typeof window.sacarFondoPersonalizado === "function") {
+			window.sacarFondoPersonalizado();
+		}
+	};
+}
+
+function cerrarVisorColeccion() {
+	const visor = document.getElementById("visor");
+	if (visor) {
+		visor.style.display = "none";
+	}
+}
+
+if (document.getElementById("visor")) {
+	document.getElementById("visor").onclick = function (event) {
+		if (event.target === document.getElementById("visor") || event.target === document.getElementById("contenidoVisor")) {
+			cerrarVisorColeccion();
+		}
+	};
+
+	if (document.getElementById("contenidoVisor")) {
+		document.getElementById("contenidoVisor").onclick = function (event) {
+			event.stopPropagation();
+		};
+	}
+}
+
+function renderGaleriaFondosColeccion() {
+	if (!galeriaFondosColeccion) return;
+
+	const fondosDisponibles = Array.isArray(window.fondos) && window.fondos.length
+		? window.fondos
+		: ["dino.jpg", "dino1.jpg", "dino2.jpg", "dino3.jpg", "dino4.jpg", "dino5.jpg"];
+
+	galeriaFondosColeccion.innerHTML = "";
+
+	fondosDisponibles.forEach(function (fondo, index) {
+		const card = document.createElement("div");
+		card.className = "card coleccion-imagen-card";
+		card.style.cursor = "pointer";
+
+		const numero = document.createElement("div");
+		numero.className = "numero-fondo";
+		numero.textContent = String(index + 1);
+
+		const imagen = document.createElement("img");
+		imagen.className = "miniatura-fondo fondo-coleccion-imagen";
+		imagen.src = fondo;
+		imagen.alt = "Fondo " + (index + 1);
+		imagen.loading = "lazy";
+		imagen.style.cursor = "pointer";
+
+		imagen.onclick = function (event) {
+			event.stopPropagation();
+			abrirVisorConFondo(imagen.src, imagen.alt);
+		};
+
+		card.appendChild(numero);
+		card.appendChild(imagen);
+		galeriaFondosColeccion.appendChild(card);
+	});
+
+	function abrirTiendaDesdeColeccion() {
+		seccionColeccionImagenes.style.display = "none";
+		seccionTiendaDinoSad.style.display = "block";
+		if (btnFondo) btnFondo.style.display = "none";
+		if (btnMoneda) btnMoneda.style.display = "block";
+	}
+
+	const cardMas = document.createElement("div");
+	cardMas.className = "card coleccion-imagen-card coleccion-mas-card";
+	cardMas.style.cursor = "pointer";
+	cardMas.innerHTML = `
+		<div class="numero-fondo">+</div>
+		<div class="miniatura-fondo miniatura-plus">
+			<button class="btn-mas" aria-label="Conseguir más">+</button>
+		</div>
+		<p class="texto-conseguir-mas">Conseguir más</p>
+	`;
+	const botonMas = cardMas.querySelector(".btn-mas");
+	if (botonMas) {
+		botonMas.onclick = function (event) {
+			event.stopPropagation();
+			abrirTiendaDesdeColeccion();
+		};
+	}
+	cardMas.onclick = function () {
+		abrirTiendaDesdeColeccion();
+	};
+	galeriaFondosColeccion.appendChild(cardMas);
+}
+
+if (btnColeccionImagenes && seccionColeccion && seccionColeccionImagenes) {
+	btnColeccionImagenes.onclick = function () {
+		seccionColeccion.style.display = "none";
+		seccionColeccionImagenes.style.display = "block";
+		if (btnFondo) btnFondo.style.display = "none";
+		renderGaleriaFondosColeccion();
+	};
+}
+
+if (btnVolverColeccionImagenes && seccionColeccion && seccionColeccionImagenes) {
+	btnVolverColeccionImagenes.onclick = function () {
+		seccionColeccionImagenes.style.display = "none";
+		seccionColeccion.style.display = "block";
+		if (btnFondo) btnFondo.style.display = "none";
+	};
+}
+
+if (btnColeccionSkins && seccionColeccion && seccionColeccionSkins) {
+	btnColeccionSkins.onclick = function () {
+		seccionColeccion.style.display = "none";
+		seccionColeccionSkins.style.display = "block";
+	};
+}
+
+if (btnVolverColeccionSkins && seccionColeccion && seccionColeccionSkins) {
+	btnVolverColeccionSkins.onclick = function () {
+		seccionColeccionSkins.style.display = "none";
+		seccionColeccion.style.display = "block";
+	};
+}
+
+if (btnFondo && seccionColeccionImagenes && seccionElegirFondo) {
+	btnFondo.onclick = function () {
+		seccionColeccionImagenes.style.display = "none";
+		seccionElegirFondo.dataset.origen = "imagenes";
+		seccionModosFondo.style.display = "none";
+		seccionElegirFondo.style.display = "block";
+		btnFondo.style.display = "none";
+	};
+}
+
 if (btnVerFondo && seccionConfiguracion && seccionElegirFondo) {
 	btnVerFondo.onclick = function () {
 		seccionConfiguracion.style.display = "none";
+		seccionElegirFondo.dataset.origen = "configuracion";
+		seccionModosFondo.style.display = "none";
+		seccionElegirFondo.style.display = "block";
+	};
+}
+
+if (btnFondoPantalla && seccionElegirFondo && seccionModosFondo) {
+	btnFondoPantalla.onclick = function () {
+		seccionElegirFondo.style.display = "none";
+		seccionModosFondo.style.display = "block";
+	};
+}
+
+if (btnFondoChat) {
+	btnFondoChat.onclick = function () {
+		alert("La configuración del fondo del chat estará disponible próximamente.");
+	};
+}
+
+if (btnVolverModosFondo && seccionElegirFondo && seccionModosFondo) {
+	btnVolverModosFondo.onclick = function () {
+		seccionModosFondo.style.display = "none";
 		seccionElegirFondo.style.display = "block";
 	};
 }
@@ -269,7 +532,41 @@ if (btnVerFondo && seccionConfiguracion && seccionElegirFondo) {
 if (btnVolverElegirFondo && seccionConfiguracion && seccionElegirFondo) {
 	btnVolverElegirFondo.onclick = function () {
 		seccionElegirFondo.style.display = "none";
+		if (seccionElegirFondo.dataset.origen === "imagenes") {
+			seccionColeccionImagenes.style.display = "block";
+			if (btnFondo) btnFondo.style.display = "none";
+		} else {
+			seccionConfiguracion.style.display = "block";
+		}
+	};
+}
+
+function volverDesdeSeleccionFondo() {
+	seccionModosFondo.style.display = "none";
+	seccionElegirFondo.style.display = "none";
+	if (seccionElegirFondo.dataset.origen === "imagenes") {
+		seccionColeccionImagenes.style.display = "block";
+		if (btnFondo) btnFondo.style.display = "none";
+	} else {
 		seccionConfiguracion.style.display = "block";
+	}
+}
+
+if (btnElegirFondoEstatico) {
+	btnElegirFondoEstatico.onclick = function () {
+		if (typeof window.cambiarModoFondo === "function") {
+			window.cambiarModoFondo("estatico");
+		}
+		volverDesdeSeleccionFondo();
+	};
+}
+
+if (btnElegirFondoCambiante) {
+	btnElegirFondoCambiante.onclick = function () {
+		if (typeof window.cambiarModoFondo === "function") {
+			window.cambiarModoFondo("cambiante");
+		}
+		volverDesdeSeleccionFondo();
 	};
 }
 

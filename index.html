@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="fondos.css">
     <link rel="stylesheet" href="botones.css">
     <link rel="stylesheet" href="stickers.css">
+    <link rel="stylesheet" href="ruleta.css">
+    <link rel="stylesheet" href="contenido.css">
     <link rel="stylesheet" href="detras.css">
     <link rel="stylesheet" href="puzzle.css">
     <link rel="stylesheet" href="dinos_asistente.css">
@@ -45,6 +47,10 @@ BOTONES SUPERIORES
 
 <button id="btnC" aria-label="C">
     C
+</button>
+
+<button id="btnFondo" aria-label="Fondo">
+    Fondo
 </button>
 
 <button id="btnMoneda" aria-label="Moneda">
@@ -232,6 +238,78 @@ DINO MONEDAS
     </button>
 
 </div>
+
+<div id="seccionContadorEnergia" style="display:none;">
+
+    <h1>👥 Seguidores</h1>
+
+    <div class="card energia-card">
+
+        <div class="energia-row">
+
+            <div class="energia-meter">
+                <div class="energia-barra">
+                    <div id="energiaFill" class="energia-fill"></div>
+                </div>
+                <div id="valorEnergia" class="energia-valor">28.7</div>
+            </div>
+
+            <div class="energia-meta">
+                <span>30k</span>
+                <small>(meta)</small>
+            </div>
+
+        </div>
+
+        <p class="energia-texto">Llegando a la meta</p>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverContadorEnergia" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+
+<div id="seccionRuletaDinoSad" style="display:none;">
+
+    <h1>🎡 Ruleta DinoSad</h1>
+
+    <div class="ruleta-panel">
+
+        <div class="indicadorRuleta" aria-hidden="true"></div>
+
+        <div id="ruletaDinoSad" class="ruletaDinoSad" aria-label="Ruleta con números del 1 al 8">
+            <span class="numeroRuleta numeroRuleta1">1</span>
+            <span class="numeroRuleta numeroRuleta2">2</span>
+            <span class="numeroRuleta numeroRuleta3">3</span>
+            <span class="numeroRuleta numeroRuleta4">4</span>
+            <span class="numeroRuleta numeroRuleta5">5</span>
+            <span class="numeroRuleta numeroRuleta6">6</span>
+            <span class="numeroRuleta numeroRuleta7">7</span>
+            <span class="numeroRuleta numeroRuleta8">8</span>
+            <span class="centroRuleta" aria-hidden="true">🦖</span>
+        </div>
+
+        <p id="resultadoRuleta" class="resultadoRuleta" aria-live="polite">
+            Elegí cuántos giros querés hacer.
+        </p>
+
+        <div class="controlesRuleta">
+            <button class="verde" id="btnUnGiro" type="button">1 giro</button>
+            <button class="azul" id="btnTresGiros" type="button">3 giros</button>
+        </div>
+
+    </div>
+
+    <button id="btnVolverRuletaDinoSad" class="azul" type="button">
+        ⬅ Volver a la tienda
+    </button>
+
+</div>
+
 <!--==============================
 CONFIGURACIÓN
 ===============================-->
@@ -314,6 +392,82 @@ CONFIGURACIÓN
     </button>
 
 </div>
+
+<div id="seccionColeccion" style="display:none;">
+
+    <h1>🎯 Colección</h1>
+
+    <p>Elegí qué querés ver.</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>🖼️ Imágenes</h2>
+            <p>Tu galería de imágenes.</p>
+            <button class="verde" id="btnColeccionImagenes">
+                Ver
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>🎨 Skins</h2>
+            <p>Tu colección de skins.</p>
+            <button class="azul" id="btnColeccionSkins">
+                Ver
+            </button>
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverColeccion" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+
+<div id="seccionColeccionImagenes" style="display:none;">
+
+    <h1>🖼️ Imágenes</h1>
+
+    <div class="grid" id="galeriaFondosColeccion"></div>
+
+    <br>
+
+    <button id="btnVolverColeccionImagenes" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
+
+<div id="seccionColeccionSkins" style="display:none;">
+
+    <h1>🎨 Tus skins</h1>
+
+    <div class="card">
+        <h2>Tus skins</h2>
+
+        <button class="verde" id="btnColeccionCartas">
+            Cartas
+        </button>
+
+        <button class="azul" id="btnColeccionSkinsLista">
+            Skins
+        </button>
+
+        <button class="morado" id="btnColeccionAvatar">
+            Avatar
+        </button>
+    </div>
+
+    <br>
+
+    <button id="btnVolverColeccionSkins" class="azul">
+        ⬅ Volver
+    </button>
+
+</div>
 <!--==============================
 STICKERS
 ===============================-->
@@ -352,28 +506,54 @@ STICKERS
     
     <div id="seccionElegirFondo" style="display:none;">
     
-        <h1>🌄 Elegir fondo</h1>
-    
+        <h1>🌄 Fondos de DinoSad</h1>
+
         <div class="card">
-    
-            <h2>🌄 Elegir fondo</h2>
-    
+            <h2>Fondos de DinoSad</h2>
             <button class="azul" id="btnFondoPantalla">
                 Pantalla
             </button>
-    
             <button class="azul" id="btnFondoChat">
                 Chat
             </button>
-    
         </div>
-    
+
         <br>
-    
+
         <button id="btnVolverElegirFondo" class="azul">
             ⬅ Volver
         </button>
-    
+
+    </div>
+
+    <div id="seccionModosFondo" style="display:none;">
+
+        <h1>🌄 Fondo de pantalla</h1>
+
+        <div class="grid">
+
+            <div class="card">
+                <h2>Fondo estático</h2>
+                <button class="azul" id="btnElegirFondoEstatico">
+                    Elegir
+                </button>
+            </div>
+
+            <div class="card">
+                <h2>Fondo cambiante</h2>
+                <button class="azul" id="btnElegirFondoCambiante">
+                    Elegir
+                </button>
+            </div>
+
+        </div>
+
+        <br>
+
+        <button id="btnVolverModosFondo" class="azul">
+            ⬅ Volver
+        </button>
+
     </div>
     <!--==============================
     STICKERS
@@ -486,9 +666,29 @@ STICKERS
         <h1>🆕 Nuevos Stickers</h1>
     
         <p>
-            Aquí aparecerán los stickers y packs
-            agregados recientemente.
+            Subí un sticker nuevo. El número que tenga su nombre
+            decide a qué colección se enviará: 1 Ale, 2 Leo, 3 Nico y 4 Theys Dinos.
         </p>
+
+        <div class="card clasificadorStickersCard">
+
+            <h2>Clasificar sticker nuevo</h2>
+
+            <label for="inputStickersNuevos">Elegí una o varias imágenes</label>
+
+            <input
+                id="inputStickersNuevos"
+                type="file"
+                accept="image/*"
+                multiple>
+
+            <p id="estadoClasificadorStickers" aria-live="polite">
+                El nombre debe incluir el número 1, 2, 3 o 4. Ejemplo: sticker-ale-1.png.
+            </p>
+
+            <div id="resultadoClasificadorStickers"></div>
+
+        </div>
     
         <div class="grid">
     
@@ -2744,95 +2944,109 @@ CONTACTO
 
 <div id="seccionContacto" style="display:none;">
 
-```
-<h1>📩 Contacto</h1>
+    <h1>📩 Contacto</h1>
 
-<p>¿Quieres enviarme un mensaje?</p>
+    <p>¿Quieres enviarme un mensaje?</p>
 
-<div class="card">
+    <div class="card">
 
-    <h2>📩 Formulario</h2>
+        <h2>📩 Formulario</h2>
 
-    <p>Déjame tus datos o un comentario.</p>
+        <p>Déjame tus datos o un comentario.</p>
 
-    <form id="formularioContacto">
+        <form id="formularioContacto">
 
-        <input
-            type="text"
-            id="nombreContacto"
-            name="nombre"
-            placeholder="Escribe tu nombre"
-            required>
+            <input
+                type="text"
+                id="nombreContacto"
+                name="nombre"
+                placeholder="Escribe tu nombre"
+                maxlength="60"
+                required>
 
-        <br><br>
+            <br><br>
 
-        <input
-            type="number"
-            id="edadContacto"
-            name="edad"
-            placeholder="Tu edad"
-            min="1"
-            required>
+            <input
+                type="number"
+                id="edadContacto"
+                name="edad"
+                placeholder="Tu edad"
+                min="1"
+                max="120"
+                required>
 
-        <br><br>
+            <br><br>
 
-        <input
-            type="email"
-            id="correoContacto"
-            name="correo"
-            placeholder="Correo electrónico"
-            required>
+            <input
+                type="email"
+                id="correoContacto"
+                name="correo"
+                placeholder="Correo electrónico"
+                maxlength="100"
+                required>
 
-        <br><br>
+            <br><br>
 
-        <select
-            id="motivoContacto"
-            name="motivo"
-            required>
+            <select
+                id="motivoContacto"
+                name="motivo"
+                required>
 
-            <option value="">Selecciona una opción</option>
-            <option value="Quiero colaborar">Quiero colaborar</option>
-            <option value="Quiero saludar">Quiero saludar</option>
-            <option value="Tengo una sugerencia">Tengo una sugerencia</option>
+                <option value="">Selecciona una opción</option>
+                <option value="Quiero colaborar">Quiero colaborar</option>
+                <option value="Quiero saludar">Quiero saludar</option>
+                <option value="Tengo una sugerencia">Tengo una sugerencia</option>
 
-        </select>
+            </select>
 
-        <br><br>
+            <br><br>
 
-        <textarea
-            id="comentarioContacto"
-            name="comentario"
-            rows="4"
-            placeholder="Escribe tu comentario..."
-            required></textarea>
+            <textarea
+                id="comentarioContacto"
+                name="comentario"
+                rows="4"
+                placeholder="Escribe tu comentario..."
+                maxlength="1000"
+                required></textarea>
 
-        <br><br>
+            <!-- Campo anti-spam: las personas no lo ven, los bots lo llenan -->
+            <input
+                type="text"
+                id="sitioWebContacto"
+                name="sitioWeb"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                style="position:absolute; left:-9999px;">
 
-        <button
-            type="submit"
-            id="btnEnviarContacto"
-            class="verde">
+            <br><br>
 
-            Enviar
+            <button
+                type="submit"
+                id="btnEnviarContacto"
+                class="verde">
 
-        </button>
+                Enviar
 
-        <p id="mensajeContacto"></p>
+            </button>
 
-    </form>
+            <p><small>Uso estos datos solo para responderte.</small></p>
 
-</div>
+            <p id="mensajeContacto"></p>
 
-<br>
+        </form>
 
-<button
-    id="btnVolverContacto"
-    class="azul">
+    </div>
 
-    ⬅ Volver
+    <br>
 
-</button>
-```
+    <button
+        id="btnVolverContacto"
+        class="azul">
+
+        ⬅ Volver
+
+    </button>
 
 </div>
 <!--==============================
@@ -2853,7 +3067,7 @@ CONTENIDO
 
         <p>Mis videos cortos.</p>
 
-        <button class="verde">
+        <button class="verde" id="btnVerShorts" type="button">
             Ver Shorts
         </button>
 
@@ -2865,7 +3079,7 @@ CONTENIDO
 
         <p>Videos completos.</p>
 
-        <button class="azul">
+        <button class="azul" id="btnVerVideos" type="button">
             Ver Videos
         </button>
 
@@ -2891,6 +3105,73 @@ CONTENIDO
     ⬅ Volver
 </button>
 </div>
+
+<div id="seccionVideos" style="display:none;">
+
+    <h1>📺 Videos</h1>
+
+    <p>Videos completos de DinoSad.</p>
+
+    <div class="grid" id="galeriaVideos">
+
+        <div class="card tarjetaVerMasVideos" id="tarjetaVerMasVideos" role="link" tabindex="0">
+
+            <h2>📱 Ver más videos</h2>
+
+            <video src="capitulo2.mp4" muted autoplay loop playsinline></video>
+
+            <p>Mirá más videos en TikTok.</p>
+
+            <button class="rojo" id="btnVerMasVideos" type="button">
+                Ver más en TikTok
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverVideos" class="azul" type="button">
+        ⬅ Volver a Contenido
+    </button>
+
+</div>
+
+<div id="seccionShorts" style="display:none;">
+
+    <h1>🎥 Shorts</h1>
+
+    <p>Videos cortos de DinoSad.</p>
+
+    <div class="grid" id="galeriaShorts">
+
+        <div class="card tarjetaVerMasTikTok" id="tarjetaVerMasTikTok" role="link" tabindex="0">
+
+            <h2>📱 Ver más</h2>
+
+            <div class="previewsTikTok" aria-label="Vistas previas de videos">
+                <video src="shot1.mp4" muted autoplay loop playsinline></video>
+                <video src="shot2.mp4" muted autoplay loop playsinline></video>
+                <video src="short4.mp4" muted autoplay loop playsinline></video>
+            </div>
+
+            <p>Mirá más Shorts en TikTok.</p>
+
+            <button class="rojo" id="btnVerMasTikTok" type="button">
+                Ver más en TikTok
+            </button>
+
+        </div>
+    </div>
+
+    <br>
+
+    <button id="btnVolverShorts" class="azul" type="button">
+        ⬅ Volver a Contenido
+    </button>
+
+</div>
 <!--==============================
 DESTACADOS
 ===============================-->
@@ -2907,9 +3188,9 @@ DESTACADOS
 
             <h2>⭐ Destacado #1</h2>
 
-            <p>Próximamente.</p>
+            <p>Videos con más destacados.</p>
 
-            <button class="verde">
+            <button class="verde" id="btnVerDestacadosDec" type="button">
                 Ver
             </button>
 
@@ -2919,9 +3200,9 @@ DESTACADOS
 
             <h2>⭐ Destacado #2</h2>
 
-            <p>Próximamente.</p>
+            <p>Videos con más likes.</p>
 
-            <button class="azul">
+            <button class="azul" id="btnVerDestacadosLikes" type="button">
                 Ver
             </button>
 
@@ -2938,6 +3219,70 @@ DESTACADOS
     </button>
 
 </div>
+
+<div id="seccionDestacadosDec" style="display:none;">
+
+    <h1>⭐ Destacados</h1>
+
+    <p>Videos destacados de DinoSad.</p>
+
+    <div class="grid" id="galeriaDestacadosDec">
+
+        <div class="card tarjetaVerMasDestacados" id="tarjetaVerMasDestacadosDec" role="link" tabindex="0">
+
+            <h2>📱 Ver más destacados</h2>
+
+            <video src="dec1.mp4" muted autoplay loop playsinline></video>
+
+            <p>Mirá más destacados en TikTok.</p>
+
+            <button class="rojo" id="btnVerMasDestacadosDec" type="button">
+                Ver más en TikTok
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverDestacadosDec" class="azul" type="button">
+        ⬅ Volver a Destacados
+    </button>
+
+</div>
+
+<div id="seccionDestacadosLikes" style="display:none;">
+
+    <h1>❤️ Más Likes</h1>
+
+    <p>Videos con más likes de DinoSad.</p>
+
+    <div class="grid" id="galeriaDestacadosLikes">
+
+        <div class="card tarjetaVerMasDestacados" id="tarjetaVerMasDestacadosLikes" role="link" tabindex="0">
+
+            <h2>📱 Ver más destacados</h2>
+
+            <video src="mas like1.mp4" muted autoplay loop playsinline></video>
+
+            <p>Mirá más videos con likes en TikTok.</p>
+
+            <button class="rojo" id="btnVerMasDestacadosLikes" type="button">
+                Ver más en TikTok
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button id="btnVolverDestacadosLikes" class="azul" type="button">
+        ⬅ Volver a Destacados
+    </button>
+
+</div>
 <!--==============================
 PUBLICACIONES
 ===============================-->
@@ -2948,7 +3293,7 @@ PUBLICACIONES
 
     <p>Mis publicaciones y novedades.</p>
 
-    <div class="grid">
+    <div class="grid" id="tarjetasPublicaciones">
 
         <div class="card">
 
@@ -2985,6 +3330,56 @@ PUBLICACIONES
             </button>
 
         </div>
+
+    </div>
+
+    <div id="detalleNovedades" class="publicacion-detalle" style="display:none;">
+
+        <h2>🌐 Redes de DinoSad</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <h2>🎵 TikTok</h2>
+                <p>Videos y contenido corto de DinoSad.</p>
+                <button class="verde" id="btnVerTikTokPublicaciones">Ver</button>
+            </div>
+
+            <div class="card">
+                <h2>📸 Instagram</h2>
+                <p>Fotos, novedades y publicaciones.</p>
+                <button class="azul" id="btnVerInstagramPublicaciones">Ver</button>
+            </div>
+
+            <div class="card">
+                <h2>▶️ YouTube</h2>
+                <p>Videos y proyectos de DinoSad.</p>
+                <button class="rojo" id="btnVerYoutubePublicaciones">Ver</button>
+            </div>
+
+        </div>
+
+        <button class="azul" id="btnVolverDetallePublicaciones">⬅ Volver a publicaciones</button>
+
+    </div>
+
+    <div id="detalleDinoSad" class="publicacion-detalle" style="display:none;">
+
+        <div class="card publicacion-resumen">
+            <h2>🦖 Conocé DinoSad Web</h2>
+            <p>
+                DinoSad Web es un espacio con contenido, historias y juegos de DinoSad.
+                Podés conocer el detrás de escena, leer historias, ver publicaciones,
+                descubrir stickers y explorar novedades.
+            </p>
+            <p>
+                También incluye mini juegos como Memory, rompecabezas, Ta-Te-Ti y ruleta,
+                además de una tienda, fondos, música, colección de imágenes, contacto y
+                un asistente de chat para acompañar tu recorrido por la página.
+            </p>
+        </div>
+
+        <button class="azul" id="btnVolverDetalleDinoSad">⬅ Volver a publicaciones</button>
 
     </div>
 
@@ -3127,7 +3522,7 @@ CHAT DE LOS DINOS
 MÚSICA
 ===============================-->
 
-<audio id="musica" loop>
+<audio id="musica">
 
     <source src="prueba.mp3" type="audio/mpeg">
 
@@ -3145,24 +3540,14 @@ VISOR GENERAL DE STICKERS
             src=""
             alt="Sticker ampliado">
 
-        <div id="accionesVisor">
-
-            <button
-                class="verde"
-                id="btnVisorDescargar">
-
-                ⬇️ Descargar
-
+        <div id="accionesFondoVisor" style="display:none;">
+            <button class="verde" id="btnElegirFondoVisor">
+                Elegir
             </button>
 
-            <button
-                class="azul"
-                id="btnVisorCompartir">
-
-                📤 Compartir
-
+            <button class="rojo" id="btnSacarFondoVisor">
+                Sacar
             </button>
-
         </div>
 
     </div>
@@ -3175,13 +3560,17 @@ JAVASCRIPT
 <script src="musica.js"></script>
 <script src="fondos.js"></script>
 <script src="stickers.js"></script>
+<script src="clasificador-stickers.js"></script>
 <script src="stickers-ale.js"></script>
 <script src="stickers-leo.js"></script>
 <script src="stickers_nico.js"></script>
 <script src="stickers_theys_dinos.js"></script>
 <script src="contacto.js"></script>
 <script src="contenido.js"></script>
+<script src="shorts.js"></script>
+<script src="videos.js"></script>
 <script src="destacados.js"></script>
+<script src="destacados-galerias.js"></script>
 <script src="publicaciones.js"></script>
 <script src="historias.js"></script>
 <script src="nuevos.js"></script>
@@ -3199,6 +3588,7 @@ JAVASCRIPT
 <script src="prueba_gemini.js"></script>
 
 <script src="script.js"></script>
+<script src="ruleta.js"></script>
 <!-- ROMPECABEZAS -->
 <script src="puzzle.js"></script>
 <script src="puzzle_niveles.js"></script>
