@@ -568,8 +568,35 @@ let contenidoAbierto =
 
 let todosLosContenidos =
     document.querySelectorAll(
-        ".sticker, .packImagen"
+        ".sticker, .packImagen, .fondo-coleccion-imagen"
     );
+
+
+document.addEventListener(
+    "click",
+    function (evento) {
+
+        const contenido =
+            evento.target.closest(
+                ".fondo-coleccion-imagen"
+            );
+
+        if (!contenido) {
+            return;
+        }
+
+        if (!visor || !imagenGrande) {
+            return;
+        }
+
+        contenidoAbierto = contenido;
+        const accionesFondo = document.getElementById("accionesFondoVisor");
+        if (accionesFondo) accionesFondo.style.display = "none";
+        imagenGrande.src = contenido.src;
+        imagenGrande.alt = contenido.alt;
+        visor.style.display = "flex";
+    }
+);
 
 
 // ==================================================
@@ -612,7 +639,6 @@ todosLosContenidos.forEach(
 
                 }
 
-
                 // Si es un contenedor de pack,
                 // buscamos la imagen dentro.
 
@@ -646,6 +672,9 @@ todosLosContenidos.forEach(
 
                 contenidoAbierto =
                     imagenReal;
+
+                const accionesFondo = document.getElementById("accionesFondoVisor");
+                if (accionesFondo) accionesFondo.style.display = "none";
 
 
                 // =====================================
@@ -1102,34 +1131,3 @@ function abrirCompartirDesdeVisor() {
 
 }
 
-
-// ==================================================
-// BOTÓN DESCARGAR DEL VISOR
-// ==================================================
-
-if (btnVisorDescargar) {
-
-    btnVisorDescargar.onclick =
-        function () {
-
-            abrirDescargaDesdeVisor();
-
-        };
-
-}
-
-
-// ==================================================
-// BOTÓN COMPARTIR DEL VISOR
-// ==================================================
-
-if (btnVisorCompartir) {
-
-    btnVisorCompartir.onclick =
-        function () {
-
-            abrirCompartirDesdeVisor();
-
-        };
-
-}

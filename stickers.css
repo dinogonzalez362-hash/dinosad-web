@@ -8,6 +8,55 @@
 
 }
 
+.clasificadorStickersCard input[type="file"]{
+
+    display:block;
+    width:100%;
+    max-width:420px;
+    margin:12px auto;
+
+}
+
+.clasificadorStickersCard{
+
+    display:none;
+
+}
+
+#estadoClasificadorStickers{
+
+    min-height:24px;
+
+}
+
+#resultadoClasificadorStickers{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:12px;
+    margin-top:16px;
+
+}
+
+.resultadoSticker{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px;
+    border:1px solid rgba(0,0,0,.15);
+    border-radius:8px;
+
+}
+
+.resultadoSticker img{
+
+    width:70px;
+    height:70px;
+    object-fit:contain;
+
+}
+
 /* ==========================
    STICKERS
    ========================== */
@@ -933,7 +982,11 @@
 
     border-radius:35px;
 
-    background:#
+    background:#303030;
+
+}
+
+
     /* ==========================
    VISOR WHATSAPP - LEO
    ========================== */
