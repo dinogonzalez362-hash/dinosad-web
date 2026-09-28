@@ -1,27 +1,45 @@
 //==================================
-// GEMINI - DINOSAD WEB
+// GEMINI - DINOSAD WEB (cliente v2)
 // Conexión segura mediante Vercel
+// Solo se envía: mensaje, dinoId e historial corto.
+// La personalidad vive en api/_dinos.js
 //==================================
 
 let geminiConectado = true;
+
+const MAX_HISTORIAL = 8;
+
+// Historial en memoria, uno por dino: { rol: "user" | "model", texto }
+const historialGemini = {};
+
+
+//==================================
+// MOSTRAR MENSAJE DEL DINO
+//==================================
+
+function mostrarMensajeDino(texto) {
+
+    if (typeof agregarMensajeDino === "function") {
+        agregarMensajeDino(texto, "dino");
+    }
+
+}
+
+
+//==================================
+// PEDIR RESPUESTA
+//==================================
 
 async function obtenerRespuestaGemini(mensaje, dino) {
 
     if (!mensaje || !dino) return;
 
     if (!geminiConectado) {
-
-        if (typeof agregarMensajeDino === "function") {
-
-            agregarMensajeDino(
-                "⚠️ Gemini está desconectado.",
-                "dino"
-            );
-
-        }
-
+        mostrarMensajeDino("⚠️ Gemini está desconectado.");
         return;
     }
+
+    const historial = historialGemini[dino.id] || [];
 
     try {
 
@@ -29,94 +47,60 @@ async function obtenerRespuestaGemini(mensaje, dino) {
 
             method: "POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
 
             body: JSON.stringify({
-
                 mensaje: mensaje,
-
-                dino: {
-
-                    nombre: dino.nombre,
-
-                    personalidad:
-                        dino.personalidad || "",
-
-                    formaDeHablar:
-                        dino.formaDeHablar || "",
-
-                    relacionConHermanos:
-                        dino.relacionConHermanos || "",
-
-                    instruccionesGemini:
-                        dino.instruccionesGemini || ""
-
-                }
-
+                dinoId: dino.id,
+                historial: historial
             })
 
         });
 
-        const data = await response.json();
+        // Si /api/gemini no existe (por ejemplo en el editor),
+        // la respuesta no es JSON: lo manejamos sin mostrar errores raros.
+        let data = null;
 
-        if (!response.ok) {
+        try {
+            data = await response.json();
+        } catch (e) {
+            data = null;
+        }
 
+        if (!response.ok || !data) {
             throw new Error(
-                data.error ||
-                "No se pudo conectar con Gemini"
+                (data && data.error) || "Sin conexión con el servidor"
             );
-
         }
 
         const respuestaTexto = data.respuesta;
 
         if (respuestaTexto) {
 
-            if (typeof agregarMensajeDino === "function") {
+            // Guardamos la charla para que el dino recuerde lo anterior
+            historial.push({ rol: "user", texto: mensaje });
+            historial.push({ rol: "model", texto: respuestaTexto });
 
-                agregarMensajeDino(
-                    respuestaTexto,
-                    "dino"
-                );
+            historialGemini[dino.id] = historial.slice(-MAX_HISTORIAL);
 
-            }
+            mostrarMensajeDino(respuestaTexto);
 
         } else {
 
-            if (typeof agregarMensajeDino === "function") {
-
-                agregarMensajeDino(
-
-                    `¡Rawr! ${dino.nombre} se distrajo. ¡Probá de nuevo!`,
-
-                    "dino"
-
-                );
-
-            }
+            mostrarMensajeDino(
+                `¡Rawr! ${dino.nombre} se distrajo. ¡Probá de nuevo!`
+            );
 
         }
 
     } catch (err) {
 
-        console.error(
-            "Error de Gemini:",
-            err
+        // El detalle técnico queda en la consola, no en el chat
+        console.error("Error de Gemini:", err);
+
+        mostrarMensajeDino(
+            `😴 ${dino.nombre} no puede hablar ahora. ¡Probá de nuevo en un rato!`
         );
-
-        if (typeof agregarMensajeDino === "function") {
-
-            agregarMensajeDino(
-
-                `❌ ¡Ups! ${dino.nombre} tuvo un problema: ${err.message}`,
-
-                "dino"
-
-            );
-
-        }
 
     }
 
@@ -128,23 +112,15 @@ async function obtenerRespuestaGemini(mensaje, dino) {
 //==================================
 
 function activarGemini() {
-
     geminiConectado = true;
-
 }
-
 
 function desactivarGemini() {
-
     geminiConectado = false;
-
 }
 
-
 function estaGeminiConectado() {
-
     return geminiConectado;
-
 }
 
 
@@ -152,14 +128,7 @@ function estaGeminiConectado() {
 // EXPORTAMOS FUNCIONES
 //==================================
 
-window.obtenerRespuestaGemini =
-    obtenerRespuestaGemini;
-
-window.activarGemini =
-    activarGemini;
-
-window.desactivarGemini =
-    desactivarGemini;
-
-window.estaGeminiConectado =
-    estaGeminiConectado;
+window.obtenerRespuestaGemini = obtenerRespuestaGemini;
+window.activarGemini = activarGemini;
+window.desactivarGemini = desactivarGemini;
+window.estaGeminiConectado = estaGeminiConectado;
