@@ -1,0 +1,136 @@
+.short-card {
+
+    overflow:hidden;
+
+}
+
+.short-card video {
+
+    display:block;
+    width:100%;
+    max-width:420px;
+    margin:0 auto;
+    border-radius:8px;
+    background:#111;
+
+}
+
+.short-card h3 {
+
+    margin:14px 0 0;
+
+}
+
+.tarjetaVerMasTikTok {
+
+    cursor:pointer;
+    transition:transform .2s ease;
+
+}
+
+.tarjetaVerMasTikTok:hover,
+.tarjetaVerMasTikTok:focus-visible {
+
+    transform:translateY(-4px);
+
+}
+
+.previewsTikTok {
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+    margin:12px 0;
+
+}
+
+.previewsTikTok video {
+
+    display:block;
+    width:100%;
+    aspect-ratio:9 / 16;
+    object-fit:cover;
+    border-radius:6px;
+    background:#111;
+
+}
+
+.video-card {
+
+    overflow:hidden;
+
+}
+
+.video-card video,
+.tarjetaVerMasVideos > video {
+
+    display:block;
+    width:100%;
+    max-width:420px;
+    aspect-ratio:16 / 9;
+    margin:0 auto;
+    object-fit:cover;
+    border-radius:8px;
+    background:#111;
+
+}
+
+.video-card h3 {
+
+    margin:14px 0 0;
+
+}
+
+.tarjetaVerMasVideos {
+
+    cursor:pointer;
+    transition:transform .2s ease;
+
+}
+
+.tarjetaVerMasVideos:hover,
+.tarjetaVerMasVideos:focus-visible {
+
+    transform:translateY(-4px);
+
+}
+
+.destacado-card {
+
+    overflow:hidden;
+
+}
+
+.destacado-card video,
+.tarjetaVerMasDestacados > video {
+
+    display:block;
+    width:100%;
+    max-width:420px;
+    aspect-ratio:16 / 9;
+    margin:0 auto;
+    object-fit:cover;
+    border-radius:8px;
+    background:#111;
+
+}
+
+.destacado-card h3 {
+
+    margin:14px 0 0;
+
+}
+
+.tarjetaVerMasDestacados {
+
+    cursor:pointer;
+    transition:transform .2s ease;
+
+}
+
+.tarjetaVerMasDestacados:hover,
+.tarjetaVerMasDestacados:focus-visible {
+
+    transform:translateY(-4px);
+
+}
