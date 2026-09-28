@@ -64,6 +64,40 @@
 
 }
 
+#btnFondo{
+
+    position:fixed;
+
+    top:65px;
+    left:136px;
+
+    z-index:10001;
+
+    display:none;
+
+    width:72px;
+    height:42px;
+
+    margin:0;
+
+    padding:0;
+
+    background:#22a06b;
+
+    color:#fff;
+
+    border:2px solid #fff;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
 #btnMoneda{
 
     position:fixed;
