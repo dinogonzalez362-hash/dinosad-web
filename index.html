@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="tateti.css">
 <link rel="stylesheet" href="historia.css">
 <link rel="stylesheet" href="comics.css">
+<link rel="stylesheet" href="tienda.css">
 </head>
 
 <body>
@@ -54,7 +55,7 @@ BOTONES SUPERIORES
 </button>
 
 <button id="btnMoneda" aria-label="Moneda">
-    🪙
+    🪙 <span id="saldoDinoMonedasBoton">0</span>
 </button>
 
 <button id="btnAsistencia">
@@ -225,7 +226,7 @@ DINO MONEDAS
 
         <p>Tenés:</p>
 
-        <strong>0</strong>
+        <strong id="saldoDinoMonedas">0</strong>
 
         <p>monedas</p>
 
@@ -251,7 +252,7 @@ DINO MONEDAS
                 <div class="energia-barra">
                     <div id="energiaFill" class="energia-fill"></div>
                 </div>
-                <div id="valorEnergia" class="energia-valor">28.7</div>
+                <div id="valorEnergia" class="energia-valor">28.6</div>
             </div>
 
             <div class="energia-meta">
@@ -281,25 +282,31 @@ DINO MONEDAS
 
         <div class="indicadorRuleta" aria-hidden="true"></div>
 
-        <div id="ruletaDinoSad" class="ruletaDinoSad" aria-label="Ruleta con números del 1 al 8">
-            <span class="numeroRuleta numeroRuleta1">1</span>
-            <span class="numeroRuleta numeroRuleta2">2</span>
-            <span class="numeroRuleta numeroRuleta3">3</span>
-            <span class="numeroRuleta numeroRuleta4">4</span>
-            <span class="numeroRuleta numeroRuleta5">5</span>
-            <span class="numeroRuleta numeroRuleta6">6</span>
-            <span class="numeroRuleta numeroRuleta7">7</span>
-            <span class="numeroRuleta numeroRuleta8">8</span>
+        <div id="ruletaDinoSad" class="ruletaDinoSad" aria-label="Ruleta con premios de DinoSad">
+            <span class="premioRuleta premioRuleta1"><span>10</span><small>🪙</small></span>
+            <span class="premioRuleta premioRuleta2"><img src="dino.jpg" alt=""><small>Fondo</small></span>
+            <span class="premioRuleta premioRuleta3"><span>30</span><small>🪙</small></span>
+            <span class="premioRuleta premioRuleta4"><span>🎟️</span><small>Ticket</small></span>
+            <span class="premioRuleta premioRuleta5"><span>50</span><small>🪙</small></span>
+            <span class="premioRuleta premioRuleta6"><img src="stiker1.png" alt=""><small>Skin</small></span>
+            <span class="premioRuleta premioRuleta7"><span>100</span><small>🪙</small></span>
+            <span class="premioRuleta premioRuleta8"><span>🎟️</span><small>Ticket</small></span>
             <span class="centroRuleta" aria-hidden="true">🦖</span>
         </div>
 
+        <p class="estadoRuleta">
+            🪙 Saldo: <strong id="saldoRuleta">0</strong>
+            · 🎟️ Tickets: <strong id="ticketsRuleta">0</strong>
+            · Usos disponibles hoy: <strong id="usosRuleta">3</strong>/3
+        </p>
+
         <p id="resultadoRuleta" class="resultadoRuleta" aria-live="polite">
-            Elegí cuántos giros querés hacer.
+            El primer giro individual es gratis. Tenés hasta 3 usos cada 24 horas.
         </p>
 
         <div class="controlesRuleta">
-            <button class="verde" id="btnUnGiro" type="button">1 giro</button>
-            <button class="azul" id="btnTresGiros" type="button">3 giros</button>
+            <button class="verde" id="btnUnGiro" type="button">1 giro · gratis</button>
+            <button class="azul" id="btnTresGiros" type="button">3 giros · 100 monedas</button>
         </div>
 
     </div>
@@ -307,6 +314,18 @@ DINO MONEDAS
     <button id="btnVolverRuletaDinoSad" class="azul" type="button">
         ⬅ Volver a la tienda
     </button>
+
+    <dialog id="modalPremioRuleta" class="modalPremioRuleta" aria-labelledby="tituloPremioRuleta">
+        <div class="contenidoModalPremioRuleta">
+            <button id="btnCerrarPremioRuleta" class="cerrarModalPremioRuleta" type="button" aria-label="Cerrar">
+                &times;
+            </button>
+            <h2 id="tituloPremioRuleta">¡Felicitaciones!</h2>
+            <p id="mensajePremioRuleta">¡Conseguiste un premio!</p>
+            <div id="premiosObtenidosRuleta" class="premiosObtenidosRuleta"></div>
+            <button id="btnAceptarPremioRuleta" class="verde" type="button">¡Genial!</button>
+        </div>
+    </dialog>
 
 </div>
 
@@ -319,6 +338,9 @@ CONFIGURACIÓN
     <h1>🛍️ Tienda DinoSad</h1>
 
     <p>Elegí qué querés ver.</p>
+    <p class="contador-tickets-tienda" aria-live="polite">
+        🎟️ Tickets disponibles: <strong id="ticketsTienda">0</strong>
+    </p>
 
     <div class="grid">
 
@@ -346,6 +368,72 @@ CONFIGURACIÓN
         ⬅ Volver
     </button>
 
+</div>
+
+<div id="seccionCatalogoTienda" style="display:none;">
+
+    <h1>🛍️ Catálogo DinoSad</h1>
+
+    <p>Explorá las cosas que vas a poder conseguir para DinoSad.</p>
+
+    <div class="grid catalogo-tienda">
+
+        <article class="card producto-tienda">
+            <h2>🖼️ Fondos</h2>
+            <p>Imágenes para personalizar el fondo de la página.</p>
+            <div class="vista-previa-tienda" data-vista-previa="fondos"></div>
+            <button class="verde btnVerCategoriaTienda" data-categoria="fondos" type="button">Ver colección</button>
+        </article>
+
+        <article class="card producto-tienda">
+            <h2>👕 Ropa para el modo historia</h2>
+            <p>Prendas y estilos para personalizar a tu personaje.</p>
+            <div class="vista-previa-tienda" data-vista-previa="ropa"></div>
+            <button class="verde btnVerCategoriaTienda" data-categoria="ropa" type="button">Ver colección</button>
+        </article>
+
+        <article class="card producto-tienda">
+            <h2>🃏 Cartas</h2>
+            <p>Cartas coleccionables de los personajes de DinoSad.</p>
+            <div class="vista-previa-tienda" data-vista-previa="cartas"></div>
+            <button class="verde btnVerCategoriaTienda" data-categoria="cartas" type="button">Ver colección</button>
+        </article>
+
+        <article class="card producto-tienda">
+            <h2>🧩 Imágenes para rompecabezas</h2>
+            <p>Nuevas imágenes para armar en el juego de rompecabezas.</p>
+            <div class="vista-previa-tienda" data-vista-previa="rompecabezas"></div>
+            <button class="verde btnVerCategoriaTienda" data-categoria="rompecabezas" type="button">Ver colección</button>
+        </article>
+
+        <article class="card producto-tienda">
+            <h2>🎨 Skins para fichas</h2>
+            <p>Diseños para cambiar la apariencia de las fichas de juego.</p>
+            <div class="vista-previa-tienda" data-vista-previa="skins"></div>
+            <button class="verde btnVerCategoriaTienda" data-categoria="skins" type="button">Ver colección</button>
+        </article>
+
+    </div>
+
+    <button id="btnVolverCatalogoTienda" class="azul" type="button">
+        ⬅ Volver a Tienda DinoSad
+    </button>
+
+</div>
+
+<div id="seccionGaleriaTienda" style="display:none;">
+    <h1 id="tituloGaleriaTienda">Colección</h1>
+    <p id="descripcionGaleriaTienda"></p>
+    <div id="filtrosTienda" class="filtros-tienda" role="group" aria-label="Filtrar artículos por estado">
+        <button class="azul filtro-tienda-activo" type="button" data-filtro-tienda="todos" aria-pressed="true">Todos</button>
+        <button class="azul" type="button" data-filtro-tienda="obtenidos" aria-pressed="false">Obtenidos</button>
+        <button class="azul" type="button" data-filtro-tienda="pendientes" aria-pressed="false">No obtenidos</button>
+    </div>
+    <p id="resumenColeccionTienda" class="resumen-coleccion-tienda" aria-live="polite"></p>
+    <div class="grid" id="galeriaProductosTienda"></div>
+    <button id="btnVolverGaleriaTienda" class="azul" type="button">
+        ⬅ Volver al catálogo
+    </button>
 </div>
 <!--==============================
 CONFIGURACIÓN
@@ -410,8 +498,8 @@ CONFIGURACIÓN
         </div>
 
         <div class="card">
-            <h2>🎨 Skins</h2>
-            <p>Tu colección de skins.</p>
+            <h2>🎯 Colección</h2>
+            <p>Tus cartas, skins y avatares.</p>
             <button class="azul" id="btnColeccionSkins">
                 Ver
             </button>
@@ -443,23 +531,30 @@ CONFIGURACIÓN
 
 <div id="seccionColeccionSkins" style="display:none;">
 
-    <h1>🎨 Tus skins</h1>
+    <h1>🎯 Colección</h1>
 
-    <div class="card">
-        <h2>Tus skins</h2>
+    <div class="card" id="opcionesColeccionItems">
+        <h2>Elegí qué querés ver</h2>
 
-        <button class="verde" id="btnColeccionCartas">
+        <button class="verde" id="btnColeccionCartas" type="button">
             Cartas
         </button>
 
-        <button class="azul" id="btnColeccionSkinsLista">
+        <button class="azul" id="btnColeccionSkinsLista" type="button">
             Skins
         </button>
 
-        <button class="morado" id="btnColeccionAvatar">
+        <button class="morado" id="btnColeccionAvatar" type="button">
             Avatar
         </button>
     </div>
+
+    <button id="btnVolverCategoriasColeccion" class="azul" type="button" style="display:none;">
+        ⬅ Volver a categorías
+    </button>
+
+    <h2 id="tituloItemsColeccion" aria-live="polite"></h2>
+    <div class="grid" id="galeriaItemsColeccion"></div>
 
     <br>
 
@@ -2668,11 +2763,25 @@ JUEGO DE TA-TE-TI DINOSAD
     </div>
 
     <!-- PANTALLA 3: ELECCIÓN DE DINO (Solo Modo Fácil) -->
-    <div id="tatetiPasoDino" class="card" style="display:none;">
+    <div id="tatetiPasoDino" class="tateti-seleccion-dinos" style="display:none;">
         <h2>Elegí tu Dino</h2>
-        <button id="btnDinoAle" class="verde">🦖 Ale</button>
-        <button id="btnDinoLeo" class="rojo">🐯 Leo</button>
-        <button id="btnDinoNico" class="azul">🦄 Nico</button>
+        <div class="tateti-dinos-grid">
+            <article class="tateti-dino-card">
+                <img src="dino1.jpg" alt="Dino Ale">
+                <h3>Ale</h3>
+                <button id="btnDinoAle" class="verde tateti-elegir-dino" type="button">Elegir</button>
+            </article>
+            <article class="tateti-dino-card">
+                <img src="dino3.jpg" alt="Dino Leo">
+                <h3>Leo</h3>
+                <button id="btnDinoLeo" class="rojo tateti-elegir-dino" type="button">Elegir</button>
+            </article>
+            <article class="tateti-dino-card">
+                <img src="dino4.jpg" alt="Dino Nico">
+                <h3>Nico</h3>
+                <button id="btnDinoNico" class="azul tateti-elegir-dino" type="button">Elegir</button>
+            </article>
+        </div>
     </div>
 
     <!-- PANTALLA 4: TABLERO DE JUEGO -->
@@ -2739,42 +2848,80 @@ DETRÁS DE DINOSAD
     </button>
 
 </div>
-<!--==============================
-MODO HISTORIA DINOSAD
-===============================-->
 <div id="seccionModoHistoria" style="display:none;">
+<!-- PANTALLA 1: CREAR PERSONAJE -->
+<!-- Reemplaza desde aquí hasta la vista previa del avatar.
+     NO cierra este div: lo que sigue (botón "Comenzar Capítulo 1",
+     su </div> y el camino del capítulo) queda igual que lo tienes. -->
 
-    <!-- PANTALLA 1: CREAR PERSONAJE -->
-    <div id="pasoCrearPersonaje" class="card">
-        <h2>👤 Crea tu Personaje</h2>
-        
-        <label>Nombre:</label>
-        <input type="text" id="nombreAvatar" placeholder="Tu nombre..." value="Aventurero">
+<div id="pasoCrearPersonaje" class="card">
 
-        <br><br>
-        <label>Género:</label>
-        <div>
-            <button type="button" class="azul btn-genero seleccionado" data-genero="chico">👦 Chico</button>
-            <button type="button" class="morado btn-genero" data-genero="chica">👧 Chica</button>
+    <h2>👤 Crea tu Personaje</h2>
+
+    <!-- VISTA PREVIA DEL AVATAR (arriba, para verla mientras eliges) -->
+    <div id="vistaPreviaAvatar" class="avatar-box chico piel-clara cabello-negro estilo-corto ropa-roja">
+
+        <div class="avatar-personaje">
+            <div class="avatar-cabello"></div>
+            <img class="avatar-base" src="avatar de frente.jpg" alt="Avatar del personaje de frente">
+            <div class="avatar-ropa-imagen"></div>
+            <img class="avatar-rostro" src="avatar de frente.jpg" alt="">
+            <div class="avatar-cabello-frente"></div>
         </div>
 
-        <br>
-        <label>Ropa / Style:</label>
-        <div>
-            <button type="button" class="btn-ropa" data-ropa="roja">🔴 Ropa Roja</button>
-            <button type="button" class="btn-ropa" data-ropa="azul">🔵 Ropa Azul</button>
-            <button type="button" class="btn-ropa" data-ropa="verde">🟢 Ropa Verde</button>
-        </div>
-
-        <br>
-        <!-- Vista previa del avatar -->
-        <div id="vistaPreviaAvatar" class="avatar-box chico ropa-roja">
-            <span id="demoEmojiAvatar">👦</span>
-        </div>
-
-        <br>
-        <button id="btnComenzarHistoria" class="verde">🚀 Comenzar Capítulo 1</button>
     </div>
+
+    <!-- NOMBRE -->
+    <label>Nombre:</label>
+    <input type="text" id="nombreAvatar" placeholder="Tu nombre..." value="Aventurero">
+
+    <!-- GÉNERO -->
+    <label>Género:</label>
+    <div class="opciones">
+        <button type="button" class="azul btn-genero seleccionado" data-genero="chico">👦 Chico</button>
+        <button type="button" class="morado btn-genero" data-genero="chica">👧 Chica</button>
+    </div>
+
+    <!-- COLOR DE PIEL -->
+    <label>Color de piel:</label>
+    <div class="opciones">
+        <button type="button" class="btn-piel seleccionado" data-piel="clara">🟡 Clara</button>
+        <button type="button" class="btn-piel" data-piel="media">🟤 Media</button>
+        <button type="button" class="btn-piel" data-piel="oscura">🟫 Oscura</button>
+    </div>
+
+    <!-- CABELLO -->
+    <label>Cabello:</label>
+    <div class="opciones">
+        <button type="button" class="btn-cabello seleccionado" data-cabello="negro">⚫ Negro</button>
+        <button type="button" class="btn-cabello" data-cabello="castaño">🟤 Castaño</button>
+        <button type="button" class="btn-cabello" data-cabello="rubio">🟡 Rubio</button>
+        <button type="button" class="btn-cabello" data-cabello="rojo">🔴 Rojo</button>
+    </div>
+
+    <!-- ESTILO DE CABELLO -->
+    <label>Estilo de cabello:</label>
+    <div class="opciones">
+        <button type="button" class="btn-estilo-cabello seleccionado" data-estilo-cabello="corto">✂️ Corto</button>
+        <button type="button" class="btn-estilo-cabello" data-estilo-cabello="largo">💇 Largo</button>
+        <button type="button" class="btn-estilo-cabello" data-estilo-cabello="puntiagudo">⚡ Puntiagudo</button>
+    </div>
+
+    <!-- ROPA -->
+    <label>Ropa / Estilo:</label>
+    <div class="opciones">
+        <button type="button" class="btn-ropa seleccionado" data-ropa="roja">🔴 Ropa Roja</button>
+        <button type="button" class="btn-ropa" data-ropa="azul">🔵 Ropa Azul</button>
+        <button type="button" class="btn-ropa" data-ropa="verde">🟢 Ropa Verde</button>
+    </div>
+
+    <br>
+
+<button id="btnComenzarHistoria" class="verde">
+    🚀 Comenzar Capítulo 1
+</button>
+
+</div>
 
     <!-- PANTALLA 2: CAMINO DEL CAPÍTULO -->
     <div id="pasoCaminoCapitulo" style="display:none;">
@@ -2782,6 +2929,15 @@ MODO HISTORIA DINOSAD
         <div class="card panel-puntos">
             <h3>📖 <span id="tituloCapitulo">Capítulo 1: El Origen de DinoSad</span></h3>
             <p>Jugador: <strong id="lblNombreJugador">Aventurero</strong> | Progreso: <strong id="lblProgreso">0%</strong></p>
+            <div id="avatarJugadorHistoria" class="avatar-box avatar-con-imagen avatar-historia chico piel-clara cabello-negro estilo-corto ropa-roja" aria-label="Avatar del jugador">
+                <div class="avatar-personaje">
+                    <div class="avatar-cabello"></div>
+                    <img class="avatar-base" src="avatar de frente.jpg" alt="">
+                    <div class="avatar-ropa-imagen"></div>
+                    <img class="avatar-rostro" src="avatar de frente.jpg" alt="">
+                    <div class="avatar-cabello-frente"></div>
+                </div>
+            </div>
         </div>
 
         <!-- EL CAMINO LINEAL CON MISIONES -->
@@ -3409,11 +3565,10 @@ NUEVOS
             <h2>🆕 Nueva publicación</h2>
 
             <p>
-                Próximamente encontrarás
-                aquí mi contenido más reciente.
+                Mirá mis videos en mi cuenta de TikTok.
             </p>
 
-            <button class="verde">
+            <button class="verde" id="btnVerNuevaPublicacion">
                 Ver publicación
             </button>
 
@@ -3498,9 +3653,25 @@ CHAT DE LOS DINOS
         <!-- ESCRIBIR -->
 <div id="entradaChatDino">
 
-    <button id="btnMicrofonoDino">
+    <button id="btnMicrofonoDino" type="button" aria-label="Opciones de voz" aria-haspopup="true" aria-expanded="false">
         🎙️
     </button>
+
+    <div id="menuVozDino" role="menu" aria-label="Opciones de voz" hidden>
+        <button id="btnEnviarAudioDino" type="button" role="menuitem">
+            🎧 Mandar audio
+        </button>
+        <button id="btnDictadoDino" type="button" role="menuitem">
+            🗣️ Hablar por audio
+        </button>
+        <p>Mandar audio envía una nota de voz. Hablar por audio transcribe lo que dices para que puedas revisarlo y enviarlo.</p>
+    </div>
+
+    <div id="estadoVozDino" role="status" aria-live="polite" hidden>
+        <span id="textoEstadoVozDino"></span>
+        <button id="btnFinalizarVozDino" type="button" hidden>Terminar</button>
+        <button id="btnCancelarVozDino" type="button" hidden>Cancelar</button>
+    </div>
 
     <input
         type="text"
@@ -3540,6 +3711,8 @@ VISOR GENERAL DE STICKERS
             src=""
             alt="Sticker ampliado">
 
+        <button id="btnCerrarVisorColeccion" type="button" aria-label="Cerrar imagen">✕</button>
+
         <div id="accionesFondoVisor" style="display:none;">
             <button class="verde" id="btnElegirFondoVisor">
                 Elegir
@@ -3576,6 +3749,7 @@ JAVASCRIPT
 <script src="nuevos.js"></script>
 <script src="nuevos_stikers.js"></script>
 <script src="dinos_datos.js"></script>
+<script src="dinos_ia_local.js"></script>
 <script src="dinos_asistente.js"></script>
 
 <script src="dinos_chat_guardado.js"></script>
@@ -3588,6 +3762,8 @@ JAVASCRIPT
 <script src="prueba_gemini.js"></script>
 
 <script src="script.js"></script>
+<script src="tienda-productos.js"></script>
+<script src="tienda.js"></script>
 <script src="ruleta.js"></script>
 <!-- ROMPECABEZAS -->
 <script src="puzzle.js"></script>
