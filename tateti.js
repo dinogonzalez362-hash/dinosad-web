@@ -196,11 +196,23 @@ document.addEventListener("DOMContentLoaded", () => {
     function evaluarEstadoJuego() {
         setTimeout(() => {
             if (modoJuego === "1vs1") {
-                alert(puntosJugador > puntosIA ? "¡Felicidades, ganaste el 1vs1! 🏆" : `${dinoIA} ganó el 1vs1. 🎉`);
+                if (puntosJugador > puntosIA) {
+                    const monedasGanadas = window.otorgarRecompensaDinoSad();
+                    const mensajeRecompensa = monedasGanadas > 0
+                        ? `Ganaste ${monedasGanadas} Dino monedas. 🪙`
+                        : "No se pudo guardar la recompensa. Intentá nuevamente.";
+                    alert(`¡Felicidades, ganaste el 1vs1! 🏆\n${mensajeRecompensa}`);
+                } else {
+                    alert(`${dinoIA} ganó el 1vs1. 🎉`);
+                }
                 resetearMenu();
             } else if (modoJuego === "torneo") {
                 if (puntosJugador >= 2) {
-                    alert("¡CAMPEÓN DEL TORNEO! 🏆🎉");
+                    const monedasGanadas = window.otorgarRecompensaDinoSad();
+                    const mensajeRecompensa = monedasGanadas > 0
+                        ? `Ganaste ${monedasGanadas} Dino monedas. 🪙`
+                        : "No se pudo guardar la recompensa. Intentá nuevamente.";
+                    alert(`¡CAMPEÓN DEL TORNEO! 🏆🎉\n${mensajeRecompensa}`);
                     resetearMenu();
                 } else if (puntosIA >= 2) {
                     alert(`${dinoIA} ha ganado el Torneo. 🎉`);

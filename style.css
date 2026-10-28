@@ -519,3 +519,138 @@ button:hover{
     }
 
 }
+/* ==========================================
+AVATAR DEL MODO HISTORIA
+========================================== */
+
+.avatar-personaje {
+position: relative;
+width: 90px;
+height: 150px;
+margin: auto;
+}
+
+/* CABEZA */
+
+.avatar-cabeza {
+position: relative;
+width: 58px;
+height: 58px;
+margin: auto;
+}
+
+.avatar-cara {
+position: absolute;
+width: 52px;
+height: 52px;
+top: 5px;
+left: 3px;
+border-radius: 50%;
+background: #f2c29b;
+border: 2px solid #333;
+}
+
+/* CABELLO */
+
+.avatar-cabello {
+position: absolute;
+width: 58px;
+height: 27px;
+top: 0;
+left: 0;
+border-radius: 30px 30px 10px 10px;
+background: #3b2418;
+z-index: 2;
+}
+
+/* CUERPO */
+
+.avatar-cuerpo {
+position: relative;
+width: 60px;
+height: 55px;
+margin: 4px auto 0;
+}
+
+.avatar-ropa {
+width: 60px;
+height: 55px;
+border-radius: 15px 15px 8px 8px;
+background: #d62828;
+border: 2px solid #333;
+}
+
+/* BRAZOS */
+
+.avatar-cuerpo::before,
+.avatar-cuerpo::after {
+content: "";
+position: absolute;
+width: 15px;
+height: 45px;
+top: 5px;
+border-radius: 10px;
+background: #f2c29b;
+border: 2px solid #333;
+}
+
+.avatar-cuerpo::before {
+left: -14px;
+}
+
+.avatar-cuerpo::after {
+right: -14px;
+}
+
+/* PIERNAS */
+
+.avatar-piernas {
+display: flex;
+justify-content: center;
+gap: 5px;
+}
+
+.avatar-pierna {
+width: 22px;
+height: 38px;
+background: #333;
+border-radius: 5px;
+}
+
+/* ==========================================
+COLORES DE PIEL
+========================================== */
+
+.piel-clara .avatar-cara,
+.piel-clara .avatar-cuerpo::before,
+.piel-clara .avatar-cuerpo::after {
+background: #f2c29b;
+}
+
+.piel-media .avatar-cara,
+.piel-media .avatar-cuerpo::before,
+.piel-media .avatar-cuerpo::after {
+background: #c6865b;
+}
+
+.piel-oscura .avatar-cara,
+.piel-oscura .avatar-cuerpo::before,
+.piel-oscura .avatar-cuerpo::after {
+background: #75452d;
+}
+
+/* ==========================================
+COLORES DE ROPA
+========================================== */
+
+.ropa-roja .avatar-ropa {
+background: #d62828;
+}
+
+.ropa-azul .avatar-ropa {
+background: #2878d6;
+}
+
+.ropa-verde .avatar-ropa {
+background: #2e9d50;
+}
