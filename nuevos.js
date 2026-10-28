@@ -5,6 +5,7 @@
 // Botones
 const btnNuevos = document.getElementById("btnNuevos");
 const btnVolverNuevos = document.getElementById("btnVolverNuevos");
+const btnVerNuevaPublicacion = document.getElementById("btnVerNuevaPublicacion");
 
 // Secciones
 const inicioNuevos = document.getElementById("inicio");
@@ -40,4 +41,10 @@ if(btnVolverNuevos){
 
     };
 
+}
+
+if (btnVerNuevaPublicacion) {
+    btnVerNuevaPublicacion.onclick = function () {
+        window.open("https://www.tiktok.com/@dinosad.93", "_blank", "noopener,noreferrer");
+    };
 }

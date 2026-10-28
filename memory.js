@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let bloqueoTablero = false;
     let intentos = 0;
     let parejasEncontradas = 0;
+    let juegoCompletado = false;
 
     const tablero = document.getElementById("tableroMemoria");
     const txtIntentos = document.getElementById("contadorIntentos");
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bloqueoTablero = false;
         intentos = 0;
         parejasEncontradas = 0;
+        juegoCompletado = false;
         txtIntentos.textContent = intentos;
         txtParejas.textContent = `0/${cantidadParejas}`;
 
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function voltearCarta() {
-        if (bloqueoTablero || this === primeraCarta || this.classList.contains("emparejada")) return;
+        if (juegoCompletado || bloqueoTablero || this === primeraCarta || this.classList.contains("emparejada")) return;
 
         this.classList.add("volteada");
 
@@ -123,8 +125,16 @@ document.addEventListener("DOMContentLoaded", () => {
         resetearVariables();
 
         if (parejasEncontradas === cantidadParejas) {
+            juegoCompletado = true;
             detenerCronometroMemoria();
-            setTimeout(() => alert(`¡Felicidades! Ganaste en ${intentos} intentos. 🎉`), 500);
+            const monedasGanadas = window.otorgarRecompensaDinoSad();
+            const mensajeRecompensa = monedasGanadas > 0
+                ? `Ganaste ${monedasGanadas} Dino monedas. 🪙`
+                : "No se pudo guardar la recompensa. Intentá nuevamente.";
+            setTimeout(() => alert(
+                `¡Felicidades! Ganaste en ${intentos} intentos. 🎉\n` +
+                mensajeRecompensa
+            ), 500);
         }
     }
 
