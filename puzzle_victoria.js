@@ -36,10 +36,15 @@ function comprobarVictoria(){
         // Mensaje de victoria
         setTimeout(function(){
 
+            const monedasGanadas = window.otorgarRecompensaDinoSad();
+            const mensajeRecompensa = monedasGanadas > 0
+                ? "Ganaste " + monedasGanadas + " Dino monedas. 🪙"
+                : "No se pudo guardar la recompensa. Intentá nuevamente.";
             alert(
                 "🎉 ¡Felicitaciones!\n\n" +
                 "Completaste el rompecabezas en:\n" +
-                document.getElementById("cronometro").innerText
+                document.getElementById("cronometro").innerText +
+                "\n\n" + mensajeRecompensa
             );
 
         },150);

@@ -10,7 +10,7 @@
     margin:24px auto;
     padding:28px 16px;
     box-sizing:border-box;
-    background:rgba(255,255,255,.88);
+    background:transparent;
     border:3px solid #173c43;
     border-radius:12px;
 
@@ -54,32 +54,59 @@
 
 }
 
-.numeroRuleta {
+.premioRuleta {
 
     position:absolute;
     top:50%;
     left:50%;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    width:44px;
-    height:44px;
-    margin:-22px;
+    width:64px;
+    height:58px;
+    margin:-29px -32px;
     color:#173c43;
-    font-size:24px;
+    font-size:20px;
     font-weight:bold;
-    transform:rotate(var(--angulo)) translateY(-118px) rotate(var(--anguloInverso));
+    line-height:1;
+    text-shadow:0 1px 2px rgba(255,255,255,.9);
+    transform:rotate(var(--angulo)) translateY(-116px) rotate(var(--anguloInverso));
 
 }
 
-.numeroRuleta1 { --angulo:22.5deg; --anguloInverso:-22.5deg; }
-.numeroRuleta2 { --angulo:67.5deg; --anguloInverso:-67.5deg; }
-.numeroRuleta3 { --angulo:112.5deg; --anguloInverso:-112.5deg; }
-.numeroRuleta4 { --angulo:157.5deg; --anguloInverso:-157.5deg; }
-.numeroRuleta5 { --angulo:202.5deg; --anguloInverso:-202.5deg; }
-.numeroRuleta6 { --angulo:247.5deg; --anguloInverso:-247.5deg; }
-.numeroRuleta7 { --angulo:292.5deg; --anguloInverso:-292.5deg; }
-.numeroRuleta8 { --angulo:337.5deg; --anguloInverso:-337.5deg; }
+.premioRuleta img {
+
+    width:32px;
+    height:32px;
+    object-fit:cover;
+    border:2px solid #fff;
+    border-radius:50%;
+
+}
+
+.premioRuleta small {
+
+    margin-top:3px;
+    font-size:12px;
+
+}
+
+.premioRuleta1 { --angulo:22.5deg; --anguloInverso:-22.5deg; }
+.premioRuleta2 { --angulo:67.5deg; --anguloInverso:-67.5deg; }
+.premioRuleta3 { --angulo:112.5deg; --anguloInverso:-112.5deg; }
+.premioRuleta4 { --angulo:157.5deg; --anguloInverso:-157.5deg; }
+.premioRuleta5 { --angulo:202.5deg; --anguloInverso:-202.5deg; }
+.premioRuleta6 { --angulo:247.5deg; --anguloInverso:-247.5deg; }
+.premioRuleta7 { --angulo:292.5deg; --anguloInverso:-292.5deg; }
+.premioRuleta8 { --angulo:337.5deg; --anguloInverso:-337.5deg; }
+
+.estadoRuleta {
+
+    margin:18px 0 8px;
+    font-size:16px;
+
+}
 
 .centroRuleta {
 
@@ -121,5 +148,140 @@
 
     cursor:not-allowed;
     opacity:.55;
+
+}
+
+.modalPremioRuleta {
+
+    width:min(90vw,440px);
+    max-width:none;
+    padding:0;
+    color:#173c43;
+    background:transparent;
+    border:0;
+    overflow:visible;
+
+}
+
+.modalPremioRuleta::backdrop {
+
+    background:rgba(9,28,32,.72);
+    backdrop-filter:blur(3px);
+
+}
+
+.contenidoModalPremioRuleta {
+
+    position:relative;
+    padding:30px 24px 24px;
+    text-align:center;
+    background:#fff;
+    border:4px solid #ffc857;
+    border-radius:20px;
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
+    animation:entradaPremioRuleta .35s ease-out;
+
+}
+
+.contenidoModalPremioRuleta h2 {
+
+    margin:0 24px 8px;
+    color:#d97900;
+    font-size:clamp(24px,6vw,32px);
+
+}
+
+.contenidoModalPremioRuleta > p {
+
+    margin:0 0 18px;
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+.cerrarModalPremioRuleta {
+
+    position:absolute;
+    top:8px;
+    right:12px;
+    padding:0 6px;
+    color:#173c43;
+    background:transparent;
+    border:0;
+    font-size:30px;
+    line-height:1;
+    cursor:pointer;
+
+}
+
+.premiosObtenidosRuleta {
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    max-height:40vh;
+    margin-bottom:20px;
+    overflow:auto;
+
+}
+
+.tarjetaPremioRuleta {
+
+    display:flex;
+    flex:1 1 130px;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    min-width:120px;
+    max-width:180px;
+    min-height:130px;
+    padding:14px;
+    box-sizing:border-box;
+    background:#fff8e6;
+    border:2px solid #ffc857;
+    border-radius:14px;
+    font-weight:bold;
+
+}
+
+.tarjetaPremioRuleta img {
+
+    width:72px;
+    height:72px;
+    object-fit:cover;
+    border:3px solid #fff;
+    border-radius:50%;
+    box-shadow:0 2px 6px rgba(0,0,0,.2);
+
+}
+
+.iconoPremioRuleta {
+
+    font-size:52px;
+    line-height:1;
+
+}
+
+@keyframes entradaPremioRuleta {
+
+    from {
+        opacity:0;
+        transform:scale(.82) translateY(12px);
+    }
+
+    to {
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    .contenidoModalPremioRuleta {
+        animation:none;
+    }
 
 }

@@ -29,6 +29,9 @@ console.log("🦖 DinoSad Web iniciado correctamente.");
 // =====================================
 
 const inicioDetras = document.getElementById("inicio");
+const btnContacto = document.getElementById("btnContacto");
+const seccionContacto = document.getElementById("seccionContacto");
+const btnVolverContacto = document.getElementById("btnVolverContacto");
 const btnProceso = document.getElementById("btnProceso");
 const seccionDetras = document.getElementById("seccionDetras");
 const btnVolverDetras = document.getElementById("btnVolverDetras");
@@ -60,9 +63,12 @@ const btnVolverContadorEnergia = document.getElementById("btnVolverContadorEnerg
 const btnTiendaDinoSad = document.getElementById("btnTiendaDinoSad");
 const seccionTiendaDinoSad = document.getElementById("seccionTiendaDinoSad");
 const btnVolverTiendaDinoSad = document.getElementById("btnVolverTiendaDinoSad");
+const seccionCatalogoTienda = document.getElementById("seccionCatalogoTienda");
+const seccionGaleriaCatalogoTiendaNav = document.getElementById("seccionGaleriaTienda");
 const btnMoneda = document.getElementById("btnMoneda");
 const seccionDinoMonedas = document.getElementById("seccionDinoMonedas");
 const btnVolverDinoMonedas = document.getElementById("btnVolverDinoMonedas");
+let seccionAnteriorDinoMonedas = seccionTiendaDinoSad;
 const btnVerFondo = document.getElementById("btnVerFondo");
 const seccionElegirFondo = document.getElementById("seccionElegirFondo");
 const btnVolverElegirFondo = document.getElementById("btnVolverElegirFondo");
@@ -85,6 +91,13 @@ const btnVolverColeccionImagenes = document.getElementById("btnVolverColeccionIm
 const galeriaFondosColeccion = document.getElementById("galeriaFondosColeccion");
 const seccionColeccionSkins = document.getElementById("seccionColeccionSkins");
 const btnVolverColeccionSkins = document.getElementById("btnVolverColeccionSkins");
+const btnColeccionCartas = document.getElementById("btnColeccionCartas");
+const btnColeccionSkinsLista = document.getElementById("btnColeccionSkinsLista");
+const btnColeccionAvatar = document.getElementById("btnColeccionAvatar");
+const opcionesColeccionItems = document.getElementById("opcionesColeccionItems");
+const btnVolverCategoriasColeccion = document.getElementById("btnVolverCategoriasColeccion");
+const tituloItemsColeccion = document.getElementById("tituloItemsColeccion");
+const galeriaItemsColeccion = document.getElementById("galeriaItemsColeccion");
 const controlVolumenMusica = document.getElementById("controlVolumenMusica");
 const valorVolumenMusica = document.getElementById("valorVolumenMusica");
 const reproductorMusica = document.getElementById("musica");
@@ -94,6 +107,29 @@ function ocultarSeccionesNavegacion() {
 	seccionesNavegacion.forEach(function (seccion) {
 		seccion.style.display = "none";
 	});
+}
+
+function mostrarSeccionNavegacion(seccion) {
+	ocultarSeccionesNavegacion();
+	if (inicioDetras) {
+		inicioDetras.style.display = "none";
+	}
+	if (seccion) {
+		seccion.style.display = "block";
+	}
+}
+
+if (btnContacto && seccionContacto) {
+	btnContacto.onclick = function () {
+		mostrarSeccionNavegacion(seccionContacto);
+	};
+}
+
+if (btnVolverContacto && seccionContacto && inicioDetras) {
+	btnVolverContacto.onclick = function () {
+		ocultarSeccionesNavegacion();
+		inicioDetras.style.display = "block";
+	};
 }
 
 if (reproductorMusica) {
@@ -131,9 +167,28 @@ function abrirModoHistoria() {
 
 	seccionDetras.style.display = "none";
 	seccionModoHistoria.style.display = "block";
+
+	const pasoCrearPersonaje = document.getElementById("pasoCrearPersonaje");
+	const pasoCaminoCapitulo = document.getElementById("pasoCaminoCapitulo");
+	if (pasoCrearPersonaje) pasoCrearPersonaje.style.display = "block";
+	if (pasoCaminoCapitulo) pasoCaminoCapitulo.style.display = "none";
 }
 
-if (btnVerMapa) btnVerMapa.onclick = abrirModoHistoria;
+function abrirMapaHistoria() {
+	if (!seccionDetras || !seccionModoHistoria) {
+		return;
+	}
+
+	seccionDetras.style.display = "none";
+	seccionModoHistoria.style.display = "block";
+
+	const pasoCrearPersonaje = document.getElementById("pasoCrearPersonaje");
+	const pasoCaminoCapitulo = document.getElementById("pasoCaminoCapitulo");
+	if (pasoCrearPersonaje) pasoCrearPersonaje.style.display = "none";
+	if (pasoCaminoCapitulo) pasoCaminoCapitulo.style.display = "block";
+}
+
+if (btnVerMapa) btnVerMapa.onclick = abrirMapaHistoria;
 if (btnComenzarProgreso) btnComenzarProgreso.onclick = abrirModoHistoria;
 
 if (btnMemory && menuJuegosDinoSad && seccionMemoryNiveles) {
@@ -225,9 +280,7 @@ if (nivelTatetiDificil) nivelTatetiDificil.onclick = function () {
 
 if (btnConfiguracion && inicioDetras && seccionConfiguracion) {
 	btnConfiguracion.onclick = function () {
-		ocultarSeccionesNavegacion();
-		inicioDetras.style.display = "none";
-		seccionConfiguracion.style.display = "block";
+		mostrarSeccionNavegacion(seccionConfiguracion);
 
 		if (btnMoneda) {
 			btnMoneda.style.display = "none";
@@ -267,7 +320,19 @@ if (btnVolverTiendaDinoSad && inicioDetras && seccionTiendaDinoSad) {
 
 if (btnMoneda && seccionTiendaDinoSad && seccionDinoMonedas) {
 	btnMoneda.onclick = function () {
+		seccionAnteriorDinoMonedas = seccionGaleriaCatalogoTiendaNav
+			&& seccionGaleriaCatalogoTiendaNav.style.display !== "none"
+			? seccionGaleriaCatalogoTiendaNav
+			: seccionCatalogoTienda && seccionCatalogoTienda.style.display !== "none"
+				? seccionCatalogoTienda
+				: seccionTiendaDinoSad;
 		seccionTiendaDinoSad.style.display = "none";
+		if (seccionCatalogoTienda) {
+			seccionCatalogoTienda.style.display = "none";
+		}
+		if (seccionGaleriaCatalogoTiendaNav) {
+			seccionGaleriaCatalogoTiendaNav.style.display = "none";
+		}
 		seccionDinoMonedas.style.display = "block";
 	};
 }
@@ -275,7 +340,7 @@ if (btnMoneda && seccionTiendaDinoSad && seccionDinoMonedas) {
 if (btnVolverDinoMonedas && seccionTiendaDinoSad && seccionDinoMonedas) {
 	btnVolverDinoMonedas.onclick = function () {
 		seccionDinoMonedas.style.display = "none";
-		seccionTiendaDinoSad.style.display = "block";
+		seccionAnteriorDinoMonedas.style.display = "block";
 	};
 }
 
@@ -299,7 +364,7 @@ if (btnVolverContadorEnergia && inicioDetras && seccionContadorEnergia) {
 	};
 }
 
-const energiaActual = 28.7;
+const energiaActual = 28.6;
 const energiaMeta = 30;
 const energiaFill = document.getElementById("energiaFill");
 const valorEnergia = document.getElementById("valorEnergia");
@@ -312,15 +377,13 @@ if (energiaFill && valorEnergia) {
 
 if (btnVerColeccion && seccionConfiguracion && seccionColeccion) {
 	btnVerColeccion.onclick = function () {
-		seccionConfiguracion.style.display = "none";
-		seccionColeccion.style.display = "block";
+		mostrarSeccionNavegacion(seccionColeccion);
 	};
 }
 
 if (btnVolverColeccion && seccionConfiguracion && seccionColeccion) {
 	btnVolverColeccion.onclick = function () {
-		seccionColeccion.style.display = "none";
-		seccionConfiguracion.style.display = "block";
+		mostrarSeccionNavegacion(seccionConfiguracion);
 	};
 }
 
@@ -346,6 +409,26 @@ function abrirVisorConFondo(fondoUrl, textoAlternativo) {
 	}
 	visor.style.display = "flex";
 }
+
+function abrirTiendaDesdeColeccion() {
+	mostrarSeccionNavegacion(seccionTiendaDinoSad);
+	if (btnFondo) btnFondo.style.display = "none";
+	if (btnMoneda) btnMoneda.style.display = "block";
+}
+
+window.abrirVisorColeccion = function (imagenUrl, textoAlternativo) {
+	const visor = document.getElementById("visor");
+	const imagenGrande = document.getElementById("imagenGrande");
+
+	if (!visor || !imagenGrande || !imagenUrl) {
+		return;
+	}
+
+	imagenGrande.src = imagenUrl;
+	imagenGrande.alt = textoAlternativo || "Imagen de la colección";
+	ocultarAccionesFondoVisor();
+	visor.style.display = "flex";
+};
 
 function ocultarAccionesFondoVisor() {
 	const accionesFondo = document.getElementById("accionesFondoVisor");
@@ -378,6 +461,11 @@ function cerrarVisorColeccion() {
 	if (visor) {
 		visor.style.display = "none";
 	}
+}
+
+const btnCerrarVisorColeccion = document.getElementById("btnCerrarVisorColeccion");
+if (btnCerrarVisorColeccion) {
+	btnCerrarVisorColeccion.onclick = cerrarVisorColeccion;
 }
 
 if (document.getElementById("visor")) {
@@ -429,13 +517,6 @@ function renderGaleriaFondosColeccion() {
 		galeriaFondosColeccion.appendChild(card);
 	});
 
-	function abrirTiendaDesdeColeccion() {
-		seccionColeccionImagenes.style.display = "none";
-		seccionTiendaDinoSad.style.display = "block";
-		if (btnFondo) btnFondo.style.display = "none";
-		if (btnMoneda) btnMoneda.style.display = "block";
-	}
-
 	const cardMas = document.createElement("div");
 	cardMas.className = "card coleccion-imagen-card coleccion-mas-card";
 	cardMas.style.cursor = "pointer";
@@ -461,8 +542,7 @@ function renderGaleriaFondosColeccion() {
 
 if (btnColeccionImagenes && seccionColeccion && seccionColeccionImagenes) {
 	btnColeccionImagenes.onclick = function () {
-		seccionColeccion.style.display = "none";
-		seccionColeccionImagenes.style.display = "block";
+		mostrarSeccionNavegacion(seccionColeccionImagenes);
 		if (btnFondo) btnFondo.style.display = "none";
 		renderGaleriaFondosColeccion();
 	};
@@ -470,49 +550,156 @@ if (btnColeccionImagenes && seccionColeccion && seccionColeccionImagenes) {
 
 if (btnVolverColeccionImagenes && seccionColeccion && seccionColeccionImagenes) {
 	btnVolverColeccionImagenes.onclick = function () {
-		seccionColeccionImagenes.style.display = "none";
-		seccionColeccion.style.display = "block";
+		mostrarSeccionNavegacion(seccionColeccion);
 		if (btnFondo) btnFondo.style.display = "none";
 	};
 }
 
 if (btnColeccionSkins && seccionColeccion && seccionColeccionSkins) {
 	btnColeccionSkins.onclick = function () {
-		seccionColeccion.style.display = "none";
-		seccionColeccionSkins.style.display = "block";
+		mostrarSeccionNavegacion(seccionColeccionSkins);
+		if (opcionesColeccionItems) opcionesColeccionItems.style.display = "block";
+		if (btnVolverCategoriasColeccion) btnVolverCategoriasColeccion.style.display = "none";
+		if (tituloItemsColeccion) tituloItemsColeccion.textContent = "";
+		if (galeriaItemsColeccion) galeriaItemsColeccion.replaceChildren();
 	};
 }
 
 if (btnVolverColeccionSkins && seccionColeccion && seccionColeccionSkins) {
 	btnVolverColeccionSkins.onclick = function () {
-		seccionColeccionSkins.style.display = "none";
-		seccionColeccion.style.display = "block";
+		mostrarSeccionNavegacion(seccionColeccion);
+	};
+}
+
+function renderItemsColeccion(categoria, titulo, soloAvatares) {
+	if (!galeriaItemsColeccion || !tituloItemsColeccion) return;
+
+	if (opcionesColeccionItems) opcionesColeccionItems.style.display = "none";
+	if (btnVolverCategoriasColeccion) btnVolverCategoriasColeccion.style.display = "inline-block";
+	tituloItemsColeccion.textContent = titulo;
+	galeriaItemsColeccion.replaceChildren();
+
+	const productosObtenidos = typeof window.obtenerProductosObtenidosTienda === "function"
+		? window.obtenerProductosObtenidosTienda(categoria)
+		: [];
+	const productos = soloAvatares
+		? productosObtenidos.filter(function (producto) {
+			return producto.imagen.toLowerCase().startsWith("avatar ");
+		})
+		: productosObtenidos;
+
+	productos.forEach(function (producto, index) {
+		const tarjeta = document.createElement("article");
+		tarjeta.className = "card coleccion-imagen-card";
+
+		const numero = document.createElement("span");
+		numero.className = "numero-fondo";
+		numero.textContent = String(index + 1);
+
+		const imagen = document.createElement("img");
+		imagen.className = "miniatura-fondo imagen-producto-tienda";
+		imagen.src = producto.imagen;
+		imagen.alt = producto.nombre;
+		imagen.loading = "lazy";
+		imagen.tabIndex = 0;
+		imagen.setAttribute("role", "button");
+		imagen.setAttribute("aria-label", "Ampliar " + producto.nombre);
+		imagen.addEventListener("click", function () {
+			window.abrirVisorColeccion(imagen.src, producto.nombre);
+		});
+		imagen.addEventListener("keydown", function (evento) {
+			if (evento.key === "Enter" || evento.key === " ") {
+				evento.preventDefault();
+				window.abrirVisorColeccion(imagen.src, producto.nombre);
+			}
+		});
+
+		const nombre = document.createElement("p");
+		nombre.className = "texto-conseguir-mas";
+		nombre.textContent = producto.nombre;
+		tarjeta.append(numero, imagen, nombre);
+		galeriaItemsColeccion.appendChild(tarjeta);
+	});
+
+	if (productos.length === 0) {
+		const tarjetaConseguir = document.createElement("article");
+		tarjetaConseguir.className = "card coleccion-imagen-card coleccion-mas-card";
+
+		const numero = document.createElement("span");
+		numero.className = "numero-fondo";
+		numero.textContent = "+";
+
+		const vista = document.createElement("div");
+		vista.className = "miniatura-fondo miniatura-plus";
+
+		const botonConseguir = document.createElement("button");
+		botonConseguir.className = "btn-mas";
+		botonConseguir.type = "button";
+		botonConseguir.setAttribute("aria-label", "Conseguir " + titulo.toLowerCase());
+		botonConseguir.textContent = "+";
+		botonConseguir.addEventListener("click", function (evento) {
+			evento.stopPropagation();
+			abrirTiendaDesdeColeccion();
+		});
+
+		const texto = document.createElement("p");
+		texto.className = "texto-conseguir-mas";
+		texto.textContent = "Conseguir";
+
+		vista.appendChild(botonConseguir);
+		tarjetaConseguir.append(numero, vista, texto);
+		tarjetaConseguir.addEventListener("click", abrirTiendaDesdeColeccion);
+		galeriaItemsColeccion.appendChild(tarjetaConseguir);
+	}
+}
+
+if (btnVolverCategoriasColeccion) {
+	btnVolverCategoriasColeccion.onclick = function () {
+		if (opcionesColeccionItems) opcionesColeccionItems.style.display = "block";
+		btnVolverCategoriasColeccion.style.display = "none";
+		tituloItemsColeccion.textContent = "";
+		if (galeriaItemsColeccion) galeriaItemsColeccion.replaceChildren();
+	};
+}
+
+if (btnColeccionCartas) {
+	btnColeccionCartas.onclick = function () {
+		renderItemsColeccion("cartas", "Tus cartas", false);
+	};
+}
+
+if (btnColeccionSkinsLista) {
+	btnColeccionSkinsLista.onclick = function () {
+		renderItemsColeccion("skins", "Tus skins", false);
+	};
+}
+
+if (btnColeccionAvatar) {
+	btnColeccionAvatar.onclick = function () {
+		renderItemsColeccion("ropa", "Tus avatares", true);
 	};
 }
 
 if (btnFondo && seccionColeccionImagenes && seccionElegirFondo) {
 	btnFondo.onclick = function () {
-		seccionColeccionImagenes.style.display = "none";
 		seccionElegirFondo.dataset.origen = "imagenes";
 		seccionModosFondo.style.display = "none";
-		seccionElegirFondo.style.display = "block";
+		mostrarSeccionNavegacion(seccionElegirFondo);
 		btnFondo.style.display = "none";
 	};
 }
 
 if (btnVerFondo && seccionConfiguracion && seccionElegirFondo) {
 	btnVerFondo.onclick = function () {
-		seccionConfiguracion.style.display = "none";
 		seccionElegirFondo.dataset.origen = "configuracion";
 		seccionModosFondo.style.display = "none";
-		seccionElegirFondo.style.display = "block";
+		mostrarSeccionNavegacion(seccionElegirFondo);
 	};
 }
 
 if (btnFondoPantalla && seccionElegirFondo && seccionModosFondo) {
 	btnFondoPantalla.onclick = function () {
-		seccionElegirFondo.style.display = "none";
-		seccionModosFondo.style.display = "block";
+		mostrarSeccionNavegacion(seccionModosFondo);
 	};
 }
 
@@ -524,31 +711,27 @@ if (btnFondoChat) {
 
 if (btnVolverModosFondo && seccionElegirFondo && seccionModosFondo) {
 	btnVolverModosFondo.onclick = function () {
-		seccionModosFondo.style.display = "none";
-		seccionElegirFondo.style.display = "block";
+		mostrarSeccionNavegacion(seccionElegirFondo);
 	};
 }
 
 if (btnVolverElegirFondo && seccionConfiguracion && seccionElegirFondo) {
 	btnVolverElegirFondo.onclick = function () {
-		seccionElegirFondo.style.display = "none";
 		if (seccionElegirFondo.dataset.origen === "imagenes") {
-			seccionColeccionImagenes.style.display = "block";
+			mostrarSeccionNavegacion(seccionColeccionImagenes);
 			if (btnFondo) btnFondo.style.display = "none";
 		} else {
-			seccionConfiguracion.style.display = "block";
+			mostrarSeccionNavegacion(seccionConfiguracion);
 		}
 	};
 }
 
 function volverDesdeSeleccionFondo() {
-	seccionModosFondo.style.display = "none";
-	seccionElegirFondo.style.display = "none";
 	if (seccionElegirFondo.dataset.origen === "imagenes") {
-		seccionColeccionImagenes.style.display = "block";
+		mostrarSeccionNavegacion(seccionColeccionImagenes);
 		if (btnFondo) btnFondo.style.display = "none";
 	} else {
-		seccionConfiguracion.style.display = "block";
+		mostrarSeccionNavegacion(seccionConfiguracion);
 	}
 }
 
@@ -572,8 +755,7 @@ if (btnElegirFondoCambiante) {
 
 if (btnVerSonido && seccionConfiguracion && seccionConfigSonido) {
 	btnVerSonido.onclick = function () {
-		seccionConfiguracion.style.display = "none";
-		seccionConfigSonido.style.display = "block";
+		mostrarSeccionNavegacion(seccionConfigSonido);
 
 		if (controlVolumenMusica && reproductorMusica) {
 			let volumenGuardado = localStorage.getItem("volumenMusica");
@@ -599,7 +781,6 @@ if (controlVolumenMusica && reproductorMusica && valorVolumenMusica) {
 
 if (btnVolverConfigSonido && seccionConfiguracion && seccionConfigSonido) {
 	btnVolverConfigSonido.onclick = function () {
-		seccionConfigSonido.style.display = "none";
-		seccionConfiguracion.style.display = "block";
+		mostrarSeccionNavegacion(seccionConfiguracion);
 	};
 }
