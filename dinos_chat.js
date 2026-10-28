@@ -56,6 +56,9 @@ const btnEnviarChatDino =
 let dinoChatActual =
     null;
 
+let respuestaDinoPendiente =
+    false;
+
 
 //==================================
 // ABRIR CHAT
@@ -67,6 +70,10 @@ function abrirChatDino(dino) {
 
         return;
 
+    }
+
+    if (typeof window.ocultarSugerenciaLocalDino === "function") {
+        window.ocultarSugerenciaLocalDino();
     }
 
 
@@ -319,7 +326,7 @@ function agregarMensajeDino(
 // ENVIAR MENSAJE
 //==================================
 
-function enviarMensajeDino() {
+async function enviarMensajeDino() {
 
     const texto =
         inputChatDino.value.trim();
@@ -329,7 +336,7 @@ function enviarMensajeDino() {
     // EVITAR VACÍO
     //----------------------------------
 
-    if (!texto) {
+    if (!texto || respuestaDinoPendiente) {
 
         return;
 
@@ -364,90 +371,40 @@ function enviarMensajeDino() {
     inputChatDino.value =
         "";
 
+    respuestaDinoPendiente = true;
+    btnEnviarChatDino.disabled = true;
+    inputChatDino.disabled = true;
+    btnMicrofonoDino.disabled = true;
 
-    //----------------------------------
-    // ENVIAR A GEMINI
-    //----------------------------------
+    try {
+        if (typeof window.obtenerRespuestaGemini !== "function") {
+            throw new Error("La conexión con Gemini no está disponible.");
+        }
 
-    obtenerRespuestaGemini(
-        texto,
-        dinoChatActual
-    );
+        await window.obtenerRespuestaGemini(texto, dinoChatActual);
+    } catch (error) {
+        console.error("No se pudo completar la respuesta del chat.", error);
+        agregarMensajeDino(obtenerMensajeErrorDino(dinoChatActual), "dino");
+    } finally {
+        respuestaDinoPendiente = false;
+        btnEnviarChatDino.disabled = false;
+        inputChatDino.disabled = false;
+        btnMicrofonoDino.disabled = false;
+        inputChatDino.focus();
+    }
 
 }
 
+function obtenerMensajeErrorDino(dino) {
+    const nombre = dino && dino.nombre;
+    const mensajes = {
+        ale: "Se me desordenó el plan por un momento. ¿Me lo repetís y lo intentamos de nuevo? 🙂",
+        leo: "¡Esperame! Se me cruzaron los cables 😵 ¿Me lo repetís en un segundito?",
+        nico: "Uy, se me mezclaron las ideas un segundo. ¿Me lo contás otra vez? 🙂"
+    };
 
-//==================================
-// RESPUESTA DE GEMINI
-//==================================
-
-async function obtenerRespuestaGemini(
-    mensaje,
-    dino
-) {
-
-    //----------------------------------
-    // COMPROBAR DINO
-    //----------------------------------
-
-    if (!dino) {
-
-        return;
-
-    }
-
-
-    //----------------------------------
-    // MENSAJE DE ESPERA
-    //----------------------------------
-
-    agregarMensajeDino(
-        "🤔 " +
-        dino.nombre +
-        " está pensando...",
-        "dino"
-    );
-
-
-    //----------------------------------
-    // COMPROBAR IA
-    //----------------------------------
-
-    if (
-        typeof enviarMensajeAGemini !==
-        "function"
-    ) {
-
-        agregarMensajeDino(
-            "❌ La conexión con Gemini no está disponible.",
-            "dino"
-        );
-
-        return;
-
-    }
-
-
-    //----------------------------------
-    // ENVIAR A GEMINI
-    //----------------------------------
-
-    const respuesta =
-        await enviarMensajeAGemini(
-            mensaje,
-            dino
-        );
-
-
-    //----------------------------------
-    // MOSTRAR RESPUESTA
-    //----------------------------------
-
-    agregarMensajeDino(
-        respuesta,
-        "dino"
-    );
-
+    return mensajes[String(nombre || "").toLowerCase()]
+        || "¡Uy! Me distraje un segundo. ¿Me lo repetís y seguimos? 🙂";
 }
 
 

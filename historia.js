@@ -1,11 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // DATOS DE AVATAR Y CAPÍTULOS
-    let avatarConfig = {
-        nombre: "Aventurero",
-        genero: "chico",
-        ropa: "roja"
-    };
+   let avatarConfig = {
+nombre: "Aventurero",
+genero: "chico",
+piel: "clara",
+cabello :"negro",
+estiloCabello: "corto",
+ropa: "roja"
+};
+
 
     let capituloActual = 1;
     let progresoMisiones = 0; // 0: Ninguna, 1: Lectura lista, 2: Juego listo
@@ -40,13 +44,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // SELECCIÓN DE CONFIGURACIÓN DE AVATAR
     const preview = document.getElementById("vistaPreviaAvatar");
-    const demoEmoji = document.getElementById("demoEmojiAvatar");
+    const avatarHistoria = document.getElementById("avatarJugadorHistoria");
+function actualizarVistaPrevia() {
 
-    function actualizarVistaPrevia() {
-        preview.className = `avatar-box ${avatarConfig.genero} ropa-${avatarConfig.ropa}`;
-        demoEmoji.textContent = avatarConfig.genero === "chico" ? "👦" : "👧";
+    const clasesAvatar =
+        `avatar-box avatar-con-imagen
+        ${avatarConfig.genero}
+        piel-${avatarConfig.piel}
+        cabello-${avatarConfig.cabello}
+        estilo-${avatarConfig.estiloCabello}
+        ropa-${avatarConfig.ropa}`;
+
+    if (preview) preview.className = clasesAvatar;
+    if (avatarHistoria) {
+        avatarHistoria.className = `${clasesAvatar} avatar-historia`;
+        avatarHistoria.setAttribute("aria-label", `Avatar de ${avatarConfig.nombre}`);
     }
 
+}
+
+document.querySelectorAll(".btn-piel").forEach(btn => {
+    btn.addEventListener("click", () => {
+        avatarConfig.piel = btn.dataset.piel;
+
+        document.querySelectorAll(".btn-piel").forEach(opcion => {
+            opcion.classList.toggle(
+                "seleccionado",
+                opcion === btn
+            );
+        });
+
+        actualizarVistaPrevia();
+    });
+});
+
+    
     document.querySelectorAll(".btn-genero").forEach(btn => {
         btn.addEventListener("click", () => {
             avatarConfig.genero = btn.dataset.genero;
@@ -56,6 +88,29 @@ document.addEventListener("DOMContentLoaded", () => {
             actualizarVistaPrevia();
         });
     });
+document.querySelectorAll(".btn-cabello").forEach(btn => {
+    btn.addEventListener("click", () => {
+        avatarConfig.cabello = btn.dataset.cabello;
+
+        document.querySelectorAll(".btn-cabello").forEach(opcion => {
+            opcion.classList.toggle("seleccionado", opcion === btn);
+        });
+
+        actualizarVistaPrevia();
+    });
+});
+
+document.querySelectorAll(".btn-estilo-cabello").forEach(btn => {
+    btn.addEventListener("click", () => {
+        avatarConfig.estiloCabello = btn.dataset.estiloCabello;
+
+        document.querySelectorAll(".btn-estilo-cabello").forEach(opcion => {
+            opcion.classList.toggle("seleccionado", opcion === btn);
+        });
+
+        actualizarVistaPrevia();
+    });
+});
 
     document.querySelectorAll(".btn-ropa").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -75,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const inpNombre = document.getElementById("nombreAvatar").value;
         if(inpNombre.trim() !== "") avatarConfig.nombre = inpNombre;
 
+        actualizarVistaPrevia();
         document.getElementById("lblNombreJugador").textContent = avatarConfig.nombre;
         document.getElementById("pasoCrearPersonaje").style.display = "none";
         document.getElementById("pasoCaminoCapitulo").style.display = "block";
@@ -152,7 +208,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("modalNPC").style.display = "none";
 
         if (esCorrecta) {
-            alert("¡Respuesta Correcta! 🎉 Has superado el capítulo.");
+            const monedasGanadas = window.otorgarRecompensaDinoSad("historia-capitulo-" + capituloActual);
+            const mensajeRecompensa = monedasGanadas > 0
+                ? " Ganaste " + monedasGanadas + " Dino monedas. 🪙"
+                : monedasGanadas === null
+                    ? " No se pudo guardar la recompensa. Intentá nuevamente."
+                    : "";
+            alert("¡Respuesta Correcta! 🎉 Has superado el capítulo." + mensajeRecompensa);
             capituloActual++;
             if (datosCapitulos[capituloActual]) {
                 cargarCapitulo(capituloActual);
@@ -164,7 +226,14 @@ document.addEventListener("DOMContentLoaded", () => {
             cargarCapitulo(capituloActual); // Reinicia el progreso del capítulo
         }
     }
-
+// Al entrar al modo historia, ocultar la tarjeta "Detrás de DinoSad"
+["btnVerMapa", "btnComenzarProgreso"].forEach(id => {
+    const boton = document.getElementById(id);
+    if (!boton) return;
+    boton.addEventListener("click", () => {
+        document.getElementById("seccionDetras").style.display = "none";
+    });
+});
     // BOTÓN VOLVER
     document.getElementById("btnVolverHistoria").addEventListener("click", () => {
         document.getElementById("seccionModoHistoria").style.display = "none";

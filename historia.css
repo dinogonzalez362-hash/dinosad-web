@@ -1,26 +1,400 @@
-/* Configuración de Avatar */
+/* ==========================================
+CONFIGURACIÓN DE AVATAR
+========================================== */
+
 .avatar-box {
-    width: 80px;
-    height: 80px;
-    margin: 10px auto;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+width: 150px;
+height: 190px;
+margin: 15px auto;
+display: flex;
+align-items: flex-start;
+justify-content: center;
+position: relative;
+
+
+border-radius: 20px;
+border: 4px solid #fff;
+box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+
+background: #202b38;
+
+
 }
 
-.avatar-box.ropa-roja { background-color: #e74c3c; }
-.avatar-box.ropa-azul { background-color: #3498db; }
-.avatar-box.ropa-verde { background-color: #2ecc71; }
+/* ==========================================
+PERSONAJE
+========================================== */
+
+.avatar-personaje {
+position: relative;
+width: 90px;
+height: 150px;
+margin-top: 15px;
+}
+
+/* ==========================================
+CABEZA
+========================================== */
+
+.avatar-cabeza {
+position: relative;
+width: 58px;
+height: 58px;
+margin: auto;
+}
+
+.avatar-cara {
+position: absolute;
+width: 52px;
+height: 52px;
+top: 5px;
+left: 3px;
+
+
+border-radius: 50%;
+border: 2px solid #333;
+
+background: #f2c29b;
+
+
+}
+
+/* ==========================================
+CABELLO
+========================================== */
+
+.avatar-cabello {
+position: absolute;
+width: 58px;
+height: 20px;
+top: 0;
+left: 0;
+
+
+border-radius: 30px 30px 10px 10px;
+
+background: #1f1f1f;
+
+z-index: 2;
+
+
+}
+
+/* ==========================================
+CUERPO
+========================================== */
+
+.avatar-cuerpo {
+position: relative;
+width: 60px;
+height: 55px;
+margin: 4px auto 0;
+}
+
+.avatar-ropa {
+width: 60px;
+height: 55px;
+
+border-radius: 15px 15px 8px 8px;
+border: 2px solid #333;
+
+background: #d62828;
+
+
+}
+
+/* ==========================================
+BRAZOS
+========================================== */
+
+.avatar-cuerpo::before,
+.avatar-cuerpo::after {
+content: "";
+
+
+position: absolute;
+width: 15px;
+height: 45px;
+top: 5px;
+
+border-radius: 10px;
+border: 2px solid #333;
+
+background: #f2c29b;
+
+}
+
+.avatar-cuerpo::before {
+left: -14px;
+}
+
+.avatar-cuerpo::after {
+right: -14px;
+}
+
+/* ==========================================
+PIERNAS
+========================================== */
+
+.avatar-piernas {
+display: flex;
+justify-content: center;
+gap: 5px;
+}
+
+.avatar-pierna {
+width: 22px;
+height: 38px;
+
+
+background: #333;
+border-radius: 5px;
+
+
+}
+
+/* ==========================================
+COLORES DE PIEL
+========================================== */
+
+.piel-clara .avatar-cara,
+.piel-clara .avatar-cuerpo::before,
+.piel-clara .avatar-cuerpo::after {
+background: #f2c29b;
+}
+
+.piel-media .avatar-cara,
+.piel-media .avatar-cuerpo::before,
+.piel-media .avatar-cuerpo::after {
+background: #c6865b;
+}
+
+.piel-oscura .avatar-cara,
+.piel-oscura .avatar-cuerpo::before,
+.piel-oscura .avatar-cuerpo::after {
+background: #75452d;
+}
+
+/* ==========================================
+COLORES DE ROPA
+========================================== */
+
+.ropa-roja .avatar-ropa {
+background: #d62828;
+}
+
+.ropa-azul .avatar-ropa {
+background: #2878d6;
+}
+
+.ropa-verde .avatar-ropa {
+background: #2e9d50;
+}
+
+.avatar-box.chica .avatar-cuerpo {
+height: 65px;
+}
+
+.avatar-box.chica .avatar-ropa {
+width: 68px;
+height: 65px;
+margin-left: -4px;
+border-radius: 0;
+box-sizing: border-box;
+clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
+}
+
+/* ==========================================
+COLORES DE CABELLO
+========================================== */
+
+.cabello-negro .avatar-cabello {
+background: #1f1f1f;
+}
+
+.cabello-castaño .avatar-cabello {
+background: #5a321d;
+}
+
+.cabello-rubio .avatar-cabello {
+background: #d6ad32;
+}
+
+.cabello-rojo .avatar-cabello {
+background: #a83220;
+}
+
+/* ==========================================
+BOTONES SELECCIONADOS
+========================================== */
 
 .btn-genero.seleccionado,
-.btn-ropa.seleccionado {
-    outline: 3px solid #fff;
-    outline-offset: 2px;
+.btn-ropa.seleccionado,
+.btn-piel.seleccionado,
+.btn-cabello.seleccionado,
+.btn-estilo-cabello.seleccionado {
+outline: 3px solid #fff;
+outline-offset: 2px;
 }
+/* ==========================================
+ESTILOS DE CABELLO
+========================================== */
+
+/* CABELLO CORTO */
+
+.estilo-corto .avatar-cabello {
+width: 58px;
+height: 48px;
+top: 0;
+left: 0;
+border-radius: 0;
+-webkit-mask-image: url("cabello corto.png");
+mask-image: url("cabello corto.png");
+-webkit-mask-repeat: no-repeat;
+mask-repeat: no-repeat;
+-webkit-mask-size: 89px 89px;
+mask-size: 89px 89px;
+-webkit-mask-position: center -18px;
+mask-position: center -18px;
+}
+
+/* CABELLO LARGO */
+
+.estilo-largo .avatar-cabello {
+width: 58px;
+height: 58px;
+top: 0;
+left: 0;
+border-radius: 0;
+-webkit-mask-image: url("cabello largo.png");
+mask-image: url("cabello largo.png");
+-webkit-mask-repeat: no-repeat;
+mask-repeat: no-repeat;
+-webkit-mask-size: 112px 112px;
+mask-size: 112px 112px;
+-webkit-mask-position: center -45px;
+mask-position: center -45px;
+}
+
+/* CABELLO PUNTIAGUDO */
+
+.estilo-puntiagudo .avatar-cabello {
+width: 62px;
+height: 40px;
+top: -15px;
+left: -2px;
+border-radius: 0;
+z-index: 4;
+-webkit-mask-image: url("cabello en punta.png");
+mask-image: url("cabello en punta.png");
+-webkit-mask-repeat: no-repeat;
+mask-repeat: no-repeat;
+-webkit-mask-size: 62px 78px;
+mask-size: 62px 78px;
+-webkit-mask-position: 0 0;
+mask-position: 0 0;
+}
+
+.estilo-puntiagudo .avatar-cara {
+    z-index: 3;
+}
+
+.avatar-box.chica .avatar-cabello {
+width: 82px;
+height: 105px;
+top: -8px;
+left: 50%;
+transform: translateX(-50%);
+border-radius: 0;
+background-color: transparent;
+background-repeat: no-repeat;
+background-position: center top;
+background-size: contain;
+-webkit-mask-image: none;
+mask-image: none;
+z-index: 1;
+}
+
+.avatar-box.chica .avatar-cara {
+z-index: 2;
+}
+
+.avatar-box.chica .avatar-cabello-frente {
+position: absolute;
+width: 82px;
+height: 105px;
+top: -8px;
+left: 50%;
+transform: translateX(-50%);
+background-repeat: no-repeat;
+background-position: center top;
+background-size: contain;
+clip-path: inset(0 0 calc(100% - 22px) 0);
+z-index: 3;
+}
+
+.avatar-box.chica.estilo-corto .avatar-cabello,
+.avatar-box.chica.estilo-corto .avatar-cabello-frente {
+background-image: url("cabellero_corto.jpg");
+}
+
+.avatar-box.chica.estilo-largo .avatar-cabello,
+.avatar-box.chica.estilo-largo .avatar-cabello-frente {
+background-image: url("cabello-largo.png");
+}
+
+.avatar-box.chica.estilo-puntiagudo .avatar-cabello,
+.avatar-box.chica.estilo-puntiagudo .avatar-cabello-frente {
+width: 88px;
+height: 97px;
+background-image: url("cabello_ con puntas.png");
+}
+
+/* ==========================================
+CARA DEL AVATAR
+========================================== */
+
+.avatar-cara {
+overflow: hidden;
+}
+
+/* OJOS */
+
+.avatar-ojos {
+position: absolute;
+z-index: 3;
+top: 19px;
+left: 0;
+width: 100%;
+display: flex;
+justify-content: center;
+gap: 15px;
+}
+
+.ojo {
+width: 8px;
+height: 11px;
+background: #222;
+border-radius: 50%;
+}
+
+/* BOCA */
+
+.avatar-boca {
+position: absolute;
+z-index: 3;
+width: 18px;
+height: 8px;
+left: 50%;
+bottom: 12px;
+transform: translateX(-50%);
+
+
+border-bottom: 3px solid #222;
+border-radius: 50%;
+
+}
+
 
 /* Camino de Misiones */
 .camino-misiones {
@@ -93,4 +467,304 @@
     flex-direction: column;
     gap: 10px;
     margin-top: 15px;
+}
+/* =====================================
+   CREAR PERSONAJE - arreglos
+   Pégalo AL FINAL de historia.css
+   ===================================== */
+
+/* 1. Letra legible en los botones de opciones
+      (antes era blanca sobre gris claro) */
+#pasoCrearPersonaje .btn-piel,
+#pasoCrearPersonaje .btn-cabello,
+#pasoCrearPersonaje .btn-estilo-cabello,
+#pasoCrearPersonaje .btn-ropa {
+    color: #222;
+}
+
+/* 2. Ocultar los botones flotantes mientras estás en el modo historia
+      (así no tapan el título ni las opciones) */
+body:has(#seccionModoHistoria[style*="block"]) #btnConfiguracion,
+body:has(#seccionModoHistoria[style*="block"]) #btnC,
+body:has(#seccionModoHistoria[style*="block"]) #btnAsistencia {
+    display: none;
+}
+
+/* 3. Orden: cada grupo de opciones con su título y espacios parejos
+      (reemplaza los <br> que había) */
+#pasoCrearPersonaje label {
+    display: block;
+    margin: 16px 0 6px;
+}
+
+#pasoCrearPersonaje .opciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* La vista previa queda centrada arriba */
+#pasoCrearPersonaje #vistaPreviaAvatar {
+    margin: 12px auto;
+}
+/* =====================================
+   CREAR PERSONAJE - botones de colores
+   Pégalo AL FINAL de historia.css
+   (después del bloque "arreglos")
+   Los colores son los mismos que usa el avatar.
+   ===================================== */
+
+/* COLOR DE PIEL */
+#pasoCrearPersonaje .btn-piel[data-piel="clara"]  { background: #f2c29b; color: #222; }
+#pasoCrearPersonaje .btn-piel[data-piel="media"]  { background: #c6865b; color: #222; }
+#pasoCrearPersonaje .btn-piel[data-piel="oscura"] { background: #75452d; color: #fff; }
+
+/* CABELLO */
+#pasoCrearPersonaje .btn-cabello[data-cabello="negro"]   { background: #1f1f1f; color: #fff; }
+#pasoCrearPersonaje .btn-cabello[data-cabello="castaño"] { background: #5a321d; color: #fff; }
+#pasoCrearPersonaje .btn-cabello[data-cabello="rubio"]   { background: #d6ad32; color: #222; }
+#pasoCrearPersonaje .btn-cabello[data-cabello="rojo"]    { background: #a83220; color: #fff; }
+
+/* ROPA */
+#pasoCrearPersonaje .btn-ropa[data-ropa="roja"]  { background: #d62828; color: #fff; }
+#pasoCrearPersonaje .btn-ropa[data-ropa="azul"]  { background: #2878d6; color: #fff; }
+#pasoCrearPersonaje .btn-ropa[data-ropa="verde"] { background: #2e9d50; color: #fff; }
+
+/* El botón elegido se agranda un poquito, además del borde blanco */
+#pasoCrearPersonaje .btn-piel.seleccionado,
+#pasoCrearPersonaje .btn-cabello.seleccionado,
+#pasoCrearPersonaje .btn-ropa.seleccionado,
+#pasoCrearPersonaje .btn-estilo-cabello.seleccionado {
+    transform: scale(1.08);
+}
+
+/* Avatar del modo historia basado en la imagen frontal */
+.avatar-box.avatar-con-imagen .avatar-personaje {
+    width: 130px;
+    height: 172px;
+    margin-top: 7px;
+}
+
+.avatar-box.avatar-con-imagen .avatar-base {
+    position: absolute;
+    z-index: 2;
+    width: auto;
+    height: 170px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+.avatar-box.avatar-con-imagen .avatar-rostro {
+    position: absolute;
+    z-index: 5;
+    width: auto;
+    height: 170px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    clip-path: inset(5% 30% 69% 30% round 40%);
+}
+
+.avatar-box.avatar-con-imagen .avatar-ropa-imagen {
+    position: absolute;
+    z-index: 3;
+    top: 53px;
+    left: 50%;
+    width: 62px;
+    height: 54px;
+    transform: translateX(-50%);
+    background: #d62828;
+    clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
+}
+
+.avatar-box.avatar-con-imagen.chica .avatar-ropa-imagen {
+    width: 70px;
+    height: 80px;
+    clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+}
+
+.avatar-box.avatar-con-imagen.ropa-azul .avatar-ropa-imagen {
+    background: #2878d6;
+}
+
+.avatar-box.avatar-con-imagen.ropa-verde .avatar-ropa-imagen {
+    background: #2e9d50;
+}
+
+.avatar-box.avatar-con-imagen .avatar-cabello,
+.avatar-box.avatar-con-imagen .avatar-cabello-frente {
+    position: absolute;
+    left: 50%;
+    width: 72px;
+    height: 98px;
+    top: 0;
+    transform: translateX(-50%);
+    border-radius: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+.avatar-box.avatar-con-imagen .avatar-cabello {
+    z-index: 4;
+    width: 140px;
+    height: 170px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 66% 100%, 66% 13%, 34% 13%, 34% 100%, 0 100%);
+}
+
+.avatar-box.avatar-con-imagen .avatar-cabello-frente {
+    z-index: 6;
+    clip-path: inset(0 0 78% 0);
+}
+
+.avatar-box.avatar-con-imagen.chica.estilo-corto .avatar-cabello,
+.avatar-box.avatar-con-imagen.chica.estilo-corto .avatar-cabello-frente {
+    background-image: url("cabellero_corto.jpg");
+}
+
+.avatar-box.avatar-con-imagen.chica.estilo-largo .avatar-cabello,
+.avatar-box.avatar-con-imagen.chica.estilo-largo .avatar-cabello-frente {
+    background-image: url("cabello-largo.png");
+    top: -7px;
+}
+
+.avatar-box.avatar-con-imagen.chica.estilo-puntiagudo .avatar-cabello,
+.avatar-box.avatar-con-imagen.chica.estilo-puntiagudo .avatar-cabello-frente {
+    top: -4px;
+    background-image: url("cabello_ con puntas.png");
+}
+
+.avatar-box.avatar-con-imagen.chica.estilo-puntiagudo .avatar-cabello {
+    width: 140px;
+    height: 170px;
+}
+
+.avatar-box.avatar-con-imagen.chica.estilo-puntiagudo .avatar-cabello-frente {
+    width: 76px;
+    height: 96px;
+}
+
+.avatar-box.avatar-con-imagen.chica.estilo-puntiagudo .avatar-cabello {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 74% 100%, 74% 13%, 26% 13%, 26% 100%, 0 100%);
+}
+
+.avatar-box.avatar-con-imagen.chico .avatar-cabello {
+    z-index: 4;
+    width: 58px;
+    height: 38px;
+    top: 4px;
+    background-color: #1f1f1f;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center top;
+    mask-position: center top;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+
+.avatar-box.avatar-con-imagen.chico.estilo-corto .avatar-cabello {
+    -webkit-mask-image: url("cabello corto.png");
+    mask-image: url("cabello corto.png");
+}
+
+.avatar-box.avatar-con-imagen.chico.estilo-largo .avatar-cabello {
+    height: 44px;
+    -webkit-mask-image: url("cabello largo.png");
+    mask-image: url("cabello largo.png");
+}
+
+.avatar-box.avatar-con-imagen.chico.estilo-puntiagudo .avatar-cabello {
+    top: -1px;
+    -webkit-mask-image: url("cabello en punta.png");
+    mask-image: url("cabello en punta.png");
+}
+
+.avatar-box.avatar-con-imagen.chico .avatar-cabello-frente {
+    display: none;
+}
+
+.avatar-box.avatar-con-imagen.chico.cabello-negro .avatar-cabello {
+    background-color: #1f1f1f;
+}
+
+.avatar-box.avatar-con-imagen.chico.cabello-castaño .avatar-cabello {
+    background-color: #5a321d;
+}
+
+.avatar-box.avatar-con-imagen.chico.cabello-rubio .avatar-cabello {
+    background-color: #d6ad32;
+}
+
+.avatar-box.avatar-con-imagen.chico.cabello-rojo .avatar-cabello {
+    background-color: #a83220;
+}
+
+.avatar-box.avatar-historia {
+    width: 76px;
+    height: 108px;
+    margin: 6px auto 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.avatar-box.avatar-historia .avatar-personaje {
+    width: 76px;
+    height: 102px;
+    margin-top: 0;
+}
+
+.avatar-box.avatar-historia .avatar-base {
+    height: 100px;
+}
+
+.avatar-box.avatar-historia .avatar-rostro {
+    height: 100px;
+}
+
+.avatar-box.avatar-historia .avatar-ropa-imagen {
+    top: 31px;
+    transform: translateX(-50%) scale(.588);
+    transform-origin: top center;
+}
+
+.avatar-box.avatar-historia .avatar-cabello,
+.avatar-box.avatar-historia .avatar-cabello-frente {
+    width: 43px;
+    height: 59px;
+}
+
+.avatar-box.avatar-historia .avatar-cabello {
+    width: 82px;
+    height: 100px;
+}
+
+.avatar-box.avatar-con-imagen.avatar-historia.chica.estilo-puntiagudo .avatar-cabello {
+    width: 82px;
+    height: 100px;
+}
+
+.avatar-box.avatar-historia.chica.estilo-puntiagudo .avatar-cabello-frente {
+    width: 45px;
+    height: 57px;
+}
+
+.avatar-box.avatar-historia.chico .avatar-cabello {
+    width: 35px;
+    height: 24px;
+    top: 2px;
+}
+
+.avatar-box.avatar-historia.chico.estilo-largo .avatar-cabello {
+    height: 27px;
+}
+
+.avatar-box.avatar-historia.chico.estilo-puntiagudo .avatar-cabello {
+    top: -1px;
 }

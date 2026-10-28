@@ -166,6 +166,120 @@ asistente.appendChild(
     btnHablar
 );
 
+const sugerenciaAsistente = document.createElement("aside");
+sugerenciaAsistente.id = "sugerenciaDinoAsistente";
+sugerenciaAsistente.setAttribute("aria-live", "polite");
+sugerenciaAsistente.hidden = true;
+
+const imagenSugerenciaAsistente = document.createElement("img");
+imagenSugerenciaAsistente.id = "imagenSugerenciaDino";
+imagenSugerenciaAsistente.alt = "";
+
+const textoSugerenciaAsistente = document.createElement("p");
+textoSugerenciaAsistente.id = "textoSugerenciaDino";
+
+const accionesSugerenciaAsistente = document.createElement("div");
+accionesSugerenciaAsistente.className = "accionesSugerenciaDino";
+
+const btnHablarSugerencia = document.createElement("button");
+btnHablarSugerencia.id = "btnHablarSugerenciaDino";
+btnHablarSugerencia.type = "button";
+
+const btnCerrarSugerencia = document.createElement("button");
+btnCerrarSugerencia.id = "btnCerrarSugerenciaDino";
+btnCerrarSugerencia.type = "button";
+btnCerrarSugerencia.setAttribute("aria-label", "Cerrar sugerencia");
+btnCerrarSugerencia.textContent = "×";
+
+accionesSugerenciaAsistente.append(btnHablarSugerencia, btnCerrarSugerencia);
+sugerenciaAsistente.append(imagenSugerenciaAsistente, textoSugerenciaAsistente, accionesSugerenciaAsistente);
+document.body.appendChild(sugerenciaAsistente);
+
+const imagenesSugerenciaDino = {
+    Ale: "dino1.jpg",
+    Leo: "dino3.jpg",
+    Nico: "dino4.jpg"
+};
+
+const frasesSugerenciaDino = {
+    Ale: [
+        "¿Por qué no probás una partida de Memory? Un poco de estrategia y vemos cómo te va.",
+        "¿Ya escuchaste la música de la página? Podría acompañar bien mientras explorás.",
+        "¿Querés hablar un rato? Estoy acá para escucharte.",
+        "¿Leíste el capítulo uno del modo historia? Ahí empieza la aventura."
+    ],
+    Leo: [
+        "¡Ey! ¿Por qué no jugás una partida? Prometo no festejar antes de tiempo... capaz 😄",
+        "¿Ya escuchaste la música de la página? Ponela y seguimos explorando.",
+        "¿Querés hablar un rato? ¡Tengo tiempo y una que otra idea!",
+        "¿Leíste el capítulo uno? Dale, que quiero saber qué te parece la aventura."
+    ],
+    Nico: [
+        "¿Te pinta jugar una partida de Memory? Está bueno para despejar un rato.",
+        "¿Ya escuchaste la música de la página? Si querés, exploramos algo mientras suena.",
+        "¿Querés charlar un rato? Podemos hablar de lo que tengas ganas.",
+        "¿Leíste el capítulo uno del modo historia? Es un buen lugar para empezar."
+    ]
+};
+
+const ESPERA_PRIMERA_SUGERENCIA_DINO = 30000;
+const ESPERA_SIGUIENTE_SUGERENCIA_DINO = 75000;
+let proximaSugerenciaDino = 0;
+let dinoSugerenciaActual = null;
+
+function obtenerSugerenciaLocalDino() {
+    const dinoInfo = dinos[Math.floor(Math.random() * dinos.length)];
+    const frases = frasesSugerenciaDino[dinoInfo.nombre];
+    return {
+        dino: dinoInfo,
+        texto: frases[Math.floor(Math.random() * frases.length)]
+    };
+}
+
+function mostrarSugerenciaLocalDino() {
+    const sugerencia = obtenerSugerenciaLocalDino();
+    dinoSugerenciaActual = sugerencia.dino;
+    imagenSugerenciaAsistente.src = imagenesSugerenciaDino[sugerencia.dino.nombre];
+    imagenSugerenciaAsistente.alt = sugerencia.dino.nombre;
+    textoSugerenciaAsistente.textContent = sugerencia.texto;
+    btnHablarSugerencia.textContent = "Hablar con " + sugerencia.dino.nombre;
+    sugerenciaAsistente.hidden = false;
+}
+
+function ocultarSugerenciaLocalDino() {
+    sugerenciaAsistente.hidden = true;
+    proximaSugerenciaDino = Date.now() + ESPERA_SIGUIENTE_SUGERENCIA_DINO;
+}
+
+window.ocultarSugerenciaLocalDino = ocultarSugerenciaLocalDino;
+
+btnCerrarSugerencia.addEventListener("click", ocultarSugerenciaLocalDino);
+
+btnHablarSugerencia.addEventListener("click", function () {
+    if (dinoSugerenciaActual) {
+        sugerenciaAsistente.hidden = true;
+        abrirChatDino(dinoSugerenciaActual);
+    }
+});
+
+setInterval(function () {
+    if (!asistenciaActiva) {
+        sugerenciaAsistente.hidden = true;
+        return;
+    }
+
+    const chatAbierto = document.getElementById("seccionChatDino");
+    if (chatAbierto && getComputedStyle(chatAbierto).display !== "none") {
+        sugerenciaAsistente.hidden = true;
+        proximaSugerenciaDino = Date.now() + ESPERA_SIGUIENTE_SUGERENCIA_DINO;
+        return;
+    }
+
+    if (sugerenciaAsistente.hidden && Date.now() >= proximaSugerenciaDino) {
+        mostrarSugerenciaLocalDino();
+    }
+}, 5000);
+
 
 //==================================
 // SELECCIONAR DINO
@@ -317,6 +431,9 @@ if(btnAsistencia){
             asistenciaActiva =
                 true;
 
+            proximaSugerenciaDino =
+                Date.now() + ESPERA_PRIMERA_SUGERENCIA_DINO;
+
             btnAsistencia.innerHTML =
                 "🦖 Asistencia ON";
 
@@ -357,6 +474,9 @@ if(btnAsistencia){
 
         asistenciaActiva =
             false;
+
+        sugerenciaAsistente.hidden =
+            true;
 
         btnAsistencia.innerHTML =
             "🦖 Asistencia OFF";

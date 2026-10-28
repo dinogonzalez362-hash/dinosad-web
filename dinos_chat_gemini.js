@@ -5,21 +5,52 @@
 
 let geminiConectado = true;
 
-async function obtenerRespuestaGemini(mensaje, dino) {
+function crearIndicadorEscrituraDino(dino) {
+    const mensajes = {
+        ale: "Estoy ordenando mis ideas... ya te respondo.",
+        leo: "¡Esperame! Se me cruzaron los cables, estoy pensando 😅",
+        nico: "Mmm... dejame pensarlo tranquilo, ya te contesto 🙂"
+    };
+    const indicador = document.createElement("div");
+    const texto = document.createElement("span");
+    const puntos = document.createElement("span");
+    const nombre = String(dino.nombre || "").toLowerCase();
+
+    indicador.className = "mensajeDino dino escribiendoDino";
+    indicador.setAttribute("role", "status");
+    indicador.setAttribute("aria-label", dino.nombre + " está escribiendo");
+    texto.textContent = mensajes[nombre] || dino.nombre + " está pensando cómo responderte.";
+    puntos.className = "puntosEscribiendoDino";
+    puntos.setAttribute("aria-hidden", "true");
+    puntos.textContent = "...";
+    indicador.append(texto, puntos);
+    mensajesChatDino.appendChild(indicador);
+    mensajesChatDino.scrollTop = mensajesChatDino.scrollHeight;
+
+    return indicador;
+}
+
+async function obtenerRespuestaGemini(mensaje, dino, audio) {
 
     if (!mensaje || !dino) return;
 
-    if (!geminiConectado) {
-
-        if (typeof agregarMensajeDino === "function") {
-
-            agregarMensajeDino(
-                "⚠️ Gemini está desconectado.",
-                "dino"
-            );
-
+    if (!audio && typeof window.responderDinoLocal === "function") {
+        try {
+            const respuestaLocal = window.responderDinoLocal(mensaje, dino);
+            if (respuestaLocal) {
+                agregarMensajeDino(respuestaLocal, "dino");
+                return;
+            }
+        } catch (error) {
+            console.error("No se pudo generar una respuesta local del Dino.", error);
         }
+    }
 
+    const indicadorEscritura = crearIndicadorEscrituraDino(dino);
+
+    if (!geminiConectado) {
+        indicadorEscritura.remove();
+        agregarMensajeDino(obtenerMensajeErrorDino(dino), "dino");
         return;
     }
 
@@ -37,9 +68,14 @@ async function obtenerRespuestaGemini(mensaje, dino) {
 
                 mensaje: mensaje,
 
+                audio: audio || null,
+
                 dino: {
 
                     nombre: dino.nombre,
+
+                    edad:
+                        dino.edad || "",
 
                     personalidad:
                         dino.personalidad || "",
@@ -49,6 +85,9 @@ async function obtenerRespuestaGemini(mensaje, dino) {
 
                     relacionConHermanos:
                         dino.relacionConHermanos || "",
+
+                    rol:
+                        dino.rol || "",
 
                     instruccionesGemini:
                         dino.instruccionesGemini || ""
@@ -73,50 +112,22 @@ async function obtenerRespuestaGemini(mensaje, dino) {
         const respuestaTexto = data.respuesta;
 
         if (respuestaTexto) {
-
-            if (typeof agregarMensajeDino === "function") {
-
-                agregarMensajeDino(
-                    respuestaTexto,
-                    "dino"
-                );
-
-            }
-
+            indicadorEscritura.remove();
+            agregarMensajeDino(respuestaTexto, "dino");
         } else {
-
-            if (typeof agregarMensajeDino === "function") {
-
-                agregarMensajeDino(
-
-                    `¡Rawr! ${dino.nombre} se distrajo. ¡Probá de nuevo!`,
-
-                    "dino"
-
-                );
-
-            }
-
+            indicadorEscritura.remove();
+            agregarMensajeDino(obtenerMensajeErrorDino(dino), "dino");
         }
 
     } catch (err) {
 
+        indicadorEscritura.remove();
         console.error(
             "Error de Gemini:",
             err
         );
 
-        if (typeof agregarMensajeDino === "function") {
-
-            agregarMensajeDino(
-
-                `❌ ¡Ups! ${dino.nombre} tuvo un problema: ${err.message}`,
-
-                "dino"
-
-            );
-
-        }
+        agregarMensajeDino(obtenerMensajeErrorDino(dino), "dino");
 
     }
 

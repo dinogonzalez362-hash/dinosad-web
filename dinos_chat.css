@@ -207,6 +207,36 @@
 
 }
 
+.mensajeDino.escribiendoDino span{
+
+    color:#d1d1d1;
+
+    font-style:italic;
+
+}
+
+.mensajeDino .puntosEscribiendoDino{
+
+    display:inline-block;
+
+    min-width:1.5em;
+
+    font-style:normal;
+
+    animation: pulsoPuntosEscribiendo 1s steps(4, end) infinite;
+
+}
+
+@keyframes pulsoPuntosEscribiendo{
+
+    0%, 20%{ opacity:.25; }
+
+    50%{ opacity:1; }
+
+    80%, 100%{ opacity:.4; }
+
+}
+
 
 /*==================================
     MENSAJE DINO
@@ -264,6 +294,8 @@
 
 #entradaChatDino{
 
+    position:relative;
+
     min-height:65px;
 
     padding:10px;
@@ -280,6 +312,167 @@
 
     border-top:
         1px solid rgba(255,255,255,.1);
+
+}
+
+#btnMicrofonoDino{
+
+    width:44px;
+
+    height:44px;
+
+    min-width:44px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#303030;
+
+    color:white;
+
+    font-size:19px;
+
+    cursor:pointer;
+
+}
+
+#menuVozDino,
+#estadoVozDino{
+
+    position:absolute;
+
+    z-index:2;
+
+    left:10px;
+
+    box-sizing:border-box;
+
+    width:min(340px, calc(100% - 20px));
+
+    padding:10px;
+
+    border:1px solid rgba(255,255,255,.16);
+
+    border-radius:12px;
+
+    background:#252525;
+
+    color:white;
+
+    box-shadow:0 4px 16px rgba(0,0,0,.45);
+
+}
+
+#menuVozDino{
+
+    bottom:calc(100% + 8px);
+
+}
+
+#menuVozDino button,
+#estadoVozDino button{
+
+    min-height:40px;
+
+    padding:8px 12px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:#3b3b3b;
+
+    color:white;
+
+    font:inherit;
+
+    cursor:pointer;
+
+}
+
+#menuVozDino button{
+
+    display:block;
+
+    width:100%;
+
+    text-align:left;
+
+}
+
+#menuVozDino button + button{
+
+    margin-top:6px;
+
+}
+
+#menuVozDino p{
+
+    margin:8px 2px 0;
+
+    color:#ccc;
+
+    font-size:12px;
+
+    line-height:1.4;
+
+}
+
+#estadoVozDino{
+
+    bottom:calc(100% + 8px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:8px;
+
+}
+
+#estadoVozDino[hidden],
+#menuVozDino[hidden]{
+
+    display:none;
+
+}
+
+.mensajeDinoAudio{
+
+    width: min(320px, 100%);
+
+    padding:8px;
+
+    border-radius:12px;
+
+    background:#292929;
+
+}
+
+.mensajeDinoAudio.usuario{
+
+    background:linear-gradient(110deg, #00d9ff, #fff, #ff8c00);
+
+}
+
+.mensajeDinoAudio audio{
+
+    display:block;
+
+    width:100%;
+
+    max-width:100%;
+
+}
+
+.mensajeDinoAudio small{
+
+    display:block;
+
+    margin-bottom:5px;
 
 }
 
@@ -447,6 +640,12 @@
 
     }
 
+    .mensajeDino.escribiendoDino span{
+
+        font-size:13px;
+
+    }
+
 
     #entradaChatDino{
 
@@ -467,6 +666,16 @@
 
 
     #btnEnviarChatDino{
+
+        width:42px;
+
+        height:42px;
+
+        min-width:42px;
+
+    }
+
+    #btnMicrofonoDino{
 
         width:42px;
 
