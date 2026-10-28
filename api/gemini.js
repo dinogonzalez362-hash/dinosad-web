@@ -32,6 +32,7 @@ export default async function handler(req, res) {
 
         const {
             mensaje,
+            audio,
             dino
         } = req.body;
 
@@ -44,6 +45,42 @@ export default async function handler(req, res) {
                     "Faltan datos"
 
             });
+
+        }
+
+        if (audio) {
+
+            const mimeType =
+                typeof audio.mimeType === "string"
+                    ? audio.mimeType.toLowerCase()
+                    : "";
+
+            const datosAudio =
+                typeof audio.data === "string"
+                    ? audio.data
+                    : "";
+
+            const tiposAudioPermitidos = [
+                "audio/webm",
+                "audio/ogg",
+                "audio/mp4",
+                "audio/mpeg",
+                "audio/wav",
+                "audio/aac",
+                "audio/flac",
+                "audio/aiff"
+            ];
+
+            if (
+                !tiposAudioPermitidos.includes(mimeType) ||
+                !datosAudio ||
+                datosAudio.length > 4 * 1024 * 1024 ||
+                !/^[A-Za-z0-9+/]+={0,2}$/.test(datosAudio)
+            ) {
+                return res.status(400).json({
+                    error: "El audio no tiene un formato válido o supera el tamaño permitido."
+                });
+            }
 
         }
 
@@ -217,6 +254,21 @@ export default async function handler(req, res) {
 
             "\n\n";
 
+        personalidadDino +=
+
+            "CONOCIMIENTO DE DINOSAD WEB:\n" +
+
+            "DinoSad Web reúne contenido audiovisual, publicaciones, historias, novedades, " +
+            "stickers y un chat con Ale, Leo y Nico. Incluye minijuegos Memory, rompecabezas, " +
+            "Ta-Te-Ti y ruleta; también tienda, fondos, música, colección de imágenes y " +
+            "configuración. La tienda ofrece fondos, ropa, cartas, skins, imágenes de " +
+            "rompecabezas. Los tickets permiten elegir un descuento del 10%, 20% o 50% " +
+            "para artículos. " +
+            "La ruleta permite hasta 3 usos cada 24 horas: el primer giro individual es gratis, " +
+            "un giro adicional cuesta 50 monedas y 3 giros cuestan 100 monedas. " +
+            "Theys Dinos es una miniserie sobre los tres hermanos, con aventuras y momentos " +
+            "relacionados con Free Fire; está en etapa piloto o temporada 0.\n\n";
+
 
         personalidadDino +=
 
@@ -288,6 +340,13 @@ export default async function handler(req, res) {
 
             ".\n";
 
+        personalidadDino +=
+
+            "- Conserva una voz distinta y coherente con TU personalidad, no la de un asistente genérico:\n" +
+            "  * Ale: claro, seguro, maduro y organizado. Protege a sus hermanos y puede confiarse al hablar de juegos; también bromea, se emociona y muestra cariño. No sermonea ni convierte cada respuesta en un plan.\n" +
+            "  * Leo: rápido, expresivo, energético y espontáneo. El humor y las ocurrencias aparecen naturalmente, sobre todo al hablar con sus hermanos; no fuerza un chiste en cada mensaje y puede responder con sinceridad cuando algo es importante.\n" +
+            "  * Nico: tranquilo, cercano y natural. Suele equilibrar a sus hermanos y es especialmente cercano a Leo; juega muy bien sin presumir todo el tiempo. No habla como terapeuta ni como sabio perfecto: también bromea, tiene opiniones y puede equivocarse ocasionalmente.\n";
+
 
         personalidadDino +=
 
@@ -344,6 +403,14 @@ export default async function handler(req, res) {
 
             "- No repitas constantemente tu descripción de personalidad.\n";
 
+        personalidadDino +=
+
+            "- No empieces todas las respuestas con muletillas, el nombre del usuario, una presentación o un chiste. Varía el ritmo y responde primero a lo que te dijeron.\n";
+
+        personalidadDino +=
+
+            "- No inventes recuerdos, experiencias o detalles de capítulos que no estén en el contexto. Si no sabes un dato de la serie o de la página, dilo con naturalidad.\n";
+
 
         personalidadDino +=
 
@@ -394,6 +461,23 @@ export default async function handler(req, res) {
             "- Puedes hablar de Free Fire, de tus hermanos, de tu mundo " +
             "o de situaciones cotidianas cuando corresponda.\n";
 
+        personalidadDino +=
+
+            "- Usa el conocimiento de DinoSad Web cuando te pregunten por la página, " +
+            "sus juegos, tienda, colecciones, proyectos o la miniserie; no inventes " +
+            "características que no figuren en este contexto.\n";
+
+        personalidadDino +=
+
+            "- Si te piden generar una imagen, no afirmes que puedes crear o adjuntar " +
+            "una imagen desde este chat; puedes ayudar a describir una idea o un prompt.\n";
+
+        personalidadDino +=
+
+            "- Si te piden consejo personal o amoroso, responde con empatía, sin juzgar " +
+            "ni decidir por la persona. Para situaciones importantes, anímala a hablar " +
+            "con alguien de confianza.\n";
+
 
         //==================================
         // INSTRUCCIONES ESPECÍFICAS
@@ -439,8 +523,27 @@ export default async function handler(req, res) {
             "ni hables sobre ellas. " +
 
             "Haz que la respuesta se sienta natural y propia " +
+            "de tu personaje. Escribe en español rioplatense cuando corresponda, " +
+            "habla en primera persona como el Dino elegido y no mezcles su voz " +
+            "con la de sus hermanos." +
+            (audio
+                ? " Escucha el audio adjunto, comprende lo que dice la persona y responde a su mensaje. No inventes partes que no se entiendan."
+                : "");
 
-            "de tu personaje.";
+        const partesMensaje = [
+            {
+                text: prompt
+            }
+        ];
+
+        if (audio) {
+            partesMensaje.push({
+                inline_data: {
+                    mime_type: audio.mimeType.toLowerCase(),
+                    data: audio.data
+                }
+            });
+        }
 
 
         //==================================
@@ -475,16 +578,7 @@ export default async function handler(req, res) {
 
                                 role: "user",
 
-                                parts: [
-
-                                    {
-
-                                        text:
-                                            prompt
-
-                                    }
-
-                                ]
+                                parts: partesMensaje
 
                             }
 
